@@ -719,7 +719,7 @@ body.container {
     width: 360px;
   }
   .aside-xxl {
-    width: 480px;
+    width: 780px;
   }
   .header-md {
     min-height: 60px;
@@ -2832,26 +2832,22 @@ a.bg-light:focus {
 }
 .line-head-title {
   *width: 100%;
-  height: 78px;
-  margin: 0px 0px;
-  font-size: 0;
-  overflow: hidden;
+  height: 300px;
+  margin-bottom: 40px;
 }
 .line-head-title1{
-  width: 500px;
-  height: 78px;
-  margin-left: 20rem;
-  font-size: 0;
-  overflow: hidden;
+  width: 450px;
+  height: 400px;
+  margin-left: 10px;
+  margin-top: 10px;
   float: left;
 }
 .line-head-title2{
-  width: 500px;
-  height: 78px;
-  margin-left: 10rem;
-  font-size: 0;
-  overflow: hidden;
-  float: left;
+  width: 450px;
+  height: 246px;
+  margin-left: 10px;
+  margin-top: auto;
+  float: right;
 }
 .line {
   *width: 100%;
