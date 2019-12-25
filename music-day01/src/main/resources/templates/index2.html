@@ -27,6 +27,17 @@
             text-decoration: underline;
             cursor: pointer;
         }
+
+        left {
+            float: left;
+            width: 50%;
+        }
+
+        right {
+            float: right;
+            width: 50%;
+        }
+
     </style>
 
 
@@ -56,25 +67,41 @@
 <h2 class="center" style="text-align: center">
     好歌推荐
 </h2>
-<div class="flicker-example bg-white-only" data-block-text="false">
-    <ul class="line-head-title">
+<div class="flicker-example bg-white-only" data-block-text="false" style="height: 460px">
+    <ul class="line-head-title ">
         <li>
-<!--            <a href="#" class="line-head-title1"><img th:src="@{/asserts/images/1904290.jpg}"></a>-->
-            <a href="#"class="center"><img th:src="@{/asserts/images/1906495.jpg}"></a>
-            <!--<div class="flick-title">Flickerplate Is Working</div>-->
+            <!--            <a href="#" class="line-head-title1"><img th:src="@{/asserts/images/1904290.jpg}"></a>-->
+            <div class="navbar-left"><a href="#" class="center"><img
+                    th:src="@{/asserts/images/cont1/carousel_img3.jpg}" style="width: 47rem;height: 30rem"></a>
+            </div>
+            <div class="navbar-right"><a href="#" class="center"><img
+                    th:src="@{/asserts/images/cont1/carousel_img4.jpg}" style="width: 47rem;height: 30rem"></a>
+            </div><!--<div class="flick-title">Flickerplate Is Working</div>-->
             <!--<div class="flick-sub-text">Heaven forbid this package you downloaded is broken. That wouldn't be embarrassing at all.</div>-->
         </li>
         <li>
-            <div class="flick-title">Editable via Javascript or CSS</div>
-            <div class="flick-sub-text">Take a look at the extensive documentation to see how you can change the
-                settings in multiple ways.
+            <div class="navbar-left"><a href="#" class="center"><img
+                    th:src="@{/asserts/images/cont1/carousel_img4.jpg}" style="width: 47rem;height: 30rem"></a>
             </div>
+            <div class="navbar-right"><a href="#" class="center"><img
+                    th:src="@{/asserts/images/cont1/carousel_img5.jpg}" style="width: 47rem;height: 30rem"></a>
+            </div>
+<!--            <div class="flick-title">Editable via Javascript or CSS</div>-->
+<!--            <div class="flick-sub-text">Take a look at the extensive documentation to see how you can change the-->
+<!--                settings in multiple ways.-->
+<!--            </div>-->
         </li>
         <li>
-            <div class="flick-title">Touch Enabled Through the jQuery Finger Library</div>
-            <div class="flick-sub-text">jQuery Finger is a great touch library that has been included as part of the
-                Flickerplate package.
+            <div class="navbar-left"><a href="#" class="center"><img
+                    th:src="@{/asserts/images/cont1/carousel_img6.jpg}" style="width: 47rem;height: 30rem"></a>
             </div>
+            <div class="navbar-right"><a href="#" class="center"><img
+                    th:src="@{/asserts/images/cont1/carousel_img1.jpg}" style="width: 47rem;height: 30rem"></a>
+            </div>
+<!--            <div class="flick-title">Touch Enabled Through the jQuery Finger Library</div>-->
+<!--            <div class="flick-sub-text">jQuery Finger is a great touch library that has been included as part of the-->
+<!--                Flickerplate package.-->
+<!--            </div>-->
         </li>
     </ul>
 </div>

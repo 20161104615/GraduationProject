@@ -25,13 +25,24 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/profile").setViewName("profile");
                 registry.addViewController("/profile.html").setViewName("profile");
                 registry.addViewController("/index2.html").setViewName("index2");
+                registry.addViewController("/singer.html").setViewName("singer");
+                registry.addViewController("/singer_list.html").setViewName("singer_list");
+                registry.addViewController("/404.html").setViewName("404");
             }
 
             //拦截器注册
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginHandlerInterceptor()).addPathPatterns("/404.html").
-                        excludePathPatterns("/","/signin.html","/user/login","/modal.lockme.html","/signup.html","/genres.html","/index2.html");
+                        excludePathPatterns("/","/signin.html",
+                                "/user/login",
+                                "/modal.lockme.html",
+                                "/signup.html",
+                                "/genres.html",
+                                "/index2.html",
+                                "/singer.html",
+                                "/singer_list",
+                                "/404.html");
             }
         };
         return adapter;
