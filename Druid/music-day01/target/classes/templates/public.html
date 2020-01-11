@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Musik | Web Application</title>
+    <meta name="description"
+          content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+    <link rel="stylesheet" th:href="@{/asserts/js/jPlayer/jplayer.flat.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/asserts/css/animate.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/asserts/css/font-awesome.min.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/asserts/css/simple-line-icons.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/asserts/css/font.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/asserts/css/app.css}" type="text/css"/>
+    <link rel="stylesheet" th:href="@{/asserts/css/singer.css}" type="text/css"/>
+</head>
+<body>
+<!--公共_头部-->
+<header class="bg-white-only header header-md center" th:fragment="public_head">
+    <div class="aside-xxl" style="margin-left: 20rem;">
+        <div class="navbar-header center aside-xl" style="margin-left: 6rem;">
+            <div class="btn-group btn-group-justified bg-white-only">
+                <a href="#" class="btn bg-white-only" style="width: 14rem;height: 6rem">
+                    <i class="icon-earphones btn-lg"></i>
+                </a>
+                <a href="#" class="btn bg-white-only"
+                   style="width: 14rem;height: 6rem;background-color: #1acf74;color: white">
+                    音乐馆
+                </a>
+                <a href="#" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
+            </div>
+        </div>
+    </div>
+    <div class="aside-xxl" style="margin-left: 70rem;">
+        <ul class="nav navbar-nav m-n hidden-xs nav-user user" style="margin-left: 20rem">
+            <li class="dropdown">
+                <div class="form-horizontal">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group" style="margin-top: 0.9rem">
+                            <input style="width: 35rem" type="text"
+                                   class="form-control form-control-pl-30 rounded input-lg text-center"
+                                   placeholder="Search">
+                            <span class="form-control-feedback icon-magnifier pull-right"
+                                  style="color: #0d1215;margin-top: 0.9rem"></span>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="dropdown" style="margin-left: 16px;margin-top: 0.1rem">
+                <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
+                      <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                        <img th:src="@{/asserts/images/a0.png}" alt="...">
+                      </span>
+                    [[*{session.loginUser}]] <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu animated fadeInRight">
+                    <li>
+                        <span class="arrow top"></span>
+                        <a href="#">Settings</a>
+                    </li>
+                    <li>
+                        <a href="profile.html">Profile</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="badge bg-danger pull-right">3</span>
+                            Notifications
+                        </a>
+                    </li>
+                    <li>
+                        <a href="docs.html">Help</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                        <a href="modal.lockme.html" data-toggle="ajaxModal">Logout</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</header>
+<!--public_navigation-->
+<div class="panel-body center no-border no-borders" style="margin-left: 45.5rem;font-size: 12px;color: black" th:fragment="public_navigation">
+    <a href="#" th:href="@{/index.html}" th:class="${activeUri=='index'?'text-success':'h6'}">首页</a>
+    <a href="#" th:href="@{/singer.html}" th:class="${activeUri=='singer'?'text-success':'h6'}" style="margin-left: 5rem">歌手</a>
+    <a href="#" style="margin-left: 5rem">排行榜</a>
+    <a href="#" style="margin-left: 5rem">分类</a>
+</div>
+
+</body>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
+<!-- App -->
+<script th:src="@{/asserts/js/app.js}"></script>
+<script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
+<script th:src="@{/asserts/js/app.plugin.js}"></script>
+<script th:src="@{/asserts/js/ie/html5shiv.js}"></script>
+<script th:src="@{/asserts/js/ie/respond.min.js}"></script>
+<script th:src="@{/asserts/js/ie/excanvas.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/jPlayer/jquery.jplayer.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
+<script type="text/javascript" th:src="@{/asserts/js/jPlayer/demo.js}"></script>
+
+</html>
