@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
+<head th:fragment="public_head_head">
     <meta charset="utf-8"/>
     <title>Musik | Web Application</title>
     <meta name="description"
@@ -14,8 +14,14 @@
     <link rel="stylesheet" th:href="@{/asserts/css/font.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/asserts/css/app.css}" type="text/css"/>
     <link rel="stylesheet" th:href="@{/asserts/css/singer.css}" type="text/css"/>
+    <!--[if lt IE 9]>
+    <script th:src="@{/asserts/js/ie/html5shiv.js}"></script>
+    <script th:src="@{/asserts/js/ie/respond.min.js}"></script>
+    <script th:src="@{/asserts/js/ie/excanvas.js}"></script>
+    <![endif]-->
 </head>
 <body>
+
 <!--公共_头部-->
 <header class="bg-white-only header header-md center" th:fragment="public_head">
     <div class="aside-xxl" style="margin-left: 20rem;">
@@ -28,31 +34,31 @@
                    style="width: 14rem;height: 6rem;background-color: #1acf74;color: white">
                     音乐馆
                 </a>
-                <a href="#" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
+                <a th:href="@{/profile.html}" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
             </div>
         </div>
     </div>
     <div class="aside-xxl" style="margin-left: 70rem;">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user" style="margin-left: 20rem">
             <li class="dropdown">
-                <div class="form-horizontal">
-                    <div class="col-xs-12 col-sm-12 col-md-12">
-                        <div class="form-group" style="margin-top: 0.9rem">
-                            <input style="width: 35rem" type="text"
-                                   class="form-control form-control-pl-30 rounded input-lg text-center"
-                                   placeholder="Search">
-                            <span class="form-control-feedback icon-magnifier pull-right"
-                                  style="color: #0d1215;margin-top: 0.9rem"></span>
+                <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                              <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
+                            </span>
+                            <input type="text" class="form-control input-sm no-border rounded"
+                                   placeholder="Search songs, albums...">
                         </div>
                     </div>
-                </div>
+                </form>
             </li>
             <li class="dropdown" style="margin-left: 16px;margin-top: 0.1rem">
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                       <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
                         <img th:src="@{/asserts/images/a0.png}" alt="...">
                       </span>
-                    [[*{session.loginUser}]] <b class="caret"></b>
+                    [[*{session.loginUser.getUser_name()}]] <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInRight">
                     <li>
@@ -81,26 +87,72 @@
     </div>
 </header>
 <!--public_navigation-->
-<div class="panel-body center no-border no-borders" style="margin-left: 45.5rem;font-size: 12px;color: black" th:fragment="public_navigation">
+<div class="panel-body center no-border no-borders" style="margin-left: 45.5rem;font-size: 12px;color: black"
+     th:fragment="public_navigation">
     <a href="#" th:href="@{/index.html}" th:class="${activeUri=='index'?'text-success':'h6'}">首页</a>
-    <a href="#" th:href="@{/singer.html}" th:class="${activeUri=='singer'?'text-success':'h6'}" style="margin-left: 5rem">歌手</a>
+    <a href="#" th:href="@{/singer.html}" th:class="${activeUri=='singer'?'text-success':'h6'}"
+       style="margin-left: 5rem">歌手</a>
     <a href="#" style="margin-left: 5rem">排行榜</a>
     <a href="#" style="margin-left: 5rem">分类</a>
 </div>
 
 </body>
-<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
-<!-- Bootstrap -->
-<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
-<!-- App -->
-<script th:src="@{/asserts/js/app.js}"></script>
-<script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
-<script th:src="@{/asserts/js/app.plugin.js}"></script>
-<script th:src="@{/asserts/js/ie/html5shiv.js}"></script>
-<script th:src="@{/asserts/js/ie/respond.min.js}"></script>
-<script th:src="@{/asserts/js/ie/excanvas.js}"></script>
-<script type="text/javascript" th:src="@{/asserts/js/jPlayer/jquery.jplayer.min.js}"></script>
-<script type="text/javascript" th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
-<script type="text/javascript" th:src="@{/asserts/js/jPlayer/demo.js}"></script>
-
+<footer th:fragment="public_footer_footer">
+    <script th:src="@{/asserts/js/jquery.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <!-- Bootstrap -->
+    <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
+    <!-- App -->
+    <script th:src="@{/asserts/js/app.js}"></script>
+    <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
+    <script th:src="@{/asserts/js/app.plugin.js}"></script>
+    <script th:src="@{/asserts/js/ie/html5shiv.js}"></script>
+    <script th:src="@{/asserts/js/ie/respond.min.js}"></script>
+    <script th:src="@{/asserts/js/ie/excanvas.js}"></script>
+    <script th:src="@{/asserts/js/jPlayer/jquery.jplayer.min.js}"></script>
+    <script th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
+    <script th:src="@{/asserts/js/jPlayer/demo.js}"></script>
+    <script th:src="@{/asserts/js/chosen/chosen.jquery.min.js}"></script>
+    <!-- Sparkline Chart -->
+    <script th:src="@{/asserts/js/charts/sparkline/jquery.sparkline.min.js}"></script>
+    <!-- Easy Pie Chart -->
+    <script th:src="@{/asserts/js/charts/easypiechart/jquery.easy-pie-chart.js}"></script>
+    <!-- Flot -->
+    <script th:src="@{/asserts/js/charts/flot/jquery.flot.min.js}"></script>
+    <script th:src="@{/asserts/js/charts/flot/jquery.flot.tooltip.min.js}"></script>
+    <script th:src="@{/asserts/js/charts/flot/jquery.flot.resize.js}"></script>
+    <script th:src="@{/asserts/js/charts/flot/jquery.flot.orderBars.js}"></script>
+    <script th:src="@{/asserts/js/charts/flot/jquery.flot.pie.min.js}"></script>
+    <script th:src="@{/asserts/js/charts/flot/jquery.flot.grow.js}"></script>
+    <script th:src="@{/asserts/js/charts/flot/demo.js}"></script>
+    <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
+    <!-- datepicker -->
+    <script th:src="@{/asserts/js/datepicker/bootstrap-datepicker.js}"></script>
+    <!-- slider -->
+    <script th:src="@{/asserts/js/slider/bootstrap-slider.js}"></script>
+    <!-- file input -->
+    <script th:src="@{/asserts/js/file-input/bootstrap-filestyle.min.js}"></script>
+    <!-- wysiwyg -->
+    <script th:src="@{/asserts/js/wysiwyg/jquery.hotkeys.js}"></script>
+    <script th:src="@{/asserts/js/wysiwyg/bootstrap-wysiwyg.js}"></script>
+    <script th:src="@{/asserts/js/wysiwyg/demo.js}"></script>
+    <!-- markdown -->
+    <script th:src="@{/asserts/js/markdown/epiceditor.min.js}"></script>
+    <script th:src="@{/asserts/js/markdown/demo.js}"></script>
+    <!-- parsley -->
+    <script th:src="@{/asserts/js/parsley/parsley.min.js}"></script>
+    <script th:src="@{/asserts/js/parsley/parsley.extend.js}"></script>
+    <!-- wizard -->
+    <script th:src="@{/asserts/js/wizard/jquery.bootstrap.wizard.js}"></script>
+    <script th:src="@{/asserts/js/wizard/demo.js}"></script>
+    <!-- fullcalendar -->
+    <script th:src="@{/asserts/js/jquery.ui.touch-punch.min.js}"></script>
+    <script th:src="@{/asserts/js/jquery-ui-1.10.3.custom.min.js}"></script>
+    <script th:src="@{/asserts/js/fullcalendar/fullcalendar.min.js}"></script>
+    <script th:src="@{/asserts/js/fullcalendar/demo.js}"></script>
+    <!-- maps -->
+    <!--    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
+    <script th:src="@{/asserts/js/maps/gmaps.js}"></script>
+    <script th:src="@{/asserts/js/maps/demo.js}"></script>
+</footer>
 </html>

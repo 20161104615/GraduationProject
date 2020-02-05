@@ -25,7 +25,7 @@ public class DruidConfig {
 
     //配置Druid的监控
     // 1、配置一个管理后台的Servlet
-    @Bean
+    @Bean//加在容器中
     public ServletRegistrationBean statViewServlet() {
         ServletRegistrationBean bean = new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
         Map<String, String> initParams = new HashMap<>();

@@ -8,11 +8,30 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/omss?useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/omss?useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Shanghai
     username: root
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
+    initialSize: 5
+    minIdle: 5
+    # maxActive 连接池的最大值，同一时间可以从池分配的最多连接数量，0时无限制
+    maxActive: 20　　
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT 1 FROM user
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    #配置监控统计拦截的filters，去掉后监控界面SQL无法统计，‘wall'用于防火墙
+    filters: stat,wall,log4j
+    maxPoolPreparedStatementPerConnectionSize: 20
+    useGlobalDataSourceStat: true
+    connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+
+  #    type指定数据源
   mvc:
     static-path-pattern: /**
   resources:
