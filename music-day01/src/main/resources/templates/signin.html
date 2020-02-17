@@ -11,14 +11,12 @@
             <header class="wrapper text-center">
                 <strong th:text="#{signin.tip}">Sign in to get in touch</strong>
             </header>
-            <p id="tip_nouser" style="color: #f277da;font-size: 15px;
-                text-align: center; margin-top: 15px" th:text="${emsg}" th:if="${not #strings.isEmpty(emsg)}"></p>
             <div class="form-horizontal">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
-                        <input type="text" id="user_phone" name="user_phone"
+                        <input type="text" id="userphoneoremail" name="userphoneoremail"
                                class="form-control form-control-pl-30 rounded input-lg text-center no-border"
-                               th:placeholder="#{signin.phone}">
+                               th:placeholder="#{signin.userphoneoremail}">
                         <span class="form-control-feedback  icon-envelope pull-right"
                               style="color: #0d1215;margin-right: 10px"></span>
                     </div>
@@ -30,17 +28,21 @@
                                th:placeholder="#{signin.password}">
                         <span class="form-control-feedback  icon-key pull-right"
                               style="color: #0d1215;margin-right: 10px"></span>
-                        <p id="tip_password"
+                        <p id="tip_passwordError"
                            style="color: #f277da;font-size: 15px;text-align: center; margin-top: 15px"></p>
-                        <p id="tip_email"
+                        <p id="tip_success"
+                           style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
+                        <p id="tip_NoInformation"
+                           style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
+                        <p id="tip_nouser"
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                     </div>
                 </div>
             </div>
-            <button type="submit" onclick="FormSubmit()"
+            <button type="submit" onclick="checkInput()"
                     class="btn btn-lg btn-warning lt b-white b-2x btn-block btn-rounded">
                 <i class=" icon-login pull-right"></i>
-                <span class="m-r-n-lg" th:text="#{signin.signin}">Sign in</span>
+                <span class="m-r-n-lg" th:text="#{signin.signin}"></span>
             </button>
             <div class="text-center m-t m-b"><a href="#">
                 <a th:text="#{signin.forgot}">Forgot password?</a>&nbsp;&nbsp;&nbsp;&nbsp;
@@ -65,28 +67,58 @@
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
 <script th:inline="javascript">
+    function checkInput() {
+        var userphoneoremail = document.getElementById("userphoneoremail").value;
+        var user_password = document.getElementById("user_password").value;
+        if(userphoneoremail == "" || user_password == ""){
+            document.getElementById("tip_passwordError").innerText = "";
+            document.getElementById("tip_success").innerText = "";
+            document.getElementById("tip_NoInformation").innerText = [[#{tip_NoInformation}]];
+            document.getElementById("tip_nouser").innerText = "";
+        } else {
+            FormSubmit();
+        }
+    }
+    // 前段判断输入框内的值是否为空，再向后端进行传值
     function FormSubmit() {
         $.ajax({
             url: "user/login",
             type: "post",
             dataType: 'json',
             data: {
-                "user_phone": $("#user_phone").val(),
+                "userphoneoremail": $("#userphoneoremail").val(),
                 "user_password": $("#user_password").val(),
             },
             success: function (result) {
+                // alert(result.stat);
                 if (result.stat == 0) {
                     //登录失败
                     $("#user_password").val("");
-                    document.getElementById("tip_password").innerText = [[#{tip_password}]];
-                    document.getElementById("user_phone").innerText = '';
-                } else {
-                    document.getElementById("tip_password").innerText = '';
-                    document.getElementById("user_phone").innerText = [[#{tip_email}]];
+                    document.getElementById("tip_passwordError").innerText = [[#{tip_passwordError}]];
+                    document.getElementById("tip_success").innerText = "";
+                    document.getElementById("tip_NoInformation").innerText = "";
+                    document.getElementById("tip_nouser").innerText = "";
+                } else if (result.stat == 1) {
+                    // 登录成功
+                    document.getElementById("tip_passwordError").innerText = "";
+                    document.getElementById("tip_success").innerText = [[#{tip_success}]];
+                    document.getElementById("tip_NoInformation").innerText = "";
+                    document.getElementById("tip_nouser").innerText = "";
+                    location = 'index.html';
                     setTimeout("location='index.html'", 150);
+                } else if (result.stat == 3) {
+                    alert("网络拥堵，请稍后再试！")
+                } else if (result.stat == 4){
+                    //该用户未注册
+                    document.getElementById("tip_passwordError").innerText = "";
+                    document.getElementById("tip_success").innerText = "";
+                    document.getElementById("tip_NoInformation").innerText = "";
+                    document.getElementById("tip_nouser").innerText = [[#{tip_nouser}]];
                 }
             }
         });
     };
+    
+
 </script>
 </html>

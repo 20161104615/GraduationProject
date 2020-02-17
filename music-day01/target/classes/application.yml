@@ -8,7 +8,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/omss?useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/omss?useUnicode=true&characterEncoding=UTF-8&useSSL=true&serverTimezone=Asia/Shanghai
     username: root
     password: root
     driverClassName: com.mysql.cj.jdbc.Driver

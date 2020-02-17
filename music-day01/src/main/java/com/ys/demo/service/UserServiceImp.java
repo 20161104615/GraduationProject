@@ -12,25 +12,47 @@ public class UserServiceImp implements UserService {
     private UserMapper userMapper;
 
     @Override
-    public boolean userLogin(UserBean userBean) {
+    public UserBean userLogin(UserBean userBean) {
         UserBean finduserbean = userMapper.getUserByuser_phone(userBean.getUser_phone(), userBean.getUser_pwd());
-        finduserbean.toString();
-        if (finduserbean.getUser_id() != null) {
-            //表明存在用户且用户名、密码正确
+        System.out.println(finduserbean);
+        return finduserbean;
+    }
+
+    @Override
+    public boolean userRegister(UserBean userBean) {
+        UserBean userFind = userFind(userBean);
+        if (userFind != null) {
+            //添加失败,手机号或邮箱重复
+            return false;
+        } else {
+            int insertUser = userMapper.insertUser(userBean);
+            if (insertUser != 0) {
+                //添加成功
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    @Override
+    public boolean userUpdate(UserBean userBean) {
+        int updateuser = userMapper.updateuser(userBean);
+        if (updateuser != 0) {
+            //修改成功
+            UserBean finduser = userMapper.finduser(userBean);
             return true;
         } else {
+            //修改失败
             return false;
         }
     }
 
     @Override
-    public boolean userRegister(UserBean userBean) {
-
-        return false;
+    public UserBean userFind(UserBean userBean) {
+        UserBean finduser = userMapper.finduser(userBean);
+        return finduser;
     }
 
-    @Override
-    public boolean userUpdate(UserBean userBean) {
-        return false;
-    }
+
 }

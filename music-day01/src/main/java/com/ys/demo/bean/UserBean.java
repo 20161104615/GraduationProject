@@ -110,4 +110,28 @@ public class UserBean {
                 ", user_introduced='" + user_introduced + '\'' +
                 '}';
     }
+
+    public UserBean() {
+    }
+
+    public UserBean(String user_phone, String user_pwd) {
+        this.user_phone = user_phone;
+        this.user_pwd = user_pwd;
+    }
+
+    public UserBean(String user_name, String user_phone, String user_email, String user_pwd) {
+        this.user_name = user_name;
+        this.user_phone = user_phone;
+        this.user_email = user_email;
+        this.user_pwd = user_pwd;
+    }
+
+    public UserBean(String user_name, String user_phone, String user_pwd, Date user_birthday, String user_email, String user_introduced) {
+        this.user_name = user_name;
+        this.user_phone = user_phone;
+        this.user_pwd = user_pwd;
+        this.user_birthday = user_birthday;
+        this.user_email = user_email;
+        this.user_introduced = user_introduced;
+    }
 }
