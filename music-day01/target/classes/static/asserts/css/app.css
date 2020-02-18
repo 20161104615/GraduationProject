@@ -2181,7 +2181,7 @@ fieldset[disabled] .btn-dark.active {
   background-color: #232c32;
 }
 .bg-black a {
-  color: #9badb9;
+  color: #3fd1b5;
 }
 .bg-black a:hover {
   color: #fff;
@@ -2363,7 +2363,7 @@ fieldset[disabled] .btn-dark.active {
   background-color: #f1ffed;
 }
 .bg-success a {
-  color: #d6f9e7;
+  color: #45b03d;
 }
 .bg-success a:hover {
   color: #fff;
@@ -2403,10 +2403,10 @@ fieldset[disabled] .btn-dark.active {
   color: #fff;
 }
 .bg-success .text-muted {
-  color: #7decb4 !important;
+  color: #0ff10f !important;
 }
 .bg-success .text-lt {
-  color: #ffffff !important;
+  color: #3fd1b5 !important;
 }
 .bg-success .icon-muted {
   color: #7decb4 !important;
@@ -3657,6 +3657,7 @@ fieldset[disabled] .i-checks input + i:before {
   left: 80%;
   height: 40%;
 }
+
 .animate .a1 {
   -webkit-animation: movingbar1 1s infinite alternate both;
   -moz-animation: movingbar1 1s infinite alternate both;

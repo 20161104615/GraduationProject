@@ -32,6 +32,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/OLDlisten.html").setViewName("OLDlisten");
                 registry.addViewController("/listendemo02.html").setViewName("listendemo02");
                 registry.addViewController("/testMusicPlayer.html").setViewName("testMusicPlayer");
+                registry.addViewController("/listen2.html").setViewName("listen2");
             }
 
             //拦截器注册
@@ -50,6 +51,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
                                 "/404.html",
                                 "/listendemo02.html",
                                 "/testMusicPlayer.html",
+                                "/listen2.html",
                                 "/OLDlisten.html");
             }
         };

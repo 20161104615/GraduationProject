@@ -21,7 +21,6 @@
         <!-- dbutil包版本号 -->
         <commons-dbutils.version>1.6</commons-dbutils.version>
         <!-- c3p0日志包版本号 -->
-        <c3p0.version>0.9.5.2</c3p0.version>
     </properties>
 
     <dependencies>
@@ -136,7 +135,7 @@
         <dependency>
             <groupId>com.mchange</groupId>
             <artifactId>c3p0</artifactId>
-            <version>${c3p0.version}</version>
+            <version>0.9.5.2</version>
         </dependency>
 
     </dependencies>
