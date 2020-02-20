@@ -13,9 +13,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -54,18 +54,18 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ys.demo.bean" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo\mapper\annotation" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\templates" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\static\asserts\test" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ys.demo.bean" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
@@ -124,6 +124,13 @@
       <workItem from="1581945243380" duration="3584000" />
       <workItem from="1581954210502" duration="3621000" />
       <workItem from="1581985258655" duration="17811000" />
+      <workItem from="1582003454591" duration="570000" />
+      <workItem from="1582022470318" duration="1201000" />
+      <workItem from="1582040901875" duration="1388000" />
+      <workItem from="1582077446002" duration="4411000" />
+      <workItem from="1582084571293" duration="466000" />
+      <workItem from="1582085177667" duration="2432000" />
+      <workItem from="1582091556994" duration="3709000" />
     </task>
     <servers />
   </component>
@@ -151,54 +158,54 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1581985270299" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1582003385800">
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1582090471384">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582003385800" />
-    <state x="299" y="90" key="Maven.ArtifactSearchDialog" timestamp="1581953855165">
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582090471384" />
+    <state x="299" y="90" key="Maven.ArtifactSearchDialog" timestamp="1582080550411">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="299" y="90" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1581953855165" />
+    <state x="299" y="90" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1582080550411" />
     <state x="358" y="124" width="837" height="668" key="Registry" timestamp="1581936636941">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="358" y="124" width="837" height="668" key="Registry/0.0.1536.864@0.0.1536.864" timestamp="1581936636941" />
-    <state x="263" y="34" key="SettingsEditor" timestamp="1582000835564">
+    <state x="263" y="34" key="SettingsEditor" timestamp="1582091600756">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="263" y="34" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1582000835564" />
-    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1581985258000">
+    <state x="263" y="34" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1582091600756" />
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1582091556290">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1581985258000" />
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1582091556290" />
     <state x="457" y="64" width="621" height="735" key="find.popup" timestamp="1582001996104">
       <screen x="0" y="0" width="1536" height="864" />
     </state>

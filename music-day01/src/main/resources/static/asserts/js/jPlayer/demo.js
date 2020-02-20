@@ -5,14 +5,24 @@
     cssSelectorAncestor: "#jp_container_N"
   }, [
     {
-      title:"麻雀1",
+      title:"麻雀",
       artist:"李荣浩",
       m4a:"/music/asserts/media/maque.m4a",
       poster: "/music/asserts/music/maque.m4a"
     },{
-      title:"麻雀2",
-      artist:"李荣浩",
-      m4a:"/music/asserts/media/maque.m4a",
+      title:"下山",
+      artist:"要不要买菜",
+      m4a:"/music/asserts/media/下山.m4a",
+      poster: "/music/asserts/music/maque.m4a"
+    },{
+      title:"演员",
+      artist:"薛之谦",
+      m4a:"/music/asserts/media/下山.m4a",
+      poster: "/music/asserts/music/maque.m4a"
+    },{
+      title:"爱久见人心",
+      artist:"梁静茹",
+      m4a:"http://localhost:8080/media/爱久见人心.m4a",
       poster: "/music/asserts/music/maque.m4a"
     }
   ], {

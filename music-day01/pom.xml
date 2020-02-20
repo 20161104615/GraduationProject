@@ -16,11 +16,11 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <commons-lang3.version>3.4</commons-lang3.version>
+        <!--<commons-lang3.version>3.4</commons-lang3.version>
         <httpclient.version>4.5.1</httpclient.version>
-        <!-- dbutil包版本号 -->
+        &lt;!&ndash; dbutil包版本号 &ndash;&gt;
         <commons-dbutils.version>1.6</commons-dbutils.version>
-        <!-- c3p0日志包版本号 -->
+        &lt;!&ndash; c3p0日志包版本号 &ndash;&gt;-->
     </properties>
 
     <dependencies>
@@ -110,32 +110,6 @@
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
             <version>1.2.17</version>
-        </dependency>
-
-        <!--commons-lang3依赖-->
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>${commons-lang3.version}</version>
-        </dependency>
-
-
-        <dependency>
-            <groupId>org.apache.httpcomponents</groupId>
-            <artifactId>httpclient</artifactId>
-            <version>${httpclient.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>commons-dbutils</groupId>
-            <artifactId>commons-dbutils</artifactId>
-            <version>${commons-dbutils.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.mchange</groupId>
-            <artifactId>c3p0</artifactId>
-            <version>0.9.5.2</version>
         </dependency>
 
     </dependencies>
