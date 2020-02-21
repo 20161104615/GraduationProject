@@ -13,155 +13,153 @@
                         <section class="panel center">
                             <div th:replace="~{public :: public_navigation}"></div>
                         </section>
-                        <!-- 论播 -->
+                        <!-- 论播1 -->
                         <div class="col-lg-12" style="margin-top: 10px;border: 20px">
                             <section class="panel panel-default">
-                                <div class="carousel slide auto panel-body" id="c-slide">
+                                <div class="carousel slide auto panel-body" id="c-slide1">
                                     <ol class="carousel-indicators out">
-                                        <li data-target="#c-slide" data-slide-to="0" class="active"></li>
-                                        <li data-target="#c-slide" data-slide-to="1" class=""></li>
-                                        <li data-target="#c-slide" data-slide-to="2" class=""></li>
-                                        <li data-target="#c-slide" data-slide-to="3" class=""></li>
-                                        <li data-target="#c-slide" data-slide-to="4" class=""></li>
-                                        <li data-target="#c-slide" data-slide-to="5" class=""></li>
-                                        <li data-target="#c-slide" data-slide-to="6" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="0" class="active"></li>
+                                        <li data-target="#c-slide1" data-slide-to="1" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="2" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="3" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="4" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="5" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="6" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="7" class=""></li>
+                                        <li data-target="#c-slide1" data-slide-to="8" class=""></li>
                                     </ol>
                                     <div class="carousel-inner">
-                                        <div class="item active">
+                                        <div class="item active" active>
+                                            <p class="text-center"
+                                               th:value="${session.MusicList[9].getMusic_name()}"></p><br>
                                             <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img4.jpg}"
-                                                        width="90%"/></em><br>
-                                                <small class="text-muted">Many components</small>
+                                                <em class="h4 text-center">
+                                                    <img th:src="${session.MusicList[9].getMusic_img()}"
+                                                         style="height: 270px; width: 500px"/></em><br>
+                                                <small class="text-muted"
+                                                       th:value="${session.MusicList[9].getMusic_singer()}"></small>
                                             </p>
                                         </div>
-                                        <div class="item">
-                                            <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img4.jpg}"
-                                                        width="90%"/></em><br>
-                                                <small class="text-muted">Full documents</small>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img2.jpg}"/></em><br>
-                                                <small class="text-muted">Full documents</small>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img3.jpg}"/></em><br>
-                                                <small class="text-muted">Full documents</small>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img4.jpg}"/></em><br>
-                                                <small class="text-muted">Full documents</small>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img5.jpg}"/></em><br>
-                                                <small class="text-muted">Full documents</small>
-                                            </p>
-                                        </div>
-                                        <div class="item">
-                                            <p class="text-center">
-                                                <em class="h4 text-mute"><img
-                                                        th:src="@{/asserts/images/cont1/carousel_img6.jpg}"/></em><br>
-                                                <small class="text-muted">Mobile/Tablet/Desktop</small>
-                                            </p>
-                                        </div>
+                                        <th:block th:each="k:${#numbers.sequence(10,17)}">
+                                            <div class="item" active>
+                                                <p class="text-center"
+                                                   th:value="${session.MusicList[k].getMusic_name()}"></p><br>
+                                                <p class="text-center">
+                                                    <em class="h4 text-center">
+                                                        <img th:src="${session.MusicList[k].getMusic_img()}"
+                                                             style="height: 270px; width: 500px"/></em><br>
+                                                    <small class="text-muted"
+                                                           th:value="${session.MusicList[k].getMusic_singer()}"></small>
+                                                </p>
+                                            </div>
+                                        </th:block>
                                     </div>
-                                    <a class="left carousel-control" href="#c-slide" data-slide="prev">
+                                    <a class="left carousel-control" href="#c-slide1" data-slide="prev">
                                         <i class="fa fa-angle-left"></i>
                                     </a>
-                                    <a class="right carousel-control" href="#c-slide" data-slide="next">
+                                    <a class="right carousel-control" href="#c-slide1" data-slide="next">
                                         <i class="fa fa-angle-right"></i>
                                     </a>
                                 </div>
                             </section>
                         </div>
-                        <!-- /论播 -->
+                        <!-- /论播1 -->
 
                         <!-- 论播2 -->
-                        <iframe src="index2.html" class="no-border" style="width: 100%;height: 500px"></iframe>
+                        <div class="col-lg-12" style="margin-top: 10px;border: 20px">
+                            <section class="panel panel-default">
+                                <div class="carousel slide auto panel-body" id="c-slide2">
+                                    <ol class="carousel-indicators out">
+                                        <li data-target="#c-slide2" data-slide-to="0" class="active"></li>
+                                        <li data-target="#c-slide2" data-slide-to="1" class=""></li>
+                                        <li data-target="#c-slide2" data-slide-to="2" class=""></li>
+                                        <li data-target="#c-slide2" data-slide-to="3" class=""></li>
+                                        <li data-target="#c-slide2" data-slide-to="4" class=""></li>
+                                        <li data-target="#c-slide2" data-slide-to="5" class=""></li>
+                                        <li data-target="#c-slide2" data-slide-to="6" class=""></li>
+                                    </ol>
+                                    <div class="carousel-inner">
+                                        <div id="Carousel-2-0" class="item active">
+                                            <p class="text-center">热门歌曲</p><br>
+                                            <p class="text-center" style="float: left;margin-left: 200px">
+                                                <em class="h4 text-mute"><img
+                                                        th:src="${session.MusicList[8].getMusic_img()}"
+                                                        style="height: 270px; width: 500px"/></em><br>
+                                                <small class="text-muted">[[${session.MusicList[8].getMusic_name()}]]</small>
+                                            </p>
+                                            <p class="text-center" style="float: right;margin-right: 200px">
+                                                <em class="h4 text-mute"><img
+                                                        th:src="${session.MusicList[7].getMusic_img()}"
+                                                        style="height: 270px; width: 500px"/></em><br>
+                                                <small class="text-muted">[[${session.MusicList[7].getMusic_name()}]]</small>
+                                            </p>
+                                        </div>
+                                        <th:block th:each="k:${#numbers.sequence(0,5)}">
+                                        <div id="Carousel-2-1" class="item">
+                                            <p class="text-center">热门歌曲</p><br>
+                                            <p class="text-center" style="float: left;margin-left: 200px">
+                                                <em class="h4 text-mute"><img
+                                                        th:src="${session.MusicList[k].getMusic_img()}"
+                                                        style="height: 270px; width: 500px"/></em><br>
+                                                <small class="text-muted">[[${session.MusicList[k].getMusic_name()}]]</small>
+                                            </p>
+                                            <p class="text-center" style="float: right;margin-right: 200px">
+                                                <em class="h4 text-mute"><img
+                                                        th:src="${session.MusicList[k+7].getMusic_img()}"
+                                                        style="height: 270px; width: 500px"/></em><br>
+                                                <small class="text-muted">[[${session.MusicList[k+7].getMusic_name()}]]</small>
+                                            </p>
+                                        </div>
+                                        </th:block>
+                                    </div>
+                                    <a class="left carousel-control" href="#c-slide2" data-slide="prev">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                    <a class="right carousel-control" href="#c-slide2" data-slide="next">
+                                        <i class="fa fa-angle-right"></i>
+                                    </a>
+                                </div>
+                            </section>
+                        </div>
+
                         <!-- /论播2 -->
-
-
                         <!--主体-->
-                        <div class="padder-lg" >
+                        <div class="padder-lg">
                             <div class="row">
                                 <div class="span6">
                                     <!-- 排行榜 -->
-                                    <div class="col-sm-4 portlet">
-                                        <section class="panel panel-success portlet-item">
-                                            <header class="panel-heading">
-                                                新歌排行榜
-                                            </header>
-                                            <ul class="list-group alt">
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                    <span class="pull-left thumb-sm"><img src="images/a1.png" alt="..."
-                                                                                          class="img-circle"></span>
-                                                        <div class="pull-right text-success m-t-sm">
-                                                            <i class="fa fa-circle"></i>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div><a href="#">Chris Fox</a></div>
-                                                            <small class="text-muted">about 2 minutes ago</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                    <span class="pull-left thumb-sm"><img src="images/a2.png" alt="..."
-                                                                                          class="img-circle"></span>
-                                                        <div class="pull-right text-muted m-t-sm">
-                                                            <i class="fa fa-circle"></i>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div><a href="#">Amanda Conlan</a></div>
-                                                            <small class="text-muted">about 2 hours ago</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                    <span class="pull-left thumb-sm"><img src="images/a3.png" alt="..."
-                                                                                          class="img-circle"></span>
-                                                        <div class="pull-right text-warning m-t-sm">
-                                                            <i class="fa fa-circle"></i>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div><a href="#">Dan Doorack</a></div>
-                                                            <small class="text-muted">3 days ago</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li class="list-group-item">
-                                                    <div class="media">
-                                                    <span class="pull-left thumb-sm"><img src="images/a4.png" alt="..."
-                                                                                          class="img-circle"></span>
-                                                        <div class="pull-right text-danger m-t-sm">
-                                                            <i class="fa fa-circle"></i>
-                                                        </div>
-                                                        <div class="media-body">
-                                                            <div><a href="#">Lauren Taylor</a></div>
-                                                            <small class="text-muted">about 2 minutes ago</small>
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                        </section>
-                                    </div>
-                                    <div class="col-sm-4 portlet">
+                                    <th:block th:each="i:${#numbers.sequence(0,2)}"><!--3列-->
+                                        <div class="col-sm-4 portlet">
+                                            <section class="panel panel-success portlet-item">
+                                                <header class="panel-heading">
+                                                    热歌榜单
+                                                </header>
+                                                <ul class="list-group alt">
+                                                    <th:block th:each="k:${#numbers.sequence(0,4)}">
+                                                        <th:block th:if="${#lists.size(session.MusicList) gt 12}">
+                                                            <li class="list-group-item">
+                                                                <div class="media">
+                                                                <span class="pull-left thumb-sm">
+                                                                    <img th:src="${session.MusicList[k+i*5].getMusic_img()}"
+                                                                         alt="..." class="img-circle"></span>
+                                                                    <div class="pull-right text-success m-t-sm">
+                                                                        <i class="fa fa-circle"></i>
+                                                                    </div>
+                                                                    <div class="media-body">
+                                                                        <div><a href="#">[[${session.MusicList[k+i*5].getMusic_name()}]]</a>
+                                                                        </div>
+                                                                        <small class="text-muted">[[${session.MusicList[k+i*5].getMusic_singer()}]]</small>
+                                                                    </div>
+                                                                </div>
+                                                            </li>
+                                                        </th:block>
+                                                    </th:block>
+                                                </ul>
+                                            </section>
+                                        </div>
+
+                                    </th:block>
+                                    <!--<div class="col-sm-4 portlet">
                                         <section class="panel panel-success portlet-item">
                                             <header class="panel-heading">
                                                 热歌排行榜
@@ -169,7 +167,7 @@
                                             <ul class="list-group alt">
                                                 <li class="list-group-item">
                                                     <div class="media">
-                                                    <span class="pull-left thumb-sm"><img src="images/a1.png" alt="..."
+                                                    <span class="pull-left thumb-sm"><img th:src="@{/asserts/images/a1.png}" alt="..."
                                                                                           class="img-circle"></span>
                                                         <div class="pull-right text-success m-t-sm">
                                                             <i class="fa fa-circle"></i>
@@ -286,10 +284,11 @@
                                                 </li>
                                             </ul>
                                         </section>
-                                    </div>
+                                    </div>-->
                                     <!-- /排行榜 -->
                                     <a href="#" class="pull-right text-muted m-t-lg" data-toggle="class:fa-spin"
-                                       style="margin-top: 20px"><i class="icon-refresh i-lg  inline" id="refresh"></i></a>
+                                       style="margin-top: 20px"><i class="icon-refresh i-lg  inline"
+                                                                   id="refresh"></i></a>
                                     <h2 class="font-thin m-b">Discover
                                         <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
                                         <span class="bar1 a1 bg-primary lter"></span>
@@ -330,8 +329,8 @@
                                                                      class="r r-2x img-full"></a>
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">Tempered Song</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Miaow</a>
+                                                    <a href="#" class="text-ellipsis">1111111</a>
+                                                    <a href="#" class="text-ellipsis text-xs text-muted">11111111</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -610,7 +609,8 @@
                                                 </div>
                                                 <div class="padder-v">
                                                     <a href="#" class="text-ellipsis">Lementum ligula vitae</a>
-                                                    <a href="#" class="text-ellipsis text-xs text-muted">Lauren Taylor</a>
+                                                    <a href="#" class="text-ellipsis text-xs text-muted">Lauren
+                                                        Taylor</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -943,20 +943,18 @@
         </section>
     </section>
 </section>
-
-<footer th:replace="public :: public_footer_footer"></footer>
-<!--<script>-->
-<!--    $("a").click(function () {-->
-<!--         alert($(this).attr('href'));-->
-<!--        var inurl = $(this).attr('href');-->
-<!--        switch (inurl) {-->
-<!--            case "profile.html":-->
-<!--                location.href = "/music/profile";-->
-<!--            default:-->
-<!--                // $(this).attr('href','#');-->
-<!--                break;-->
-<!--        }-->
-<!--    });-->
-<!--</script>-->
+<script th:inline="javascript">
+    $(document).ready(function () {
+        var musiclist = /*[[${session.MusicList}]]*/ '';
+        for (var i = 0; i < musiclist.length; i++) {
+            $("Carousel-1-0").text(musiclist[i])
+        }
+    });
+</script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script th:src="@{/asserts/js/jquery.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
+<script th:src="@{/asserts/js/jQuery.print.js}"></script>
+<script th:src="@{/asserts/js/jquery.print-preview.js}"></script>
 </body>
 </html>

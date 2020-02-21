@@ -2,6 +2,7 @@ package com.ys.demo;
 
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.mapper.MusicMapper;
+import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -9,22 +10,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import javax.servlet.http.HttpUtils;
+import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class DemoApplicationTests {
 
     @Autowired//自动注入
-            DataSource dataSource;
+    DataSource dataSource;
     @Autowired
     UserService userService;
     @Autowired
-    MusicMapper musicMapper1;
+    MusicService musicService;
 
 
     @Test
@@ -38,20 +40,31 @@ class DemoApplicationTests {
 
     @Test
     void findmusic() {
-        MusicBean musicBean = new MusicBean();
-        ArrayList<MusicBean> musicBeanList = musicMapper1.findMusicBeanList(musicBean);
-        musicBeanList.forEach(musicBean1 -> System.out.println(musicBean1.getMusic_name()));
+        /*MusicBean musicBean = new MusicBean();
+        ArrayList<MusicBean> musicBeanList = musicMapper.findMusicBeanList(musicBean);
+        musicBeanList.forEach(musicBean1 -> System.out.println(musicBean1.getMusic_name()));*/
+
+        ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
+        allMusicBean.toString();
+
+        /* MusicBean musicBean = new MusicBean("生活");
+        ArrayList<MusicBean> musicByName = musicService.findMusicByName(musicBean);
+        musicByName.toString();*/
+
+        /*MusicBean musicBean = new MusicBean("杰");
+        ArrayList<MusicBean> musicBySinger = musicService.findMusicBySinger(musicBean);
+        musicBySinger.toString();*/
     }
 
     @Test
     void insertmusic() {
-        MusicBean musicBean = new MusicBean("麻雀", "李荣浩", "", "D:\\10191\\AllDownload\\Songs");
-        int musicBean1 = musicMapper1.uploadMusic(musicBean);
-        if (musicBean1 != 0) {
-            findmusic();
-        } else {
-            System.out.println("添加歌曲出错！");
-        }
+//        MusicBean musicBean = new MusicBean("麻雀", "李荣浩", "", "D:\\10191\\AllDownload\\Songs");
+//        int musicBean1 = musicMapper1.uploadMusic(musicBean);
+//        if (musicBean1 != 0) {
+//            findmusic();
+//        } else {
+//            System.out.println("添加歌曲出错！");
+//        }
 
     }
 
@@ -65,6 +78,13 @@ class DemoApplicationTests {
         String url = "http://s.music.163.com/search/get/?type=1&filterDJ=true&s=遇见&limit10&offset=0";
         System.out.println();
     }
+    @Test
+    public String allSong(HttpServletRequest request){
+        ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
+        request.setAttribute("MusicList",allMusicBean);
+        return "/index";
+    }
+
 
 
     /*void find(){

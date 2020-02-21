@@ -1,10 +1,13 @@
 package com.ys.demo.controller;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ys.demo.bean.MusicBean;
 import com.ys.demo.bean.UserBean;
+import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,17 +22,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Map;
 
 //@ResponseBody//这个类得所有的方法返回的数据直接写给浏览器（如果是对象转为json数据）
 //@Controller 用来响应页面,必须配合模板来使用
 //@RestController = @ResponseBody + @Controller
 @WebServlet//配置参数初始化
-@RestController
+@Controller
 @RequestMapping("/user")
 public class UserController {
     @Autowired
     private UserService userService;
+    @Autowired
+    private MusicService musicService;
 
     @PostMapping(value = "/login")
     public void userLogin(@RequestParam("userphoneoremail") String user_phone,//邮箱和手机号统一用手机号接收
@@ -50,8 +56,12 @@ public class UserController {
                 UserBean checkLoginUser = userService.userLogin(userBean);
                 if (checkLoginUser != null) {
                     System.out.println("用户存在,且用户名和密码正确");
+                    //存放到session中
                     UserBean loginUser = userService.userFind(userBean);
-                    request.getSession().setAttribute("loginUser", loginUser);//存放到session中
+                    request.getSession().setAttribute("loginUser", loginUser);
+                    //全部歌曲返回到前端主页面
+                    ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
+                    request.getSession().setAttribute("MusicList",allMusicBean);
                     map.put("stat", "1");
                     jsonObject = JSONObject.fromObject(map);
                     response.getWriter().print(jsonObject);

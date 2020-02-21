@@ -40,8 +40,13 @@ spring:
     basename: i18n.signin
 
   #禁用缓存
+  #controller使用return时，直接写名称，不需要加.html和‘/’
   thymeleaf:
     cache: false
+    prefix: classpath:/templates/
+    suffix: .html
+    encoding: UTF-8
+    mode: HTML5
 
 
 ##server:
