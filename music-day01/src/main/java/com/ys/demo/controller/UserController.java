@@ -25,6 +25,14 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
 
+/*
+ * @Author 20161104615
+ * @Description //TODO LoginUser:存放用户登录信息；MusicList：音乐整体列表；
+ * @Date 17:53 2020/2/22
+ * @Param
+ * @return
+ **/
+
 //@ResponseBody//这个类得所有的方法返回的数据直接写给浏览器（如果是对象转为json数据）
 //@Controller 用来响应页面,必须配合模板来使用
 //@RestController = @ResponseBody + @Controller

@@ -4,6 +4,10 @@ import com.ys.demo.bean.MusicBean;
 import com.ys.demo.mapper.MusicMapper;
 import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
+
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.json.JSONException;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +20,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +34,8 @@ class DemoApplicationTests {
     UserService userService;
     @Autowired
     MusicService musicService;
+    @Autowired
+    MusicMapper musicMapper;
 
 
     @Test
@@ -71,7 +78,22 @@ class DemoApplicationTests {
     }
 
     @Test
-    void sysout() {
+    void sysout() throws JSONException {
+        String musicName = "Snowdreams";
+        MusicBean musicBean = musicMapper.accurateFindMusic(musicName);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("title","'"+musicBean.getMusic_name()+"'");
+        map.put("artist","'"+musicBean.getMusic_singer()+"'");
+        map.put("m4a","'"+musicBean.getMusic_storagepath()+"'");
+        map.put("poster","'"+musicBean.getMusic_storagepath()+"'");
+        
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.putAll(map);
+        System.out.println(jsonObject.toString());
+        
+        JSONArray jsonArray = new JSONArray();
+        jsonArray.add(jsonObject);
+        System.out.println(jsonArray);
 
     }
 

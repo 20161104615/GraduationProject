@@ -3,6 +3,9 @@ package com.ys.demo.service.lmpl;
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.mapper.MusicMapper;
 import com.ys.demo.service.MusicService;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +60,23 @@ public class MusicServicelmpl implements MusicService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public JSONArray AccurateFindMusic(String musicName) throws JSONException {
+        JSONObject jsonObject = new JSONObject();
+        JSONArray jsonArray = new JSONArray();
+        MusicBean musicBean = musicMapper.accurateFindMusic(musicName);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("title",musicBean.getMusic_name());
+        map.put("artist",musicBean.getMusic_singer());
+        map.put("m4a",musicBean.getMusic_storagepath());
+        map.put("poster",musicBean.getMusic_storagepath());
+        jsonObject.putAll(map);
+        System.out.println(jsonObject.toString());
+        jsonArray.add(jsonObject);
+        System.out.println(jsonArray);
+        return jsonArray;
     }
 
 }

@@ -1,5 +1,4 @@
  $(document).ready(function(){
-
   var myPlaylist = new jPlayerPlaylist({
     jPlayer: "#jplayer_N",
     cssSelectorAncestor: "#jp_container_N"

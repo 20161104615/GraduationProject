@@ -26,38 +26,39 @@
                             <div id="Carousel-2-0" class="item active">
                                 <h3><p class="text-center">热门歌曲</p></h3>
                                 <br>
-                                <a href="#">
-                                    <p class="text-center" style="float: left;margin-left: 200px">
-                                        <em class="h4 text-mute"><img
-                                                th:src="${session.MusicList[0].getMusic_img()}"
-                                                style="height: 270px; width: 500px"/></em><br>
-                                        <small class="text-muted">[[${session.MusicList[0].getMusic_name()}]]</small>
-                                    </p>
-                                    <p class="text-center" style="float: right;margin-right: 200px">
-                                        <em class="h4 text-mute"><img
-                                                th:src="${session.MusicList[1].getMusic_img()}"
-                                                style="height: 270px; width: 500px"/></em><br>
-                                        <small class="text-muted">[[${session.MusicList[1].getMusic_name()}]]</small>
-                                    </p>
+
+                                <p class="text-center" style="float: left;margin-left: 200px">
+                                    <em class="h4 text-mute">
+                                        <img th:src="${session.MusicList[0].getMusic_img()}"
+                                             style="height: 270px; width: 500px"/>
+                                    </em><br>
+                                    <small class="text-muted"><a name="song" href="#">[[${session.MusicList[0].getMusic_name()}]]</a></small>
+                                </p>
+                                <p class="text-center" style="float: right;margin-right: 200px">
+                                    <em class="h4 text-mute">
+                                        <img th:src="${session.MusicList[1].getMusic_img()}"
+                                             style="height: 270px; width: 500px"/></em><br>
+                                    <small class="text-muted"><a name="song" href="#">[[${session.MusicList[1].getMusic_name()}]]</a></small>
+                                </p>
                                 </a>
                             </div>
                             <th:block th:each="k:${#numbers.sequence(2,7)}">
                                 <div id="Carousel-2-1" class="item">
                                     <h3><p class="text-center">热门歌曲</p></h3>
                                     <br>
-                                    <a href="#">
-                                        <p class="text-center" style="float: left;margin-left: 200px">
-                                            <em class="h4 text-mute"><img
-                                                    th:src="${session.MusicList[k].getMusic_img()}"
-                                                    style="height: 270px; width: 500px"/></em><br>
-                                            <small class="text-muted">[[${session.MusicList[k].getMusic_name()}]]</small>
-                                        </p>
-                                        <p class="text-center" style="float: right;margin-right: 200px">
-                                            <em class="h4 text-mute"><img
-                                                    th:src="${session.MusicList[k+6].getMusic_img()}"
-                                                    style="height: 270px; width: 500px"/></em><br>
-                                            <small class="text-muted">[[${session.MusicList[k+6].getMusic_name()}]]</small>
-                                        </p>
+
+                                    <p class="text-center" style="float: left;margin-left: 200px">
+                                        <em class="h4 text-mute"><a name="song" href="#"><img
+                                                th:src="${session.MusicList[k].getMusic_img()}"
+                                                style="height: 270px; width: 500px"/></a></em><br>
+                                        <small class="text-muted"><a name="song" href="#">[[${session.MusicList[k].getMusic_name()}]]</a></small>
+                                    </p>
+                                    <p class="text-center" style="float: right;margin-right: 200px">
+                                        <em class="h4 text-mute"><img
+                                                th:src="${session.MusicList[k+6].getMusic_img()}"
+                                                style="height: 270px; width: 500px"/></em><br>
+                                        <small class="text-muted"><a name="song" href="#">[[${session.MusicList[k+6].getMusic_name()}]]</a></small>
+                                    </p>
                                     </a>
                                 </div>
                             </th:block>
@@ -85,16 +86,17 @@
                                     </header>
                                     <ul class="list-group alt">
                                         <th:block th:each="k:${#numbers.sequence(0,4)}">
+
                                             <li class="list-group-item">
                                                 <div class="media">
-                                                                <span class="pull-left thumb-sm">
-                                                                    <img th:src="${session.MusicList[k+i*5+1+13].getMusic_img()}"
-                                                                         alt="..." class="img-circle"></span>
+                                                    <span class="pull-left thumb-sm">
+                                                         <img th:src="${session.MusicList[k+i*5+1+13].getMusic_img()}"
+                                                              alt="..." class="img-circle"></span>
                                                     <div class="pull-right text-success m-t-sm">
                                                         <i class="fa fa-circle"></i>
                                                     </div>
-                                                    <div class="media-body">
-                                                        <div><a href="#">[[${session.MusicList[k+i*5+1+13].getMusic_name()}]]</a>
+                                                    <div class="media-body ">
+                                                        <div><a name="song" href="#">[[${session.MusicList[k+i*5+1+13].getMusic_name()}]]</a>
                                                         </div>
                                                         <small class="text-muted">[[${session.MusicList[k+i*5+1+13].getMusic_singer()}]]</small>
                                                     </div>
@@ -109,12 +111,12 @@
                         <!--经典歌曲-->
                         <h2 class="font-thin m-b">经典歌曲
                             <span class="musicbar animate inline m-l-sm" style="width:20px;height:20px">
-                                            <span class="bar1 a1 bg-primary lter"></span>
-                                            <span class="bar2 a2 bg-info lt"></span>
-                                            <span class="bar3 a3 bg-success"></span>
-                                            <span class="bar4 a4 bg-warning dk"></span>
-                                            <span class="bar5 a5 bg-danger dker"></span>
-                                        </span>
+                                <span class="bar1 a1 bg-primary lter"></span>
+                                <span class="bar2 a2 bg-info lt"></span>
+                                <span class="bar3 a3 bg-success"></span>
+                                <span class="bar4 a4 bg-warning dk"></span>
+                                <span class="bar5 a5 bg-danger dker"></span>
+                            </span>
                         </h2>
                         <div class="row row-sm"><!--重复12组-->
                             <th:block th:each="k:${#numbers.sequence(0,11)}">
@@ -126,14 +128,16 @@
                                                     <a href="#"><i class="icon-control-play i-2x"></i></a>
                                                 </div>
                                             </div>
-                                            <a href="#"><img
+                                            <img
                                                     th:src="${session.MusicList[k+12+17].getMusic_img()}"
                                                     alt=""
                                                     class="r r-2x img-full"></a>
                                         </div>
                                         <div class="padder-v">
-                                            <a href="#" class="text-ellipsis">[[${session.MusicList[k+12+17].getMusic_name()}]]</a>
-                                            <a href="#" class="text-ellipsis text-xs text-muted">[[${session.MusicList[k+12+17].getMusic_singer()}]]</a>
+                                            <a name="song" href="#" class="text-ellipsis">[[${session.MusicList[k+12+17].getMusic_name()}]]</a>
+                                            <div class="text-ellipsis text-xs text-muted">
+                                                [[${session.MusicList[k+12+17].getMusic_singer()}]]
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -146,12 +150,12 @@
                                 <h3 class="font-thin">新歌首发
                                     <span class="musicbar animate inline m-l-sm"
                                           style="width:20px;height:20px">
-                                                    <span class="bar1 a1 bg-primary lter"></span>
-                                                    <span class="bar2 a2 bg-info lt"></span>
-                                                    <span class="bar3 a3 bg-success"></span>
-                                                    <span class="bar4 a4 bg-warning dk"></span>
-                                                    <span class="bar5 a5 bg-danger dker"></span>
-                                                </span>
+                                        <span class="bar1 a1 bg-primary lter"></span>
+                                        <span class="bar2 a2 bg-info lt"></span>
+                                        <span class="bar3 a3 bg-success"></span>
+                                        <span class="bar4 a4 bg-warning dk"></span>
+                                        <span class="bar5 a5 bg-danger dker"></span>
+                                    </span>
                                 </h3>
                                 <div class="row row-sm"><!--重复6组-->
                                     <th:block th:each="k:${#numbers.sequence(0,7)}">
@@ -160,19 +164,15 @@
                                                 <div class="pos-rlt">
                                                     <div class="item-overlay opacity r r-2x bg-black">
                                                         <div class="center text-center m-t-n">
-                                                            <a href="#"><i
-                                                                    class="fa fa-play-circle i-2x"></i></a>
+                                                            <a href="#"><i class="fa fa-play-circle i-2x"></i></a>
                                                         </div>
                                                     </div>
-                                                    <a href="#"><img
-                                                            th:src="${session.MusicList[k+8+33].getMusic_img()}"
-                                                            alt=""
-                                                            class="r r-2x img-full"></a>
+                                                    <img th:src="${session.MusicList[k+8+33].getMusic_img()}" alt=""
+                                                         class="r r-2x img-full">
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a href="#" class="text-ellipsis">[[${session.MusicList[k+8+33].getMusic_name()}]]</a>
-                                                    <a href="#"
-                                                       class="text-ellipsis text-xs text-muted">[[${session.MusicList[k+8+33].getMusic_singer()}]]</a>
+                                                    <a name="song" href="#" class="text-ellipsis">[[${session.MusicList[k+8+33].getMusic_name()}]]---[[${session.MusicList[k+8+33].getMusic_singer()}]]</a>
+                                                    <!--<a href="#" class="text-ellipsis text-xs text-muted">[[${session.MusicList[k+8+33].getMusic_singer()}]]</a>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -185,17 +185,16 @@
                                 <h3 class="font-thin">播放榜单</h3>
                                 <div class="list-group bg-white list-group-lg no-bg auto">
                                     <th:block th:each="k:${#numbers.sequence(1,6)}">
-                                        <a href="#" class="list-group-item clearfix">
+                                        <div class="list-group-item clearfix">
                                             <span class="pull-right h2 text-muted m-l">[[${k}]]</span>
                                             <span class="pull-left thumb-sm avatar m-r">
-                                                            <img th:src="${session.MusicList[k+6+42].getMusic_img()}"
-                                                                 alt="...">
-                                                        </span>
+                                                <img th:src="${session.MusicList[k+6+42].getMusic_img()}" alt="...">
+                                            </span>
                                             <span class="clear">
-                                                            <span>[[${session.MusicList[k+6+42].getMusic_name()}]]</span>
-                                                            <small class="text-muted clear text-ellipsis">[[${session.MusicList[k+6+42].getMusic_singer()}]]</small>
-                                                        </span>
-                                        </a>
+                                                <span><a name="song" href="#">[[${session.MusicList[k+6+42].getMusic_name()}]]</a></span>
+                                                <small class="text-muted clear text-ellipsis">[[${session.MusicList[k+6+42].getMusic_singer()}]]</small>
+                                            </span>
+                                        </div>
                                     </th:block>
                                 </div>
                             </div>
@@ -211,4 +210,29 @@
 </section>
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $("a[name = 'song']").click(function () {
+            var song = $(this).html();
+            alert(song);
+            $.ajax({
+                url: "song/findmusicbyname",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "searchmusic": song,
+                },
+                success: function (result) {
+                    // alert(result.stat);
+                    if (result.stat == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stat == 1) {
+                        /*跳转到MusicController*/
+                        window.location.href = 'listen.html';
+                    }
+                }
+            });
+        });
+    });
+</script>
 </html>

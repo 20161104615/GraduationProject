@@ -49,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="D:/GithubRepository/GraduationProject/music-day01" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/asserts/js" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -58,20 +58,20 @@
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ys.demo.service" />
-      <recent name="com.ys.demo.mapper" />
-      <recent name="com.ys.demo.bean" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ys.demo.controller" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\static\asserts\js" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo\mapper\annotation" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\templates" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ys.demo.controller" />
+    </key>
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ys.demo.service" />
+      <recent name="com.ys.demo.mapper" />
+      <recent name="com.ys.demo.bean" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
@@ -175,11 +175,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoApplicationTests.sysout" />
         <item itemvalue="JUnit.DemoApplicationTests.getsong" />
         <item itemvalue="JUnit.DemoApplicationTests.getsong (1)" />
         <item itemvalue="JUnit.DemoApplicationTests.findmusic" />
         <item itemvalue="JUnit.DemoApplicationTests.allSong" />
-        <item itemvalue="JUnit.DemoApplicationTests.sysout" />
       </list>
     </recent_temporary>
   </component>
@@ -219,6 +219,7 @@
       <workItem from="1582347516718" duration="455000" />
       <workItem from="1582348000250" duration="35000" />
       <workItem from="1582348369388" duration="1081000" />
+      <workItem from="1582349583785" duration="24273000" />
     </task>
     <servers />
   </component>
@@ -238,10 +239,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="70" y="55" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1581989825627" />
-    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser" timestamp="1582335112024">
+    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser" timestamp="1582365914729">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582335112024" />
+    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582365914729" />
     <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582342770108">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -250,38 +251,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1582342927125" />
-    <state width="1493" height="115" key="GridCell.Tab.0.bottom" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.0.bottom" timestamp="1582379454826">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.0.center" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
+    <state width="1493" height="281" key="GridCell.Tab.0.center" timestamp="1582379454826">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.0.left" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
+    <state width="1493" height="281" key="GridCell.Tab.0.left" timestamp="1582379454826">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.0.right" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
+    <state width="1493" height="281" key="GridCell.Tab.0.right" timestamp="1582379454826">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.1.bottom" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
+    <state width="1493" height="281" key="GridCell.Tab.1.bottom" timestamp="1582379454810">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.1.center" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
+    <state width="1493" height="281" key="GridCell.Tab.1.center" timestamp="1582379454810">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.1.left" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
+    <state width="1493" height="281" key="GridCell.Tab.1.left" timestamp="1582379454810">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
-    <state width="1493" height="115" key="GridCell.Tab.1.right" timestamp="1582349462359">
+    <state width="1493" height="281" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
+    <state width="1493" height="281" key="GridCell.Tab.1.right" timestamp="1582379454810">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="115" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582349462359" />
+    <state width="1493" height="281" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
     <state x="299" y="90" key="Maven.ArtifactSearchDialog" timestamp="1582342637996">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -298,6 +299,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1582332439025" />
+    <state x="512" y="82" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582370449795">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="512" y="82" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.864@0.0.1536.864" timestamp="1582370449795" />
     <state x="533" y="163" key="com.intellij.testIntegration.createTest.CreateTestDialog" timestamp="1582191657515">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -306,13 +311,17 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="457" y="64" width="621" height="735" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1582201418169" />
+    <state x="472" y="55" key="refactoring.ChangeSignatureDialog" timestamp="1582360122094">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="472" y="55" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1582360122094" />
     <state x="1126" y="198" key="run.anything.popup" timestamp="1582283518769">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="1126" y="198" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1582283518769" />
-    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup" timestamp="1582337208903">
+    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup" timestamp="1582367216361">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1582337208903" />
+    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1582367216361" />
   </component>
 </project>

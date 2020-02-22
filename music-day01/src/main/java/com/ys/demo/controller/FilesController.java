@@ -19,7 +19,7 @@ import java.util.Map;
 
 /*
  * @Author 20161104615
- * @Description //TODO 多文件上传至不同目录
+ * @Description //TODO 多文件上传至不同目录；searchResult：存放上传的音乐信息，在list页面中显示
  * @Date 10:45 2020/2/19
  * @Param
  * @return

@@ -14,6 +14,7 @@ public interface MusicMapper {
      *      1、查找全部歌曲
      *      2、根据名称查找（模糊查找）
      *      3、根据歌手查找（模糊查找）
+     *      4、根据名称查找（取第一条）
      */
     @Select("select * from music")
     public ArrayList<MusicBean> findMusicBeanList();
@@ -23,6 +24,9 @@ public interface MusicMapper {
 
     @Select("select * from music where music_singer like concat('%',#{music_singer},'%')")
     public ArrayList<MusicBean> findMusicBySinger(MusicBean musicBean);
+
+    @Select("select * from music where music_name = #{music_name} limit 1")
+    public MusicBean accurateFindMusic(String music_name);
 
     /**
      * 添加歌曲
