@@ -26,10 +26,11 @@ public interface MusicMapper {
 
     /**
      * 添加歌曲
-     *      1、添加歌曲名、歌词、歌曲本地根路径
+     *      1、添加歌曲名、歌手、歌曲路径、歌曲图片路径
      */
-    @Insert("insert into music (music_name,music_singer,music_lyrics,music_storagepath) " +
+    @Insert("insert into music (music_name,music_singer,music_img,music_storagepath) " +
             "values " +
-            "(#{music_name},#{music_singer},#{music_lyrics},#{music_storagepath})")
+            "(#{music_name},#{music_singer},#{music_img},#{music_storagepath})")
     public int uploadMusic(MusicBean musicBean);
+
 }

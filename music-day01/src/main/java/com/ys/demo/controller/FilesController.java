@@ -1,28 +1,30 @@
 package com.ys.demo.controller;
 
+import com.ys.demo.service.MusicService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 /*
  * @Author 20161104615
- * @Description //TODO 文件上传
+ * @Description //TODO 多文件上传至不同目录
  * @Date 10:45 2020/2/19
  * @Param
  * @return
  **/
 @Controller
-@RequestMapping("/file")
+@RequestMapping("/files")
 public class FilesController {
+
+    @Autowired
+    MusicService musicService;
 
     @GetMapping(value = "/fileUpload")
     public String file() {
@@ -36,50 +38,58 @@ public class FilesController {
                              @RequestParam(value = "newMusicName") String newMusicName,
                              @RequestParam(value = "newMusicSinger") String newMusicSinger,
                              HttpServletRequest request) throws IOException {
-        if (newMusicUrl.isEmpty() || newMusicImgUrl.isEmpty()) {
+        System.out.println("进入filesupload");
+        if (newMusicUrl.isEmpty() && newMusicImgUrl.isEmpty()) {
             return "上传失败1";
         }
-        List<MultipartFile> files = ((MultipartHttpServletRequest) request).getFiles("file");
+        String fileName = "";//文件名称
+        String suffixName = "";//文件后缀名称
+        String newName = "";
+        String newNameImg = "";
+        List<MultipartFile> files = new ArrayList<MultipartFile>();
+        files.add(newMusicUrl);
+        files.add(newMusicImgUrl);
         MultipartFile file = null;
-        BufferedOutputStream stream = null;
-        for (int i = 0; i < files.size(); ++i) {
+        for (int i = 0; i < files.size(); i++) {
             file = files.get(i);
-            if (!file.isEmpty()) {
+            fileName = file.getOriginalFilename();//获取文件名称
+            suffixName = fileName.substring(fileName.lastIndexOf("."));//获取文件的后缀名
+            /*newName = fileName.substring(0, fileName.indexOf("."));*/
+            System.out.println("文件名称：" + fileName + ";  文件后缀名称：" + suffixName);
+            if (".m4a".equals(suffixName) || ".mp3".equals(suffixName)) {
+                System.out.println("进入音乐处理");
+                String filePath_newMusicUrl = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/";//歌曲存放的路径
+                newName = newMusicName + ".m4a";//统一处理为.m4a
+                /* File file_music = new File(filePath_newMusicUrl + fileName);*/
+                File file_music = new File(filePath_newMusicUrl + newName);
                 try {
-                    byte[] bytes = file.getBytes();
-                    stream = new BufferedOutputStream(new FileOutputStream(
-                            new File(file.getOriginalFilename())));
-                    stream.write(bytes);
-                    stream.close();
-                } catch (Exception e) {
-                    stream = null;
-                    return "You failed to upload " + i + " => "
-                            + e.getMessage();
-
+                    file.transferTo(file_music);//把内存中的数据写入到磁盘中
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else if (".jpg".equals(suffixName) || ".png".equals(suffixName)) {
+                System.out.println("进入图片处理");
+                String filePath_newMusicImgUrl = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/img/";//图片存放的路径
+                newNameImg = newMusicName+"-"+newMusicSinger+".jpg";//统一处理为.jpg
+                /*File file_music_img = new File(filePath_newMusicImgUrl + fileName);*/
+                File file_music_img = new File(filePath_newMusicImgUrl + newNameImg);
+                try {
+                    file.transferTo(file_music_img);
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             } else {
-                return "You failed to upload " + i
-                        + " because the file was empty.";
+                System.out.println("判断出错");
+                break;
             }
-
         }
-
-        //文件上传
-        String fileName_newMusicUrl = newMusicUrl.getOriginalFilename();//获取个图文件名称
-        String fileName_newMusicImgUrl = newMusicImgUrl.getOriginalFilename();//获取图片文件名称
-        //System.out.println(fileName_newMusicUrl);
-        String filePath_newMusicUrl = "D:/PythonProgram/PythonProgram/";//歌曲存放的路径
-        String filePath_newMusicImgUrl = "D:/PythonProgram/PythonProgram/img/";//图片存放的路径
-        File file_music = new File(filePath_newMusicUrl + fileName_newMusicUrl);
-        File file_music_img = new File(filePath_newMusicImgUrl + fileName_newMusicImgUrl);
-
-        //数据库上传
-        String fileName_newMusicUrl_database = newMusicUrl.getOriginalFilename();
-        StringTokenizer stringTokenizer = new StringTokenizer(fileName_newMusicUrl_database, ".");
-        System.out.println(stringTokenizer.nextToken());
-
-        newMusicUrl.transferTo(file_music);//把内存中的数据写入到磁盘中
-        newMusicUrl.transferTo(file_music_img);//把内存中的数据写入到磁盘中
-        return "上传失败2";
+        boolean checkUpload = musicService.uploadMusic(newMusicName, newMusicSinger);
+        if (checkUpload == true) {
+            System.out.println("上传数据库成功");
+        } else {
+            System.out.println("上传数据库失败");
+            return "error";
+        }
+        return "success";
     }
 }

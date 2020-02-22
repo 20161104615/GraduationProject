@@ -13,6 +13,12 @@ public class MusicBean {
         super();
     }
 
+    public MusicBean(String music_name, String music_singer, String music_storagepath, String music_img) {
+        this.music_name = music_name;
+        this.music_singer = music_singer;
+        this.music_storagepath = music_storagepath;
+        this.music_img = music_img;
+    }
 
     @Override
     public String toString() {

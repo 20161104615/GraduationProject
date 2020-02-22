@@ -8,4 +8,5 @@ public interface MusicService {
     public ArrayList<MusicBean> findAllMusicBean();
     public Map<String, ArrayList<MusicBean>> findMusicByName(String musicName);
     public ArrayList<MusicBean> findMusicBySinger(String musicSinger);
+    public boolean uploadMusic(String newMusicName, String newMusicSinger);
 }
