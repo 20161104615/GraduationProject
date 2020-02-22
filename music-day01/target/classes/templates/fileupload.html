@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public :: public_head_head"></head>
+<body class="">
+<section class="vbox">
+    <!--导航栏-->
+    <div th:replace="~{public :: public_head}"></div>
+    <section class="panel center">
+        <div th:replace="~{public :: public_navigation}"></div>
+    </section>
+    <!--/导航栏-->
+    <section class="vbox m-t-xl">
+        <section class="panel panel-default" style="background-color: rgba(53,255,84,0.04)">
+            <header class="panel-heading font-bold m-l-xl m-t-md" style="background-color: rgba(21,255,57,0)">
+                音乐上传
+            </header>
+            <div class="panel-body">
+                <div class="form-horizontal m-l-xl">
+                    <form id="uploadForm" enctype="multipart/form-data" method="post" th:action="@{file/fileUpload}">
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group has-success">
+                            <label class="col-sm-2 control-label">歌曲名称：</label>
+                            <div class="col-sm-8">
+                                <input id="newMusicName" name="newMusicName" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group has-warning">
+                            <label class="col-sm-2 control-label">歌手名称：</label>
+                            <div class="col-sm-8">
+                                <input id="newMusicSinger" name="newMusicSinger" type="text" class="form-control">
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group has-success">
+                            <label class="col-sm-2 control-label">音乐上传：</label>
+                            <div class="col-sm-10">
+                                <input id="newMusicUrl" name="newMusicUrl" type="file" class="filestyle" data-icon="false"
+                                       data-classButton="btn btn-default"
+                                       data-classInput="form-control inline v-middle input-s">
+                            </div>
+                        </div>
+                        <div class="line line-dashed b-b line-lg pull-in"></div>
+                        <div class="form-group has-warning">
+                            <label class="col-sm-2 control-label">图片上传：</label>
+                            <div class="col-sm-10">
+                                <input id="newMusicImgUrl" name="newMusicImgUrl" type="file" class="filestyle" data-icon="false"
+                                       data-classButton="btn btn-default"
+                                       data-classInput="form-control inline v-middle input-s">
+                            </div>
+                        </div>
+                        <button id="newmusicsubmit" type="submit" class="btn btn-default btn-lg"
+                                style="width: 400px;margin-left: 500px;margin-top: 30px">
+                            提交
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </section>
+</section>
+<footer th:replace="public :: public_footer_footer"></footer>
+</body>
+<script th:inline="javascript">
+   /* $(document).ready(function () {
+
+        /!*$.extend({
+            "isAssetTypeAnImage": function (ext) {
+                return [
+                    'png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff'].indexOf(ext.toLowerCase()) !== -1;
+            }
+        });*!/
+        function isAssetTypeAnImage(ext) {
+            return [
+                'png', 'jpg', 'jpeg', 'bmp', 'gif', 'webp', 'psd', 'svg', 'tiff'].indexOf(ext.toLowerCase()) !== -1;
+        }
+
+        $("#newmusicsubmit").click(function () {
+            var nmn = $("#newMusicName").val();
+            var nms = $("#newMusicSinger").val();
+            var nmu = $("#newMusicUrl").val();
+            var nmiu = $("#newMusicImgUrl").val();
+            var lio = nmiu.lastIndexOf(".");
+            var ext = nmiu.substr(lio + 1);
+            if (nmn == "" || nms == "" /!*|| nmu == "" *!/ || nmiu == "") {
+                alert("请填写完整的音乐信息");
+            } /!*else if (isAssetTypeAnImage(ext)) {
+                swal("提示", "请上传图片!", "warning");
+            }*!/ else {
+                $.ajax({
+                    url: "fileUpload/",
+                    type: "post",
+                    data: $('#postForm').serialize(),
+                    contentType: "application/json;charset=UTF-8",
+                    data: {
+                        "newMusicName": $("#newMusicName").val(),
+                        "newMusicSinger": $("#newMusicSinger").val(),
+                        /!*"newMusicUrl": $("#newMusicUrl").val(),*!/
+                        "newMusicImgUrl": $("#newMusicImgUrl").val(),
+                    },
+                    success: function (result) {
+                        if (result.stat == "0") {
+                            alert("Error")
+                        } else if (result.stat == "1") {
+                            alert("Success")
+                        }
+                    }
+                })
+            }
+        });
+    });*/
+</script>
+</html>

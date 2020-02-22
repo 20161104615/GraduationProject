@@ -14,10 +14,6 @@ public class MusicBean {
     }
 
 
-    public MusicBean(String music_singer) {
-        this.music_singer = music_singer;
-    }
-
     @Override
     public String toString() {
         return "MusicBean{" +

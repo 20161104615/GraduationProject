@@ -46,7 +46,7 @@
                                             </a>
                                             <div>
                                                 <div class="h3 m-t-xs m-b-xs" th:fragment="loginUserGetUserName">
-                                                    [[*{session.loginUser.getUser_name()}]]
+                                                    [[*{session.LoginUser.getUser_name()}]]
                                                 </div>
                                                 <small class="text-muted"><i class="fa fa-map-marker"></i>
                                                     中国,
@@ -296,7 +296,7 @@
                                             <li class="list-group-item">
                                                 <input type="text" id="user_new_name" name="user_new_name"
                                                        class="form-control form-control-pl-30 rounded input-lg no-border"
-                                                       th:placeholder="'昵称：'+ *{session.loginUser.getUser_name()}">
+                                                       th:placeholder="'昵称：'+ *{session.LoginUser.getUser_name()}">
                                             </li>
                                             <li class="list-group-item">
                                                 <input type="password" id="user_new_pwd" name="user_new_pwd"
@@ -306,14 +306,14 @@
                                             <li class="list-group-item">
                                                 <input type="date" id="user_new_birthday" name="user_new_birthday"
                                                        class="form-control  form-control-pl-30 rounded input-lg no-border"
-                                                       th:value="${#dates.format(session.loginUser.getUser_birthday(),'yyyy-MM-dd')}"
+                                                       th:value="${#dates.format(session.LoginUser.getUser_birthday(),'yyyy-MM-dd')}"
                                                        th:placeholder="'生日'">
                                             </li>
                                             <li class="list-group-item">
                                                 <textarea id="user_new_introducedame"
                                                           name="user_new_introducedame"
                                                           class="form-control form-control-pl-30 rounded input-lg no-border"
-                                                          th:placeholder="'个人介绍：'+ *{session.loginUser.getUser_introduced()}"></textarea>
+                                                          th:placeholder="'个人介绍：'+ *{session.LoginUser.getUser_introduced()}"></textarea>
                                             </li>
                                             <li class="list-group-item">
                                                 <i style="margin-left: 10rem">
@@ -351,16 +351,16 @@
         var user_new_birthday = document.getElementById("user_new_birthday").value;
         var user_new_introducedame = document.getElementById("user_new_introducedame").value;
         if (user_new_name == "") {
-            $("#user_new_name").val([[${session.loginUser.getUser_name()}]]);
+            $("#user_new_name").val([[${session.LoginUser.getUser_name()}]]);
         }
         if (user_new_pwd == "") {
-            $("#user_new_pwd").val([[${session.loginUser.getUser_pwd()}]]);
+            $("#user_new_pwd").val([[${session.LoginUser.getUser_pwd()}]]);
         }
         if (user_new_birthday == "") {
-            $("#user_new_birthday").val([[${session.loginUser.getUser_birthday()}]]);
+            $("#user_new_birthday").val([[${session.LoginUser.getUser_birthday()}]]);
         }
         if (user_new_introducedame == "") {
-            $("#user_new_introducedame").val([[${session.loginUser.getUser_introduced()}]]);
+            $("#user_new_introducedame").val([[${session.LoginUser.getUser_introduced()}]]);
         }
         FormSubmit()
     }

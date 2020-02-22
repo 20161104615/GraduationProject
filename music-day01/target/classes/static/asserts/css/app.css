@@ -438,12 +438,12 @@ a.list-group-item:focus {
   -webkit-transition: background-color .25s;
   transition: background-color .25s;
   background: #ddd;
-  background-color: rgba(0,0,0,0.2);
+  background-color: rgba(22, 255, 44, 0.23);
   border: none;
 }
 .carousel-indicators .active {
   background: #f0f0f0;
-  background-color: rgba(200,200,200,0.2);
+  background-color: rgba(15, 241, 15, 0.77);
   width: 10px;
   height: 10px;
   margin: 1px;
@@ -3058,6 +3058,9 @@ a.bg-light:focus {
 }
 .b-success {
   border-color: #1dcc74;
+}
+.b-success-air {
+  border-color: rgba(22,255,44,0.07);
 }
 .b-info {
   border-color: #60bed1;

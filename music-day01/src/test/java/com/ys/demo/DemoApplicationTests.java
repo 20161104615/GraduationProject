@@ -16,13 +16,14 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 class DemoApplicationTests {
 
     @Autowired//自动注入
-    DataSource dataSource;
+            DataSource dataSource;
     @Autowired
     UserService userService;
     @Autowired
@@ -75,13 +76,17 @@ class DemoApplicationTests {
 
     @Test
     void getsong() {
-        String url = "http://s.music.163.com/search/get/?type=1&filterDJ=true&s=遇见&limit10&offset=0";
-        System.out.println();
+        String music_name = "星";
+        Map<String, ArrayList<MusicBean>> musicByName = musicService.findMusicByName(music_name);
+        for (Map.Entry<String, ArrayList<MusicBean>> entry : musicByName.entrySet()) {
+            System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
+        }
     }
+
     @Test
-    public String allSong(HttpServletRequest request){
+    public String allSong(HttpServletRequest request) {
         ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
-        request.setAttribute("MusicList",allMusicBean);
+        request.setAttribute("MusicList", allMusicBean);
         return "/index";
     }
 

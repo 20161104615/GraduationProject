@@ -58,7 +58,7 @@ public class UserController {
                     System.out.println("用户存在,且用户名和密码正确");
                     //存放到session中
                     UserBean loginUser = userService.userFind(userBean);
-                    request.getSession().setAttribute("loginUser", loginUser);
+                    request.getSession().setAttribute("LoginUser", loginUser);
                     //全部歌曲返回到前端主页面
                     ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
                     request.getSession().setAttribute("MusicList",allMusicBean);
