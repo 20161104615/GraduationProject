@@ -29,7 +29,7 @@ import java.util.Map;
 //@Controller 用来响应页面,必须配合模板来使用
 //@RestController = @ResponseBody + @Controller
 @WebServlet//配置参数初始化
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     @Autowired
@@ -102,7 +102,7 @@ public class UserController {
             UserBean userBean = new UserBean(user_name, user_phone, user_email, user_pwd);
             boolean register = userService.userRegister(userBean);
             if (register) {
-                request.getSession().setAttribute("loginUser", userBean);
+                request.getSession().setAttribute("LoginUser", userBean);
                 map.put("stat", "1");//1:添加成功
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
@@ -132,7 +132,7 @@ public class UserController {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
-        UserBean sessionUser = (UserBean) session.getAttribute("loginUser");
+        UserBean sessionUser = (UserBean) session.getAttribute("LoginUser");
         UserBean userBean = new UserBean(user_new_name, sessionUser.getUser_phone(), user_new_pwd, user_new_birthday, sessionUser.getUser_email(), user_new_introducedame);
         System.out.println(user_new_birthday + "|" + user_new_introducedame + "|" + user_new_name + "|" + user_new_pwd);
         if (!StringUtils.isEmpty(user_new_name) && !"".equals(user_new_birthday) && !StringUtils.isEmpty(user_new_pwd) && !StringUtils.isEmpty(user_new_introducedame)) {
@@ -141,8 +141,7 @@ public class UserController {
             if (userUpdate) {
                 map.put("stat", "1");//1:修改成功
                 UserBean loginUser = userService.userFind(userBean);
-                request.getSession().setAttribute("loginUser", loginUser);
-                UserBean testSessionnUser = (UserBean) session.getAttribute("loginUser");
+                request.getSession().setAttribute("LoginUser", loginUser);
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
             } else {

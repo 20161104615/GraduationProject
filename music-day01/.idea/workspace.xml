@@ -34,6 +34,7 @@
     </option>
   </component>
   <component name="ProjectId" id="1XvjKspYZEeBRdVI3FNf320wkg1" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -48,7 +49,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/asserts/js" />
+    <property name="last_opened_file_path" value="D:/GithubRepository/GraduationProject/music-day01" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -57,17 +58,20 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ys.demo.service" />
+      <recent name="com.ys.demo.mapper" />
+      <recent name="com.ys.demo.bean" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ys.demo.controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\static\asserts\js" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo\mapper\annotation" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\templates" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ys.demo.service" />
-      <recent name="com.ys.demo.mapper" />
-      <recent name="com.ys.demo.bean" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
@@ -211,6 +215,7 @@
       <workItem from="1582329726607" duration="26000" />
       <workItem from="1582330102890" duration="186000" />
       <workItem from="1582332439322" duration="5068000" />
+      <workItem from="1582342486276" duration="1512000" />
     </task>
     <servers />
   </component>
@@ -234,50 +239,50 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582335112024" />
-    <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582189431554">
+    <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582342770108">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1582189431554" />
-    <state x="549" y="190" key="FileChooserDialogImpl" timestamp="1581985270299">
+    <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1582342770108" />
+    <state x="549" y="190" key="FileChooserDialogImpl" timestamp="1582342927125">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1581985270299" />
-    <state width="1222" height="442" key="GridCell.Tab.0.bottom" timestamp="1582337569026">
+    <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1582342927125" />
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.0.center" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.0.center" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.0.left" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.0.left" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.0.right" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.0.right" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.1.bottom" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.1.center" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.1.center" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.1.left" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.1.left" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state width="1222" height="442" key="GridCell.Tab.1.right" timestamp="1582337569026">
+    <state width="1493" height="175" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state width="1493" height="175" key="GridCell.Tab.1.right" timestamp="1582344015438">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1222" height="442" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582337569026" />
-    <state x="299" y="90" key="Maven.ArtifactSearchDialog" timestamp="1582080550411">
+    <state width="1493" height="175" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582344015438" />
+    <state x="299" y="90" key="Maven.ArtifactSearchDialog" timestamp="1582342637996">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="299" y="90" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1582080550411" />
+    <state x="299" y="90" key="Maven.ArtifactSearchDialog/0.0.1536.864@0.0.1536.864" timestamp="1582342637996" />
     <state x="358" y="124" width="837" height="668" key="Registry" timestamp="1581936636941">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
