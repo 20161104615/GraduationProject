@@ -3,6 +3,7 @@ package com.ys.demo.bean;
 import java.util.Objects;
 
 public class MusicBean {
+    private Integer music_id;
     private String music_name;//歌名
     private String music_singer;//歌手
     private String music_lyrics;//歌词
@@ -23,7 +24,8 @@ public class MusicBean {
     @Override
     public String toString() {
         return "MusicBean{" +
-                "music_name='" + music_name + '\'' +
+                "music_id=" + music_id +
+                ", music_name='" + music_name + '\'' +
                 ", music_singer='" + music_singer + '\'' +
                 ", music_lyrics='" + music_lyrics + '\'' +
                 ", music_storagepath='" + music_storagepath + '\'' +
@@ -36,7 +38,8 @@ public class MusicBean {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MusicBean musicBean = (MusicBean) o;
-        return Objects.equals(music_name, musicBean.music_name) &&
+        return Objects.equals(music_id, musicBean.music_id) &&
+                Objects.equals(music_name, musicBean.music_name) &&
                 Objects.equals(music_singer, musicBean.music_singer) &&
                 Objects.equals(music_lyrics, musicBean.music_lyrics) &&
                 Objects.equals(music_storagepath, musicBean.music_storagepath) &&
@@ -86,5 +89,13 @@ public class MusicBean {
 
     public void setMusic_img(String music_img) {
         this.music_img = music_img;
+    }
+
+    public Integer getMusic_id() {
+        return music_id;
+    }
+
+    public void setMusic_id(Integer music_id) {
+        this.music_id = music_id;
     }
 }

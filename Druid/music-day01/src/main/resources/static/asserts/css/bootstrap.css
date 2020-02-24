@@ -2214,10 +2214,10 @@ fieldset[disabled] .checkbox-inline {
 }
 
 .input-sm {
-    height: 30px;
+    height: 60px;
     padding: 5px 10px;
-    font-size: 12px;
-    line-height: 1.5;
+    font-size: 18px;
+    line-height: 3;
     border-radius: 3px;
 }
 
@@ -2547,6 +2547,8 @@ fieldset[disabled] .btn-default.active {
     color: #fff;
     background-color: #333;
 }
+
+
 
 .btn-primary {
     color: #fff;
@@ -6093,7 +6095,7 @@ a.list-group-item-danger.active:focus {
 }
 
 .panel-success {
-    border-color: #d6e9c6;
+    border-color: rgba(21, 255, 57, 0.11);
 }
 
 .panel-success > .panel-heading {

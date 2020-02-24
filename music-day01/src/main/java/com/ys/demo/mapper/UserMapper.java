@@ -9,6 +9,7 @@ public interface UserMapper {
      * 查找用户信息
      *      1、通过手机号或邮箱、用户密码查找用户，手机号和邮箱公用同一变量，用于验证用户登录信息
      *      2、通过手机号或邮箱查找用户，手机号和邮箱公用同一变量，用于判断用户是否重复、存在和获取修改后的用户信息
+     *      3、接受String型name
      */
     // 1
     @Select("select * from user where (user_phone=#{user_phone} or user_email=#{user_phone}) and user_pwd=#{user_pwd}")
@@ -17,6 +18,10 @@ public interface UserMapper {
     // 2
     @Select("select * from user where user_phone=#{user_phone} or user_email=#{user_phone}")
     public UserBean finduser(UserBean userBean);
+
+    //3
+    @Select("select * from user where user_phone=#{userphone}")
+    public UserBean finduserbystring(String userphone);
 
     /**
      * 增加用户信心

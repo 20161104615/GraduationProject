@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BeansEndpointTabSettings">
+    <option name="showDoc" value="false" />
+    <option name="showLibraryBeans" value="false" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8f3b39f2-acb0-4404-bab2-235062cb44fb" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,6 +19,7 @@
       <list>
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -47,6 +52,7 @@
     <property name="RequestMappingsPanelWidth0" value="75" />
     <property name="RequestMappingsPanelWidth1" value="75" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="TODO_SCOPE" value="Project Files" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static/asserts/js" />
@@ -55,9 +61,17 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.ys.demo.service" />
+      <recent name="com.ys.demo.mapper" />
+      <recent name="com.ys.demo.bean" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ys.demo.controller" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\static\asserts\js" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo\mapper\annotation" />
@@ -65,17 +79,9 @@
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\java\com\ys\demo" />
       <recent name="D:\JavaProgram\SpringMVC\music-day01\src\main\resources\templates" />
     </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.ys.demo.controller" />
-    </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.ys.demo.service" />
-      <recent name="com.ys.demo.mapper" />
-      <recent name="com.ys.demo.bean" />
-    </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
-    <configuration name="DemoApplicationTests.allSong" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="DemoApplicationTests.JSONArray" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="music-day01" />
       <extension name="coverage">
         <pattern>
@@ -85,7 +91,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.ys.demo" />
       <option name="MAIN_CLASS_NAME" value="com.ys.demo.DemoApplicationTests" />
-      <option name="METHOD_NAME" value="allSong(javax.servlet.http.HttpServletRequest)" />
+      <option name="METHOD_NAME" value="JSONArray" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -168,20 +174,24 @@
     <list>
       <item itemvalue="JUnit.DemoApplicationTests.sysout" />
       <item itemvalue="JUnit.DemoApplicationTests.findmusic" />
-      <item itemvalue="JUnit.DemoApplicationTests.allSong" />
       <item itemvalue="JUnit.DemoApplicationTests.getsong" />
       <item itemvalue="JUnit.DemoApplicationTests.getsong (1)" />
+      <item itemvalue="JUnit.DemoApplicationTests.JSONArray" />
       <item itemvalue="Spring Boot.DemoApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoApplicationTests.JSONArray" />
         <item itemvalue="JUnit.DemoApplicationTests.sysout" />
         <item itemvalue="JUnit.DemoApplicationTests.getsong" />
         <item itemvalue="JUnit.DemoApplicationTests.getsong (1)" />
         <item itemvalue="JUnit.DemoApplicationTests.findmusic" />
-        <item itemvalue="JUnit.DemoApplicationTests.allSong" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="SpringBeansView">
+    <option name="showFiles" value="false" />
+    <option name="beanDetailsProportion" value="0.3" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -220,6 +230,12 @@
       <workItem from="1582348000250" duration="35000" />
       <workItem from="1582348369388" duration="1081000" />
       <workItem from="1582349583785" duration="24273000" />
+      <workItem from="1582380870168" duration="6485000" />
+      <workItem from="1582418647046" duration="29032000" />
+      <workItem from="1582456988799" duration="5402000" />
+      <workItem from="1582541691009" duration="4321000" />
+      <workItem from="1582546263035" duration="828000" />
+      <workItem from="1582549218429" duration="3534000" />
     </task>
     <servers />
   </component>
@@ -227,6 +243,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="605" y="108" key="#Assign_Data_Sources" timestamp="1582425514444">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="605" y="108" key="#Assign_Data_Sources/0.0.1536.864@0.0.1536.864" timestamp="1582425514444" />
     <state x="328" y="96" width="814" height="723" key="#Intentions" timestamp="1581935762858">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -239,50 +259,74 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="70" y="55" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1581989825627" />
-    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser" timestamp="1582365914729">
+    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser" timestamp="1582440421188">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582365914729" />
+    <state x="555" y="106" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582440421188" />
+    <state x="553" y="299" width="429" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582432747377">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="553" y="299" width="429" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/0.0.1536.864@0.0.1536.864" timestamp="1582432747377" />
     <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1582342770108">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="182" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.864@0.0.1536.864" timestamp="1582342770108" />
+    <state x="499" y="182" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1582427444271">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="499" y="182" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.864@0.0.1536.864" timestamp="1582427444271" />
     <state x="549" y="190" key="FileChooserDialogImpl" timestamp="1582342927125">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1582342927125" />
-    <state width="1493" height="281" key="GridCell.Tab.0.bottom" timestamp="1582379454826">
+    <state width="1493" height="623" key="GridCell.Tab.0.bottom" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
-    <state width="1493" height="281" key="GridCell.Tab.0.center" timestamp="1582379454826">
+    <state width="1493" height="623" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.0.center" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
-    <state width="1493" height="281" key="GridCell.Tab.0.left" timestamp="1582379454826">
+    <state width="1493" height="623" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.0.left" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
-    <state width="1493" height="281" key="GridCell.Tab.0.right" timestamp="1582379454826">
+    <state width="1493" height="623" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.0.right" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582379454826" />
-    <state width="1493" height="281" key="GridCell.Tab.1.bottom" timestamp="1582379454810">
+    <state width="1493" height="623" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.1.bottom" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
-    <state width="1493" height="281" key="GridCell.Tab.1.center" timestamp="1582379454810">
+    <state width="1493" height="623" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.1.center" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
-    <state width="1493" height="281" key="GridCell.Tab.1.left" timestamp="1582379454810">
+    <state width="1493" height="623" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.1.left" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
-    <state width="1493" height="281" key="GridCell.Tab.1.right" timestamp="1582379454810">
+    <state width="1493" height="623" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="623" key="GridCell.Tab.1.right" timestamp="1582552789954">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="281" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582379454810" />
+    <state width="1493" height="623" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582552789954" />
+    <state width="1493" height="346" key="GridCell.Tab.2.bottom" timestamp="1582387426670">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="346" key="GridCell.Tab.2.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582387426670" />
+    <state width="1493" height="346" key="GridCell.Tab.2.center" timestamp="1582387426670">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="346" key="GridCell.Tab.2.center/0.0.1536.864@0.0.1536.864" timestamp="1582387426670" />
+    <state width="1493" height="346" key="GridCell.Tab.2.left" timestamp="1582387426670">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="346" key="GridCell.Tab.2.left/0.0.1536.864@0.0.1536.864" timestamp="1582387426670" />
+    <state width="1493" height="346" key="GridCell.Tab.2.right" timestamp="1582387426670">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state width="1493" height="346" key="GridCell.Tab.2.right/0.0.1536.864@0.0.1536.864" timestamp="1582387426670" />
     <state x="299" y="90" key="Maven.ArtifactSearchDialog" timestamp="1582342637996">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -291,14 +335,14 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="358" y="124" width="837" height="668" key="Registry/0.0.1536.864@0.0.1536.864" timestamp="1581936636941" />
-    <state x="263" y="34" key="SettingsEditor" timestamp="1582348026013">
+    <state x="263" y="20" key="SettingsEditor" timestamp="1582509117534">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="263" y="34" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1582348026013" />
-    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1582332439025">
+    <state x="263" y="20" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1582509117534" />
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1582549218012">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1582332439025" />
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1582549218012" />
     <state x="512" y="82" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582370449795">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -307,10 +351,18 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="533" y="163" key="com.intellij.testIntegration.createTest.CreateTestDialog/0.0.1536.864@0.0.1536.864" timestamp="1582191657515" />
+    <state x="323" y="171" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2" timestamp="1582382821621">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="323" y="171" key="com.intellij.xdebugger.impl.breakpoints.ui.BreakpointsDialogFactory$2/0.0.1536.864@0.0.1536.864" timestamp="1582382821621" />
     <state x="457" y="64" width="621" height="735" key="find.popup" timestamp="1582201418169">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="457" y="64" width="621" height="735" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1582201418169" />
+    <state x="178" y="140" key="new project wizard" timestamp="1582509258598">
+      <screen x="0" y="0" width="1536" height="864" />
+    </state>
+    <state x="178" y="140" key="new project wizard/0.0.1536.864@0.0.1536.864" timestamp="1582509258598" />
     <state x="472" y="55" key="refactoring.ChangeSignatureDialog" timestamp="1582360122094">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -319,9 +371,16 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="1126" y="198" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1582283518769" />
-    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup" timestamp="1582367216361">
+    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup" timestamp="1582429819903">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1582367216361" />
+    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1582429819903" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="((java.util.concurrent.ConcurrentHashMap.MapEntry)((java.util.concurrent.ConcurrentHashMap)((MapperProxy)this.h).methodCache).entrySet().toArray()[0]).getKey()" language="JAVA" custom="com.ys.demo.service.lmpl.MusicServicelmpl,java.lang.reflect.Proxy,java.util.concurrent.ConcurrentHashMap,java.util.concurrent.ConcurrentHashMap.MapEntry,org.apache.ibatis.binding.MapperProxy" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>

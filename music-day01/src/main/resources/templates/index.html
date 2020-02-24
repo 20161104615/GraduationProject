@@ -80,7 +80,7 @@
                         <!-- 排行榜 -->
                         <th:block th:each="i:${#numbers.sequence(0,2)}"><!--3列-->
                             <div class="col-sm-4 portlet">
-                                <section class="panel panel-success portlet-item">
+                                <section class="panel panel-info portlet-item">
                                     <header class="panel-heading">
                                         热歌榜单
                                     </header>
@@ -171,8 +171,7 @@
                                                          class="r r-2x img-full">
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a name="song" href="#" class="text-ellipsis">[[${session.MusicList[k+8+33].getMusic_name()}]]---[[${session.MusicList[k+8+33].getMusic_singer()}]]</a>
-                                                    <!--<a href="#" class="text-ellipsis text-xs text-muted">[[${session.MusicList[k+8+33].getMusic_singer()}]]</a>-->
+                                                    <a name="song" href="#" class="text-ellipsis text-center">[[${session.MusicList[k+8+33].getMusic_name()}]]</a>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,10 +210,10 @@
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
 <script th:inline="javascript">
-    $(document).ready(function () {
+    /*$(document).ready(function () {
         $("a[name = 'song']").click(function () {
             var song = $(this).html();
-            alert(song);
+            /!*alert(song);*!/
             $.ajax({
                 url: "song/findmusicbyname",
                 type: "post",
@@ -227,12 +226,12 @@
                     if (result.stat == 0) {
                         alert("暂无这首歌曲")
                     } else if (result.stat == 1) {
-                        /*跳转到MusicController*/
+                        /!*跳转到MusicController*!/
                         window.location.href = 'listen.html';
                     }
                 }
             });
         });
-    });
+    });*/
 </script>
 </html>

@@ -1,18 +1,17 @@
 package com.ys.demo.controller;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.bean.UserBean;
+import com.ys.demo.mapper.FavoriteSongsRepository;
 import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.ServletException;
@@ -21,13 +20,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Map;
 
 /*
  * @Author 20161104615
- * @Description //TODO LoginUser:存放用户登录信息；MusicList：音乐整体列表；
+ * @Description //TODO LoginUser(UserBean):存放用户登录信息；MusicList（ArrayList<MusicBean>）：音乐整体列表；
  * @Date 17:53 2020/2/22
  * @Param
  * @return
@@ -40,6 +40,9 @@ import java.util.Map;
 @RestController
 @RequestMapping("/user")
 public class UserController {
+
+    @Autowired
+    private FavoriteSongsRepository favoriteSongsRepository;
     @Autowired
     private UserService userService;
     @Autowired
@@ -69,7 +72,7 @@ public class UserController {
                     request.getSession().setAttribute("LoginUser", loginUser);
                     //全部歌曲返回到前端主页面
                     ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
-                    request.getSession().setAttribute("MusicList",allMusicBean);
+                    request.getSession().setAttribute("MusicList", allMusicBean);
                     map.put("stat", "1");
                     jsonObject = JSONObject.fromObject(map);
                     response.getWriter().print(jsonObject);
@@ -163,4 +166,50 @@ public class UserController {
             response.getWriter().print(jsonObject);
         }
     }
+
+    @GetMapping(value = "/addfavoritesong")
+    public void addFavoriteSong(@RequestParam("songname") String songname,
+                                @RequestParam("userphone") String userphone,
+                                Map<String, Object> map,
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        FavoriteSongs favoriteSongs = new FavoriteSongs();
+        /*MusicBean musicBean = musicService.accuratefindmusicinformation(songname);*/
+        MusicBean musicBean = musicService.findONEMusic(songname);
+        UserBean userBean = userService.userfindstring(userphone);
+        favoriteSongs.setMusic_name(musicBean.getMusic_name());
+        favoriteSongs.setMusic_id(musicBean.getMusic_id());
+        favoriteSongs.setUser_phone(userBean.getUser_phone());
+        favoriteSongsRepository.save(favoriteSongs);
+        map.put("statt", "1");
+        jsonObject = JSONObject.fromObject(map);
+        response.getWriter().print(jsonObject);
+    }
+
+    /*
+     * @Author 20161104615
+     * @Description //TODO 获取用户收藏列表
+     * @Date 21:47 2020/2/24
+     * @Param []
+     * @return void
+     **/
+    @PostMapping(value = "/personalinformation")
+    public void intoPersonInformation(@RequestParam("userphone") String userphone,
+                                      Map<String, Object> map,
+                                      HttpServletRequest request,
+                                      HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
+        request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
+        map.put("statt", "1");
+        jsonObject = JSONObject.fromObject(map);
+        response.getWriter().print(jsonObject);
+    }
+
+
 }

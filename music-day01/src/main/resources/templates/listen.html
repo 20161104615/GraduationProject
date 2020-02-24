@@ -14,9 +14,9 @@
                     <section class="hbox stretch bg-black dker" style="background-color: white">
                         <!-- side content -->
                         <aside class="col-sm-5 no-padder" id="sidebar" style="background-color: white">
-                            <section class="vbox animated fadeInUp">
-                                <section class="scrollable">
-                                    <div class="m-t-n-xxs item pos-rlt">
+                            <section class="vbox animated fadeInUp ">
+                                <section class="scrollable r-b">
+                                    <div class="m-t-n-xxs item pos-rlt ">
                                         <!--动画-->
                                         <div class="top text-right">
                                             <span class="musicbar animate bg-success bg-empty inline m-r-lg m-t"
@@ -29,12 +29,17 @@
                                             </span>
                                         </div>
                                         <!--/动画-->
-                                        <div class="bottom gd bg-info wrapper-lg">
-                                            <span class="h2 font-thin">Soph Ashe</span>
-                                        </div>
-                                        <img class="img-full" th:src="@{/asserts/images/m43.jpg}" alt="...">
+                                        <th:block th:each="song:${session.playMusiconeinformation}">
+                                            <div class="bottom gd bg-info wrapper-lg">
+                                                <span class="h2 font-thin">[[${song.getMusic_singer()}]]</span>
+                                            </div>
+                                            <img class="col-sm-4 "
+                                                 th:src="${song.getMusic_img()}" alt="...">
+                                        </th:block>
                                     </div>
                                     <!--歌曲信息-->
+
+
                                     <!--/歌曲信息-->
                                 </section>
                             </section>
@@ -42,9 +47,17 @@
                         </aside>
                         <!-- / side content -->
                         <section class="col-sm-4 no-padder" style="background-color: white">
-                            <section class="vbox" style="background-color: #cbd5dd">
-
-
+                            <section class="vbox" style="background-color: rgba(22,255,44,0.05)">
+                                <section class="scrollable">
+                                    <strong>收藏列表</strong>
+                                    <th:block th:each="song:${session.playMusiconeinformation}">
+                                        <div class="alert alert-info">
+                                            <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
+                                            <i class="fa fa-info-sign"></i>
+                                                [[${song.getMusic_name()}]]
+                                        </div>
+                                    </th:block>
+                                </section>
                             </section>
                         </section>
                     </section>
@@ -136,78 +149,74 @@
 <script th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
 <script th:src="@{/asserts/js/slider/bootstrap-slider.js}"></script>
 <script th:inline="javascript">
-    $(document).ready(function(){
+    $(document).ready(function () {
+        var myPlaylist = new jPlayerPlaylist({
+                jPlayer: "#jplayer_N",
+                cssSelectorAncestor: "#jp_container_N"
+            },
+            //<![CDATA[
+            [[${session.playMusic}]]
+            //]]>
+            , {
+                playlistOptions: {
+                    enableRemoveControls: true,
+                    autoPlay: false
+                },
+                swfPath: "asserts/js/jPlayer",
+                supplied: "webmv, ogv, m4v, oga, mp3, m4a",
+                smoothPlayBar: true,
+                keyEnabled: true,
+                audioFullScreen: false
+            });
 
-    var myPlaylist = new jPlayerPlaylist({
-        jPlayer: "#jplayer_N",
-        cssSelectorAncestor: "#jp_container_N"
-    },
-        //<![CDATA[
-        [[${session.playMusic}]]
-        //]]>
-        , {
-    playlistOptions: {
-        enableRemoveControls: true,
-        autoPlay: false
-    },
-    swfPath: "asserts/js/jPlayer",
-    supplied: "webmv, ogv, m4v, oga, mp3, m4a",
-    smoothPlayBar: true,
-    keyEnabled: true,
-    audioFullScreen: false
-    });
+        $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer, function () {
+            $('.musicbar').removeClass('animate');
+            $('.jp-play-me').removeClass('active');
+            $('.jp-play-me').parent('li').removeClass('active');
+        });
 
-    $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer,  function(){
-        $('.musicbar').removeClass('animate');
-        $('.jp-play-me').removeClass('active');
-        $('.jp-play-me').parent('li').removeClass('active');
-    });
+        $(document).on($.jPlayer.event.play, myPlaylist.cssSelector.jPlayer, function () {
+            $('.musicbar').addClass('animate');
+        });
 
-    $(document).on($.jPlayer.event.play, myPlaylist.cssSelector.jPlayer,  function(){
-        $('.musicbar').addClass('animate');
-    });
+        $(document).on('click', '.jp-play-me', function (e) {
+            e && e.preventDefault();
+            var $this = $(e.target);
+            if (!$this.is('a')) $this = $this.closest('a');
 
-    $(document).on('click', '.jp-play-me', function(e){
-        e && e.preventDefault();
-        var $this = $(e.target);
-        if (!$this.is('a')) $this = $this.closest('a');
+            $('.jp-play-me').not($this).removeClass('active');
+            $('.jp-play-me').parent('li').not($this.parent('li')).removeClass('active');
 
-        $('.jp-play-me').not($this).removeClass('active');
-        $('.jp-play-me').parent('li').not($this.parent('li')).removeClass('active');
+            $this.toggleClass('active');
+            $this.parent('li').toggleClass('active');
+            if (!$this.hasClass('active')) {
+                myPlaylist.pause();
+            } else {
+                var i = Math.floor(Math.random() * (1 + 7 - 1));
+                myPlaylist.play(i);
+            }
 
-        $this.toggleClass('active');
-        $this.parent('li').toggleClass('active');
-    if( !$this.hasClass('active') ){
-        myPlaylist.pause();
-    }else{
-         var i = Math.floor(Math.random() * (1 + 7 - 1));
-         myPlaylist.play(i);
-     }
+        }).jPlayer("play");
 
-    }).jPlayer("play");
-
-    // video
-  $("#jplayer_1").jPlayer({
-    ready: function () {
-    $(this).jPlayer("setMedia", {
-        title: "Big Buck Bunny",
-        m4v: "http://flatfull.com/themes/assets/video/big_buck_bunny_trailer.m4v",
-        ogv: "http://flatfull.com/themes/assets/video/big_buck_bunny_trailer.ogv",
-        webmv: "http://flatfull.com/themes/assets/video/big_buck_bunny_trailer.webm",
-        poster: "images/m41.jpg"
-    });
-    },
-    swfPath: "js",
-    supplied: "webmv, ogv, m4v",
-    size: {
-        width: "100%",
-        height: "auto",
-        cssClass: "jp-video-360p"
-    },
-    globalVolume: true,
-    smoothPlayBar: true,
-    keyEnabled: true
-    });
+        $("#findmusicbyNames").click(function () {
+            $.ajax({
+                url: "song/findmusicbyname",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "searchmusic": $("#findmusic").val()
+                },
+                success: function (result) {
+                    // alert(result.stat);
+                    if (result.stat == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stat == 1) {
+                        /*跳转到MusicController*/
+                        window.location.href = 'list.html';
+                    }
+                }
+            });
+        });
 
     });
 </script>

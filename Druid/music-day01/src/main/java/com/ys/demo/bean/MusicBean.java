@@ -1,17 +1,55 @@
 package com.ys.demo.bean;
 
-import javax.xml.crypto.Data;
 import java.util.Objects;
 
 public class MusicBean {
+    private Integer music_id;
     private String music_name;//歌名
     private String music_singer;//歌手
-    private Data music_releasedate;//发行日期
-    private String music_album;//专辑
     private String music_lyrics;//歌词
     private String music_storagepath;//歌曲路径
-    private Long music_time;//歌曲总时长
-    private int music_framenumber;//歌曲总帧数
+    private String music_img;//歌曲图片路径
+
+    public MusicBean() {
+        super();
+    }
+
+    public MusicBean(String music_name, String music_singer, String music_storagepath, String music_img) {
+        this.music_name = music_name;
+        this.music_singer = music_singer;
+        this.music_storagepath = music_storagepath;
+        this.music_img = music_img;
+    }
+
+    @Override
+    public String toString() {
+        return "MusicBean{" +
+                "music_id=" + music_id +
+                ", music_name='" + music_name + '\'' +
+                ", music_singer='" + music_singer + '\'' +
+                ", music_lyrics='" + music_lyrics + '\'' +
+                ", music_storagepath='" + music_storagepath + '\'' +
+                ", music_img='" + music_img + '\'' +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MusicBean musicBean = (MusicBean) o;
+        return Objects.equals(music_id, musicBean.music_id) &&
+                Objects.equals(music_name, musicBean.music_name) &&
+                Objects.equals(music_singer, musicBean.music_singer) &&
+                Objects.equals(music_lyrics, musicBean.music_lyrics) &&
+                Objects.equals(music_storagepath, musicBean.music_storagepath) &&
+                Objects.equals(music_img, musicBean.music_img);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(music_name, music_singer, music_lyrics, music_storagepath, music_img);
+    }
 
     public String getMusic_name() {
         return music_name;
@@ -27,22 +65,6 @@ public class MusicBean {
 
     public void setMusic_singer(String music_singer) {
         this.music_singer = music_singer;
-    }
-
-    public Data getMusic_releasedate() {
-        return music_releasedate;
-    }
-
-    public void setMusic_releasedate(Data music_releasedate) {
-        this.music_releasedate = music_releasedate;
-    }
-
-    public String getMusic_album() {
-        return music_album;
-    }
-
-    public void setMusic_album(String music_album) {
-        this.music_album = music_album;
     }
 
     public String getMusic_lyrics() {
@@ -61,56 +83,19 @@ public class MusicBean {
         this.music_storagepath = music_storagepath;
     }
 
-    public Long getMusic_time() {
-        return music_time;
+    public String getMusic_img() {
+        return music_img;
     }
 
-    public void setMusic_time(Long music_time) {
-        this.music_time = music_time;
+    public void setMusic_img(String music_img) {
+        this.music_img = music_img;
     }
 
-    public int getMusic_framenumber() {
-        return music_framenumber;
+    public Integer getMusic_id() {
+        return music_id;
     }
 
-    public void setMusic_framenumber(int music_framenumber) {
-        this.music_framenumber = music_framenumber;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof MusicBean)) return false;
-        MusicBean musicBean = (MusicBean) o;
-        return music_framenumber == musicBean.music_framenumber &&
-                Objects.equals(music_name, musicBean.music_name) &&
-                Objects.equals(music_singer, musicBean.music_singer) &&
-                Objects.equals(music_releasedate, musicBean.music_releasedate) &&
-                Objects.equals(music_album, musicBean.music_album) &&
-                Objects.equals(music_lyrics, musicBean.music_lyrics) &&
-                Objects.equals(music_storagepath, musicBean.music_storagepath) &&
-                Objects.equals(music_time, musicBean.music_time);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(music_name, music_singer, music_releasedate, music_album, music_lyrics, music_storagepath, music_time, music_framenumber);
-    }
-
-    public MusicBean() {
-    }
-
-    @Override
-    public String toString() {
-        return "MusicBean{" +
-                "music_name='" + music_name + '\'' +
-                ", music_singer='" + music_singer + '\'' +
-                ", music_releasedate=" + music_releasedate +
-                ", music_album='" + music_album + '\'' +
-                ", music_lyrics='" + music_lyrics + '\'' +
-                ", music_storagepath='" + music_storagepath + '\'' +
-                ", music_time=" + music_time +
-                ", music_framenumber=" + music_framenumber +
-                '}';
+    public void setMusic_id(Integer music_id) {
+        this.music_id = music_id;
     }
 }

@@ -7,4 +7,5 @@ public interface UserService {
     public boolean userRegister(UserBean userBean);
     public boolean userUpdate(UserBean userBean);
     public UserBean userFind(UserBean userBean);
+    public UserBean userfindstring(String userphone);
 }

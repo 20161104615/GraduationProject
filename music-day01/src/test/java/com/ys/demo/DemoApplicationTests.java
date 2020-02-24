@@ -78,19 +78,28 @@ class DemoApplicationTests {
     }
 
     @Test
+    void JSONArray() throws JSONException {
+        String a = "123";
+        JSONArray musicOfPlayList = musicService.findMusicOfPlayList(a);
+        System.out.println(musicOfPlayList);
+        ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(a);
+        System.out.println(musicOfPlayListinformation);
+    }
+
+    @Test
     void sysout() throws JSONException {
         String musicName = "Snowdreams";
         MusicBean musicBean = musicMapper.accurateFindMusic(musicName);
         HashMap<String, String> map = new HashMap<>();
-        map.put("title","'"+musicBean.getMusic_name()+"'");
-        map.put("artist","'"+musicBean.getMusic_singer()+"'");
-        map.put("m4a","'"+musicBean.getMusic_storagepath()+"'");
-        map.put("poster","'"+musicBean.getMusic_storagepath()+"'");
-        
+        map.put("title", "'" + musicBean.getMusic_name() + "'");
+        map.put("artist", "'" + musicBean.getMusic_singer() + "'");
+        map.put("m4a", "'" + musicBean.getMusic_storagepath() + "'");
+        map.put("poster", "'" + musicBean.getMusic_storagepath() + "'");
+
         JSONObject jsonObject = new JSONObject();
         jsonObject.putAll(map);
         System.out.println(jsonObject.toString());
-        
+
         JSONArray jsonArray = new JSONArray();
         jsonArray.add(jsonObject);
         System.out.println(jsonArray);

@@ -11,8 +11,6 @@
             <header class="wrapper text-center">
                 <strong th:text="#{signin.tip}">Sign in to get in touch</strong>
             </header>
-            <p id="tip_nouser" style="color: #f277da;font-size: 15px;
-                text-align: center; margin-top: 15px" th:text="${emsg}" th:if="${not #strings.isEmpty(emsg)}"></p>
             <div class="form-horizontal">
                 <div class="col-xs-12 col-sm-12 col-md-12">
                     <div class="form-group">
@@ -106,8 +104,9 @@
                     document.getElementById("tip_success").innerText = [[#{tip_success}]];
                     document.getElementById("tip_NoInformation").innerText = "";
                     document.getElementById("tip_nouser").innerText = "";
-                    location = 'index.html';
-                    setTimeout("location='index.html'", 150);
+                    /*跳转到MusicController*/
+                    window.location.href = 'index.html';
+                    /*setTimeout("location='/song/showmusic'", 150);*/
                 } else if (result.stat == 3) {
                     alert("网络拥堵，请稍后再试！")
                 } else if (result.stat == 4){
@@ -120,7 +119,7 @@
             }
         });
     };
-    
+
 
 </script>
 </html>

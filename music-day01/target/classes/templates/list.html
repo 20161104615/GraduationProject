@@ -18,17 +18,23 @@
                             <li class="list-group-item b-success-air"
                                 style="border-radius: 20px;border-style: none">
                                 <div class="media">
-                                <span class="pull-left thumb-sm" style="margin-top: 1px">
-                                    <img th:src="${song.getMusic_img()}" alt="John said"
-                                         class="img-circle">
-                                </span>
-                                    <div class="pull-right text-success"
-                                         style="margin-top: 7px;padding-right: 20px">
-                                        [[${song.getMusic_singer()}]]
-                                        <i class="fa fa-circle" style="padding-left: 15px"></i>
-                                    </div>
+                                    <span class="pull-left thumb-sm" style="margin-top: 1px">
+                                        <img th:src="${song.getMusic_img()}" alt="John said" class="img-circle">
+                                    </span>
                                     <div style="margin-top: 7px">
-                                        <a href="#">[[${song.getMusic_name()}]]</a></div>
+                                        <a name="song" href="#">[[${song.getMusic_name()}]]</a>
+                                    </div>
+                                    <div class="pull-right text-success "
+                                         style="margin-top: -20px;padding-right: 40px">
+                                        [[${song.getMusic_singer()}]]
+                                    </div>
+                                    <div class="pull-right text-success"
+                                         style="margin-top: -20px;padding-right: 30px;padding-right:10px">
+                                        <a href="#">
+                                            <i  class="fa fa-heart-o"></i>
+                                            <i  class="fa fa-heart hide"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             </li>
                         </ul>
@@ -40,4 +46,76 @@
 </section>
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
+<script th:inline="javascript">
+/*
+    $(document).ready(function () {
+        $(" i [name = 'song']").click(function () {
+            var song = $(this).html();
+             alert(song);
+            $.ajax({
+                url: "user/addfavoritesong",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    //<![CDATA[
+                    "songname": song,
+                    "userphone":/!*[[${session.LoginUser.getUser_phone()}]]*!/ ""
+                    //]]>
+                },
+                success: function (result) {
+                    // alert(result.stat);
+                    if (result.stats == 0) {
+                        alert("添加失败")
+                    } else if (result.stats == 1) {
+                        alert("添加成功");
+                    }
+                }
+            });
+        });
+    });*/
+    /*function testsongss() {
+        var sn = $(this).html();
+        alert(sn);
+        $.ajax({
+            url: "user/addfavoritesong",
+            type: "get",
+            dataType: 'json',
+            data: {
+                //<![CDATA[
+                "songname":/!*[[${session.playMusiconeinformation.getMusic_name()}]]*!/ "",
+                "userphone":/!*[[${session.LoginUser.getUser_phone()}]]*!/ ""
+                //]]>
+            },
+            success: function (result) {
+                if (result.statt == "1") {
+                    alert("添加成功");
+                }
+            }
+        });
+    }*/
+    /*$(document).ready(function () {
+        $("a[name = 'song']").click(function () {
+            var song = $(this).html();
+            /!* alert(song);*!/
+            $.ajax({
+                url: "song/musicplaylist",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "playmusic": song,
+                },
+                success: function (result) {
+                    // alert(result.stat);
+                    if (result.stats == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stats == 1) {
+                        /!*跳转到MusicController*!/
+                        window.location.href = 'listen.html';
+                    }
+                }
+            });
+        });
+    });*/
+</script>
+
 </html>

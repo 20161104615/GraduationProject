@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="public_head_head">
     <meta charset="utf-8"/>
-    <title>Musik | Web Application</title>
+    <title>iMusik</title>
     <meta name="description"
           content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
@@ -30,59 +30,75 @@
                 <a href="#" class="btn bg-white-only" style="width: 14rem;height: 6rem">
                     <i class="icon-earphones btn-lg"></i>
                 </a>
-                <a href="#" class="btn bg-white-only"
+                <a th:href="@{/index.html}" class="btn bg-white-only"
                    style="width: 14rem;height: 6rem;background-color: #1acf74;color: white">
                     音乐馆
                 </a>
-                <a th:href="@{/profile.html}" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
+                <a name="personalinformation" th:href="@{/profile.html}" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
             </div>
         </div>
     </div>
     <div class="aside-xxl" style="margin-left: 70rem;">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user" style="margin-left: 20rem">
+
             <li class="dropdown">
-                <form class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs" role="search">
+                <div class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs">
                     <div class="form-group">
                         <div class="input-group">
-                            <span class="input-group-btn">
-                              <button type="submit" class="btn btn-sm bg-white btn-icon rounded"><i class="fa fa-search"></i></button>
-                            </span>
-                            <input type="text" class="form-control input-sm no-border rounded"
-                                   placeholder="Search songs, albums...">
+                            <input id="findmusic" name="findmusic" type="text"
+                                   class="form-control input-sm no-border rounded"
+                                   placeholder="Search songs...">
+                            <div class="input-group-btn">
+                                <button id="findmusicbyNames" type="submit" onclick="findmusicbyNames()"
+                                        class="btn btn-sm bg-white btn-icon rounded">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+
                         </div>
                     </div>
-                </form>
+                </div>
             </li>
             <li class="dropdown" style="margin-left: 16px;margin-top: 0.1rem">
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                      <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                        <img th:src="@{/asserts/images/a0.png}" alt="...">
-                      </span>
-                    [[*{session.loginUser.getUser_name()}]] <b class="caret"></b>
+                              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                                <img th:src="@{/asserts/images/a0.png}" alt="...">
+                              </span>
+                    [[${session.LoginUser.getUser_name()}]] <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInRight">
                     <li>
-                        <span class="arrow top"></span>
-                        <a href="#">Settings</a>
-                    </li>
-                    <li>
-                        <a href="profile.html">Profile</a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <span class="badge bg-danger pull-right">3</span>
-                            Notifications
-                        </a>
-                    </li>
-                    <li>
-                        <a href="docs.html">Help</a>
+                        <a name="personalinformation" th:href="@{/profile.html}">个人中心</a>
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="modal.lockme.html" data-toggle="ajaxModal">Logout</a>
+                        <a href="modal.lockme.html" data-toggle="ajaxModal">退出登录</a>
                     </li>
                 </ul>
             </li>
+            <script type="text/javascript" th:inline="javascript">
+                $("a[name = 'personalinformation']").click(function () {
+                    var song = $(this).html();
+                    /* alert(song);*/
+                    $.ajax({
+                        url: "user/personalinformation",
+                        type: "post",
+                        dataType: 'json',
+                        data: {
+                            "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/"",
+                        },
+                        success: function (result) {
+                            // alert(result.stat);
+                            if (result.statt == 0) {
+                                alert("Error")
+                            } else if (result.statt == 1) {
+                                /*跳转到MusicController*/
+                                window.location.href = 'profile.html';
+                            }
+                        }
+                    });
+                });
+            </script>
         </ul>
     </div>
 </header>
@@ -95,37 +111,19 @@
     <a href="#" style="margin-left: 5rem">排行榜</a>
     <a href="#" style="margin-left: 5rem">分类</a>
 </div>
-
-</body>
 <footer th:fragment="public_footer_footer">
     <script th:src="@{/asserts/js/jquery.min.js}"></script>
     <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
     <!-- Bootstrap -->
     <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
-    <!-- App -->
-    <script th:src="@{/asserts/js/app.js}"></script>
-    <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
-    <script th:src="@{/asserts/js/app.plugin.js}"></script>
-    <script th:src="@{/asserts/js/ie/html5shiv.js}"></script>
-    <script th:src="@{/asserts/js/ie/respond.min.js}"></script>
-    <script th:src="@{/asserts/js/ie/excanvas.js}"></script>
+    <!--JPlayer-->
     <script th:src="@{/asserts/js/jPlayer/jquery.jplayer.min.js}"></script>
     <script th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
-    <script th:src="@{/asserts/js/jPlayer/demo.js}"></script>
-    <script th:src="@{/asserts/js/chosen/chosen.jquery.min.js}"></script>
+    <!--<script th:src="@{/asserts/js/jPlayer/demo.js}"></script>-->
     <!-- Sparkline Chart -->
     <script th:src="@{/asserts/js/charts/sparkline/jquery.sparkline.min.js}"></script>
     <!-- Easy Pie Chart -->
     <script th:src="@{/asserts/js/charts/easypiechart/jquery.easy-pie-chart.js}"></script>
-    <!-- Flot -->
-    <script th:src="@{/asserts/js/charts/flot/jquery.flot.min.js}"></script>
-    <script th:src="@{/asserts/js/charts/flot/jquery.flot.tooltip.min.js}"></script>
-    <script th:src="@{/asserts/js/charts/flot/jquery.flot.resize.js}"></script>
-    <script th:src="@{/asserts/js/charts/flot/jquery.flot.orderBars.js}"></script>
-    <script th:src="@{/asserts/js/charts/flot/jquery.flot.pie.min.js}"></script>
-    <script th:src="@{/asserts/js/charts/flot/jquery.flot.grow.js}"></script>
-    <script th:src="@{/asserts/js/charts/flot/demo.js}"></script>
-    <script th:src="@{/asserts/js/slimscroll/jquery.slimscroll.min.js}"></script>
     <!-- datepicker -->
     <script th:src="@{/asserts/js/datepicker/bootstrap-datepicker.js}"></script>
     <!-- slider -->
@@ -145,14 +143,55 @@
     <!-- wizard -->
     <script th:src="@{/asserts/js/wizard/jquery.bootstrap.wizard.js}"></script>
     <script th:src="@{/asserts/js/wizard/demo.js}"></script>
-    <!-- fullcalendar -->
-    <script th:src="@{/asserts/js/jquery.ui.touch-punch.min.js}"></script>
-    <script th:src="@{/asserts/js/jquery-ui-1.10.3.custom.min.js}"></script>
-    <script th:src="@{/asserts/js/fullcalendar/fullcalendar.min.js}"></script>
-    <script th:src="@{/asserts/js/fullcalendar/demo.js}"></script>
-    <!-- maps -->
-    <!--    <script src="http://maps.google.com/maps/api/js?sensor=true"></script>-->
-    <script th:src="@{/asserts/js/maps/gmaps.js}"></script>
-    <script th:src="@{/asserts/js/maps/demo.js}"></script>
+
+
+    <!--自定义-->
+    <script type="text/javascript" th:inline="javascript">
+        function findmusicbyNames() {
+            $.ajax({
+                url: "song/findmusicbyname",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "searchmusic": $("#findmusic").val()
+                },
+                success: function (result) {
+                    // alert(result.stat);
+                    if (result.stat == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stat == 1) {
+                        /*跳转到MusicController*/
+                        window.location.href = 'list.html';
+                    }
+                }
+            });
+        };
+        $(document).ready(function () {
+            $("a[name = 'song']").click(function () {
+                var song = $(this).html();
+                /* alert(song);*/
+                $.ajax({
+                    url: "song/musicplaylist",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        "playmusic": song,
+                    },
+                    success: function (result) {
+                        // alert(result.stat);
+                        if (result.stats == 0) {
+                            alert("暂无这首歌曲")
+                        } else if (result.stats == 1) {
+                            /*跳转到MusicController*/
+                            window.location.href = 'listen.html';
+                        }
+                    }
+                });
+            });
+        });
+    </script>
 </footer>
+</body>
+
+
 </html>
