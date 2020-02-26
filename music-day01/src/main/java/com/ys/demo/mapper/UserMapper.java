@@ -3,6 +3,8 @@ package com.ys.demo.mapper;
 import com.ys.demo.bean.UserBean;
 import org.apache.ibatis.annotations.*;
 
+import java.util.ArrayList;
+
 @Mapper//指定这是一个操作数据库的mapper
 public interface UserMapper {
     /**
@@ -22,6 +24,9 @@ public interface UserMapper {
     //3
     @Select("select * from user where user_phone=#{userphone}")
     public UserBean finduserbystring(String userphone);
+
+    @Select("select * from user where user_Administrator=#{userAdministrator}")
+    public ArrayList<UserBean> findAllUser(boolean userAdministrator);
 
     /**
      * 增加用户信心
