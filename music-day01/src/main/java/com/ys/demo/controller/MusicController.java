@@ -1,6 +1,8 @@
 package com.ys.demo.controller;
 
 import com.ys.demo.bean.MusicBean;
+import com.ys.demo.bean.UserBean;
+import com.ys.demo.mapper.FavoriteSongsRepository;
 import com.ys.demo.service.MusicService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -36,6 +38,9 @@ import java.util.Map;
 public class MusicController {
 
     @Autowired
+    private FavoriteSongsRepository favoriteSongsRepository;
+
+    @Autowired
     private MusicService musicService;
 
     @PostMapping(value = "/showmusic")
@@ -52,12 +57,15 @@ public class MusicController {
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
         System.out.println("进入findmusicbyname1");
+        UserBean user = (UserBean) request.getSession().getAttribute("LoginUser");
         Map<String, ArrayList<MusicBean>> musicByName = musicService.findMusicByName(music_name);
         for (Map.Entry<String, ArrayList<MusicBean>> entry : musicByName.entrySet()) {
             System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
             if (entry.getKey().toString() == "TURE") {
                 //表示取值成功
                 request.getSession().setAttribute("searchResult", entry.getValue().toArray());
+                ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(user.getUser_phone());
+                
                 map.put("stat", "1");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
@@ -127,6 +135,7 @@ public class MusicController {
             ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
             request.getSession().setAttribute("playMusic", musicOfPlayList);
             request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
+
             map.put("listofstat", "1");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);

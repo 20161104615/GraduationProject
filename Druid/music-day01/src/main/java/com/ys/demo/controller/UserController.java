@@ -167,6 +167,13 @@ public class UserController {
         }
     }
 
+    /*
+     * @Author 20161104615
+     * @Description //TODO 添加到收藏列表，未对返回值做判断
+     * @Date 22:20 2020/2/25
+     * @Param [songname, userphone, map, request, response]
+     * @return void
+     **/
     @GetMapping(value = "/addfavoritesong")
     public void addFavoriteSong(@RequestParam("songname") String songname,
                                 @RequestParam("userphone") String userphone,
@@ -185,8 +192,39 @@ public class UserController {
         favoriteSongs.setUser_phone(userBean.getUser_phone());
         favoriteSongsRepository.save(favoriteSongs);
         map.put("statt", "1");
+        map.put("songname",songname);
         jsonObject = JSONObject.fromObject(map);
         response.getWriter().print(jsonObject);
+    }
+
+    /*
+     * @Author 20161104615
+     * @Description //TODO 删除收藏列表中的内容
+     * @Date 10:16 2020/2/26
+     * @Param [songname, userphone, map, request, response]
+     * @return void
+     **/
+    @GetMapping(value = "/delfavoritesong")
+    public void delfavoritesong(@RequestParam("songname") String songname,
+                                @RequestParam("userphone") String userphone,
+                                Map<String, Object> map,
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        boolean result = musicService.delFavoritesong(userphone, songname);
+        if(result) {
+            map.put("statt", "1");
+            map.put("songname", songname);
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        } else {
+            map.put("statt", "0");
+            map.put("songname", songname);
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        }
     }
 
     /*
@@ -210,6 +248,4 @@ public class UserController {
         jsonObject = JSONObject.fromObject(map);
         response.getWriter().print(jsonObject);
     }
-
-
 }

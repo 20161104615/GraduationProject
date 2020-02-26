@@ -209,29 +209,4 @@
 </section>
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
-<script th:inline="javascript">
-    /*$(document).ready(function () {
-        $("a[name = 'song']").click(function () {
-            var song = $(this).html();
-            /!*alert(song);*!/
-            $.ajax({
-                url: "song/findmusicbyname",
-                type: "post",
-                dataType: 'json',
-                data: {
-                    "searchmusic": song,
-                },
-                success: function (result) {
-                    // alert(result.stat);
-                    if (result.stat == 0) {
-                        alert("暂无这首歌曲")
-                    } else if (result.stat == 1) {
-                        /!*跳转到MusicController*!/
-                        window.location.href = 'listen.html';
-                    }
-                }
-            });
-        });
-    });*/
-</script>
 </html>

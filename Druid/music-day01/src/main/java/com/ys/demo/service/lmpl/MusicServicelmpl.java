@@ -122,5 +122,15 @@ public class MusicServicelmpl implements MusicService {
         return musicBean;
     }
 
+    @Override
+    public boolean delFavoritesong(String userPhone, String musicName) {
+        boolean result = musicMapper.delfavoritesong(userPhone, musicName);
+        if(result){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
 }

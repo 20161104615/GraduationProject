@@ -12,7 +12,7 @@
             <div class="col-md-9 "
                  style="background-color: rgba(22,255,44,0.22);margin-left: 198.3px;border-radius: 10px">
                 <section class="panel panel-default m-t-md no-border" style="background-color: rgba(22,255,44,0.07);">
-                    <th:block th:each="song:${session.searchResult}">
+                    <th:block th:each="song,num:${session.searchResult}">
                         <ul class="list-group alt b-success-air"
                             style="border-radius: 10px;margin-bottom: 18px;border-style: none">
                             <li class="list-group-item b-success-air"
@@ -31,14 +31,17 @@
                                     <div class="pull-right text-success"
                                          style="margin-top: -20px;padding-right: 30px;padding-right:10px">
                                         <a href="#">
-                                            <i  class="fa fa-heart-o"></i>
-                                            <i  class="fa fa-heart hide"></i>
+                                            <i th:value="${song.getMusic_name()}"
+                                               th:id="${#numbers.formatInteger(num.count,1)}" class="fa fa-heart-o"></i>
+                                            <i th:id="${#numbers.formatInteger(num.count+500,1)}"
+                                               class="fa fa-heart hide"></i>
                                         </a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </th:block>
+
                 </section>
             </div>
         </section>
@@ -47,75 +50,69 @@
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
 <script th:inline="javascript">
-/*
-    $(document).ready(function () {
-        $(" i [name = 'song']").click(function () {
-            var song = $(this).html();
-             alert(song);
-            $.ajax({
-                url: "user/addfavoritesong",
-                type: "post",
-                dataType: 'json',
-                data: {
-                    //<![CDATA[
-                    "songname": song,
-                    "userphone":/!*[[${session.LoginUser.getUser_phone()}]]*!/ ""
-                    //]]>
-                },
-                success: function (result) {
-                    // alert(result.stat);
-                    if (result.stats == 0) {
-                        alert("添加失败")
-                    } else if (result.stats == 1) {
-                        alert("添加成功");
-                    }
-                }
-            });
-        });
-    });*/
-    /*function testsongss() {
-        var sn = $(this).html();
-        alert(sn);
+    $(".fa-heart-o").click(function () {
+        var songname = $(this);
+        //String
+        var hidid = songname.attr("id");
+        var showid = String(Number(hidid) + 500);
         $.ajax({
             url: "user/addfavoritesong",
             type: "get",
             dataType: 'json',
             data: {
+                "songname": songname.attr("value"),
                 //<![CDATA[
-                "songname":/!*[[${session.playMusiconeinformation.getMusic_name()}]]*!/ "",
-                "userphone":/!*[[${session.LoginUser.getUser_phone()}]]*!/ ""
+                "userphone":/*[[${session.LoginUser.getUser_phone()}]]*/""
                 //]]>
             },
             success: function (result) {
-                if (result.statt == "1") {
+                // alert(result.stat);
+                if (result.statt == 0) {
+                    alert("添加收藏失败")
+                } else if (result.statt == 1) {
                     alert("添加成功");
+                    $("#" + showid + "").removeClass("hide");
+                    $("#" + showid + "").attr("value", songname.attr("value"));
+                    $("#" + hidid + "").addClass("hide");
+                    $("#" + hidid + "").removeAttr("value");
                 }
+            },
+            error: function () {
+                alert("Error")
             }
         });
-    }*/
-    /*$(document).ready(function () {
-        $("a[name = 'song']").click(function () {
-            var song = $(this).html();
-            /!* alert(song);*!/
-            $.ajax({
-                url: "song/musicplaylist",
-                type: "post",
-                dataType: 'json',
-                data: {
-                    "playmusic": song,
-                },
-                success: function (result) {
-                    // alert(result.stat);
-                    if (result.stats == 0) {
-                        alert("暂无这首歌曲")
-                    } else if (result.stats == 1) {
-                        /!*跳转到MusicController*!/
-                        window.location.href = 'listen.html';
-                    }
+    });
+
+    $(".fa-heart").click(function () {
+        var songname = $(this);
+        var hidid = songname.attr("id");
+        var showid = String(Number(hidid) - 500);
+        $.ajax({
+            url: "user/delfavoritesong",
+            type: "get",
+            dataType: "json",
+            data: {
+                "songname": songname.attr("value"),
+                //<![CDATA[
+                "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/""
+                //]]>
+            },
+            success: function (result) {
+                if (result.statt == 0) {
+                    alert("删除收藏失败")
+                } else if (result.statt == 1) {
+                    alert("删除成功");
+                    $("#" + showid + "").removeClass("hide");
+                    $("#" + showid + "").attr("value", songname.attr("value"));
+                    $("#" + hidid + "").addClass("hide");
+                    $("#" + hidid + "").removeAttr("value");
                 }
-            });
+            },
+            error: function () {
+                alert("Error")
+            }
         });
-    });*/
+    });
 </script>
 
 </html>

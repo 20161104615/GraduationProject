@@ -76,6 +76,7 @@
                     </li>
                 </ul>
             </li>
+            <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
             <script type="text/javascript" th:inline="javascript">
                 $("a[name = 'personalinformation']").click(function () {
                     var song = $(this).html();
@@ -112,8 +113,8 @@
     <a href="#" style="margin-left: 5rem">分类</a>
 </div>
 <footer th:fragment="public_footer_footer">
-    <script th:src="@{/asserts/js/jquery.min.js}"></script>
     <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script th:src="@{/asserts/js/jquery-v1.10.2.min.js}"></script>
     <!-- Bootstrap -->
     <script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
     <!--JPlayer-->
@@ -134,17 +135,15 @@
     <script th:src="@{/asserts/js/wysiwyg/jquery.hotkeys.js}"></script>
     <script th:src="@{/asserts/js/wysiwyg/bootstrap-wysiwyg.js}"></script>
     <script th:src="@{/asserts/js/wysiwyg/demo.js}"></script>
-    <!-- markdown -->
+    <!-- markdown --><!--
     <script th:src="@{/asserts/js/markdown/epiceditor.min.js}"></script>
-    <script th:src="@{/asserts/js/markdown/demo.js}"></script>
+    <script th:src="@{/asserts/js/markdown/demo.js}"></script>-->
     <!-- parsley -->
     <script th:src="@{/asserts/js/parsley/parsley.min.js}"></script>
     <script th:src="@{/asserts/js/parsley/parsley.extend.js}"></script>
     <!-- wizard -->
     <script th:src="@{/asserts/js/wizard/jquery.bootstrap.wizard.js}"></script>
     <script th:src="@{/asserts/js/wizard/demo.js}"></script>
-
-
     <!--自定义-->
     <script type="text/javascript" th:inline="javascript">
         function findmusicbyNames() {

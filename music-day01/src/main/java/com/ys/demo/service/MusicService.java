@@ -17,4 +17,5 @@ public interface MusicService {
     public JSONArray findMusicOfPlayList(String userphone) throws JSONException;
     public ArrayList<MusicBean> findMusicOfPlayListinformation(String userphone);
     public MusicBean findONEMusic(String musicName);
+    public boolean delFavoritesong(String userPhone,String musicName);
 }
