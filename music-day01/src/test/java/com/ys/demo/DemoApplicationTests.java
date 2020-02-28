@@ -157,5 +157,13 @@ class DemoApplicationTests {
         /*boolean b = userService.USERUPDATE(userBean);
         System.out.println(b);*/
     }
+    @Test
+    void FINDUSER(){
+        UserBean userBean = new UserBean();
+        userBean.setUser_phone("12345");
+        userBean.setUser_Administrator(false);
+        UserBean finduser = userService.FINDUSER(userBean);
+        System.out.println(finduser);
+    }
 
 }

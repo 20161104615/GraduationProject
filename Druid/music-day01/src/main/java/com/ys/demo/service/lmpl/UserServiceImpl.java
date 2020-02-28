@@ -89,4 +89,24 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+    @Override
+    public UserBean FINDUSER(UserBean userBean) {
+        UserBean bean = userMapper.FINDUSERBYONE(userBean);
+        return bean;
+    }
+
+    @Override
+    public boolean INSERTUSER(UserBean userBean) {
+        ArrayList<UserBean> arrayList = userMapper.FINDUSER2(userBean);
+        if(arrayList.isEmpty()){
+            int i = userMapper.INSERTUSER(userBean);
+            if(i !=0){
+                return true;
+            }
+            return false;
+        } else {
+            return false;
+        }
+    }
 }
