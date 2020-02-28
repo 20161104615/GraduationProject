@@ -11,4 +11,6 @@ public interface UserService {
     public UserBean userFind(UserBean userBean);
     public UserBean userfindstring(String userphone);
     public ArrayList<UserBean> allUser(boolean userAdministrator);
+    public boolean USERUPDATE(UserBean userBean);
+    public boolean DELETEUSER(UserBean userBean);
 }

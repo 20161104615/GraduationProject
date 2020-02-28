@@ -100,6 +100,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DemoApplicationTests.UPDATEUSER" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="music-day01" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.ys.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.ys.demo" />
+      <option name="MAIN_CLASS_NAME" value="com.ys.demo.DemoApplicationTests" />
+      <option name="METHOD_NAME" value="UPDATEUSER" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DemoApplicationTests.getAllUser" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="music-day01" />
       <extension name="coverage">
@@ -111,22 +127,6 @@
       <option name="PACKAGE_NAME" value="com.ys.demo" />
       <option name="MAIN_CLASS_NAME" value="com.ys.demo.DemoApplicationTests" />
       <option name="METHOD_NAME" value="getAllUser" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="DemoApplicationTests.getsong" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="music-day01" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.ys.demo.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.ys.demo" />
-      <option name="MAIN_CLASS_NAME" value="com.ys.demo.DemoApplicationTests" />
-      <option name="METHOD_NAME" value="getsong" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -176,19 +176,19 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.DemoApplicationTests.sysout" />
-      <item itemvalue="JUnit.DemoApplicationTests.getsong" />
       <item itemvalue="JUnit.DemoApplicationTests.JSONArray" />
       <item itemvalue="JUnit.DemoApplicationTests.getAllUser" />
-      <item itemvalue="Spring Boot.DemoApplication" />
       <item itemvalue="JUnit.DemoApplicationTests.uploadFavoriteMusic" />
+      <item itemvalue="JUnit.DemoApplicationTests.UPDATEUSER" />
+      <item itemvalue="Spring Boot.DemoApplication" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.DemoApplicationTests.UPDATEUSER" />
         <item itemvalue="JUnit.DemoApplicationTests.getAllUser" />
         <item itemvalue="JUnit.DemoApplicationTests.uploadFavoriteMusic" />
         <item itemvalue="JUnit.DemoApplicationTests.JSONArray" />
         <item itemvalue="JUnit.DemoApplicationTests.sysout" />
-        <item itemvalue="JUnit.DemoApplicationTests.getsong" />
       </list>
     </recent_temporary>
   </component>
@@ -244,6 +244,9 @@
       <workItem from="1582712520745" duration="719000" />
       <workItem from="1582713306587" duration="304000" />
       <workItem from="1582713676907" duration="3721000" />
+      <workItem from="1582730044382" duration="4194000" />
+      <workItem from="1582804899785" duration="9663000" />
+      <workItem from="1582814694606" duration="4656000" />
     </task>
     <servers />
   </component>
@@ -273,10 +276,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="70" y="55" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1581989825627" />
-    <state x="1088" y="109" key="#com.intellij.ide.util.MemberChooser" timestamp="1582715007805">
+    <state x="119" y="150" key="#com.intellij.ide.util.MemberChooser" timestamp="1582817348370">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="1088" y="109" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582715007805" />
+    <state x="119" y="150" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1582817348370" />
     <state x="553" y="299" width="429" height="271" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes" timestamp="1582432747377">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -293,38 +296,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="549" y="190" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1582342927125" />
-    <state width="1493" height="525" key="GridCell.Tab.0.bottom" timestamp="1582717439838">
+    <state width="1493" height="499" key="GridCell.Tab.0.bottom" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="525" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582717439838" />
-    <state width="1493" height="525" key="GridCell.Tab.0.center" timestamp="1582717439838">
+    <state width="1493" height="499" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.0.center" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="525" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582717439838" />
-    <state width="1493" height="525" key="GridCell.Tab.0.left" timestamp="1582717439838">
+    <state width="1493" height="499" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.0.left" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="525" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582717439838" />
-    <state width="1493" height="525" key="GridCell.Tab.0.right" timestamp="1582717439838">
+    <state width="1493" height="499" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.0.right" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="525" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582717439838" />
-    <state width="1493" height="318" key="GridCell.Tab.1.bottom" timestamp="1582717439822">
+    <state width="1493" height="499" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.1.bottom" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="318" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582717439822" />
-    <state width="1493" height="318" key="GridCell.Tab.1.center" timestamp="1582717439822">
+    <state width="1493" height="499" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.1.center" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="318" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582717439822" />
-    <state width="1493" height="318" key="GridCell.Tab.1.left" timestamp="1582717439822">
+    <state width="1493" height="499" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.1.left" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="318" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582717439822" />
-    <state width="1493" height="318" key="GridCell.Tab.1.right" timestamp="1582717439822">
+    <state width="1493" height="499" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
+    <state width="1493" height="499" key="GridCell.Tab.1.right" timestamp="1582819402428">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="318" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582717439822" />
+    <state width="1493" height="499" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1582819402428" />
     <state width="1493" height="346" key="GridCell.Tab.2.bottom" timestamp="1582387426670">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -353,10 +356,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="263" y="20" key="SettingsEditor/0.0.1536.864@0.0.1536.864" timestamp="1582713232397" />
-    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1582676506835">
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog" timestamp="1582804903559">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1582676506835" />
+    <state x="461" y="260" key="com.intellij.ide.util.TipDialog/0.0.1536.864@0.0.1536.864" timestamp="1582804903559" />
     <state x="512" y="82" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1582681975358">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -385,10 +388,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="1126" y="198" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1582283518769" />
-    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup" timestamp="1582684087122">
+    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup" timestamp="1582816523839">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1582684087122" />
+    <state x="323" y="142" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1582816523839" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

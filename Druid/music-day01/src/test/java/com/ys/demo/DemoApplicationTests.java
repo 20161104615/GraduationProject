@@ -143,4 +143,19 @@ class DemoApplicationTests {
         System.out.println(b);
     }
 
+    @Test
+    void UPDATEUSER(){
+        UserBean userBean = new UserBean(7,"TEST", "12345", "12345",
+                "12345@qq.com", "TEST");
+        ArrayList<UserBean> arrayList = userMapper.FINDUSER(userBean);
+        if(arrayList.isEmpty()){
+            System.out.println("可以修改");
+        } else {
+            System.out.println("不可修改");
+        }
+
+        /*boolean b = userService.USERUPDATE(userBean);
+        System.out.println(b);*/
+    }
+
 }

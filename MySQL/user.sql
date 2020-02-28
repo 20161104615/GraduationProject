@@ -10,10 +10,34 @@ Target Server Type    : MYSQL
 Target Server Version : 50562
 File Encoding         : 65001
 
-Date: 2020-02-20 14:31:24
+Date: 2020-02-28 00:04:32
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `favoritesongs`
+-- ----------------------------
+DROP TABLE IF EXISTS `favoritesongs`;
+CREATE TABLE `favoritesongs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `music_id` int(11) DEFAULT NULL,
+  `music_name` varchar(500) DEFAULT NULL,
+  `user_phone` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of favoritesongs
+-- ----------------------------
+INSERT INTO `favoritesongs` VALUES ('1', '30', '演员', '1234');
+INSERT INTO `favoritesongs` VALUES ('2', '30', '演员', '123');
+INSERT INTO `favoritesongs` VALUES ('3', '55', '2002年的第一场雪', '123');
+INSERT INTO `favoritesongs` VALUES ('4', '15', '年少有为', '123');
+INSERT INTO `favoritesongs` VALUES ('5', '73', '小半', '123');
+INSERT INTO `favoritesongs` VALUES ('88', '62', '星星 (Live)', '1234');
+INSERT INTO `favoritesongs` VALUES ('93', '28', '分手快乐', '123');
+INSERT INTO `favoritesongs` VALUES ('94', '39', '关键词', '123');
 
 -- ----------------------------
 -- Table structure for `music`
@@ -27,7 +51,7 @@ CREATE TABLE `music` (
   `music_storagepath` varchar(500) DEFAULT NULL COMMENT '歌曲路径',
   `music_img` varchar(500) DEFAULT NULL COMMENT '歌曲图片',
   PRIMARY KEY (`music_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=80 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of music
@@ -92,6 +116,14 @@ INSERT INTO `music` VALUES ('76', '有个爱你的人不容易', '那英', null,
 INSERT INTO `music` VALUES ('77', '春暖花开', '那英', null, 'http://localhost:8080/media/春暖花开.m4a', 'http://localhost:8080/media/img/春暖花开-那英.jpg');
 INSERT INTO `music` VALUES ('78', '征服', '那英', null, 'http://localhost:8080/media/征服.m4a', 'http://localhost:8080/media/img/征服-那英.jpg');
 INSERT INTO `music` VALUES ('79', '山水又一程 (Live)', '那英', null, 'http://localhost:8080/media/山水又一程 (Live).m4a', 'http://localhost:8080/media/img/山水又一程 (Live)-那英.jpg');
+INSERT INTO `music` VALUES ('80', '星辰大海', '周冬雨-王俊凯-易烊千玺-刘昊然', null, 'http://localhost:8080/media/星辰大海.m4a', 'http://localhost:8080/media/img/星辰大海-周冬雨-王俊凯-易烊千玺-刘昊然.jpg');
+INSERT INTO `music` VALUES ('81', '星辰大海是你', '魏晨', null, 'http://localhost:8080/media/星辰大海是你.m4a', 'http://localhost:8080/media/img/星辰大海是你-魏晨.jpg');
+INSERT INTO `music` VALUES ('82', '曾经的你', '许巍', null, 'http://localhost:8080/media/曾经的你.m4a', 'http://localhost:8080/media/img/曾经的你-许巍.jpg');
+INSERT INTO `music` VALUES ('83', '蓝莲花', '许巍', null, 'http://localhost:8080/media/蓝莲花.m4a', 'http://localhost:8080/media/img/蓝莲花-许巍.jpg');
+INSERT INTO `music` VALUES ('84', '故乡', '许巍', null, 'http://localhost:8080/media/故乡.m4a', 'http://localhost:8080/media/img/故乡-许巍.jpg');
+INSERT INTO `music` VALUES ('85', '像风一样自由', '许巍', null, 'http://localhost:8080/media/像风一样自由.m4a', 'http://localhost:8080/media/img/像风一样自由-许巍.jpg');
+INSERT INTO `music` VALUES ('86', '生活不止眼前的苟且', '许巍', null, 'http://localhost:8080/media/生活不止眼前的苟且.m4a', 'http://localhost:8080/media/img/生活不止眼前的苟且-许巍.jpg');
+INSERT INTO `music` VALUES ('102', 'Snowdreams', '班得瑞', null, 'http://localhost:8080/media/Snowdreams.m4a', 'http://localhost:8080/media/img/Snowdreams-班得瑞.jpg');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -106,11 +138,13 @@ CREATE TABLE `user` (
   `user_birthday` date DEFAULT NULL COMMENT '生日',
   `user_email` varchar(50) DEFAULT NULL COMMENT '邮箱',
   `user_introduced` text,
+  `user_Administrator` tinyint(4) DEFAULT NULL COMMENT '是否为管理员',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', '123', '123', '123', '123', '1997-07-08', '123@qq.com', '123');
-INSERT INTO `user` VALUES ('2', '夕阳红乐队', '1234', '1234', '12346', '1978-03-14', '12347@qq.com', '内蒙古夕阳红乐队');
+INSERT INTO `user` VALUES ('1', '123', '123', '123', '123', '2020-02-05', '123@qq.om', '123', '1');
+INSERT INTO `user` VALUES ('2', '威尔', '1234', '123', '12346', '2020-02-07', '1234@126.com', '红格尔', '0');
+INSERT INTO `user` VALUES ('7', '杰克逊', '12345', '123', '123', '2020-02-26', '12345@qq.com', '美国的杰克逊', '0');

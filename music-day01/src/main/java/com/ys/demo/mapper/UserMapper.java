@@ -28,28 +28,39 @@ public interface UserMapper {
     @Select("select * from user where user_Administrator=#{userAdministrator}")
     public ArrayList<UserBean> findAllUser(boolean userAdministrator);
 
+    @Select("SELECT * FROM user WHERE user_id <> #{user_id} " +
+            "AND (user_phone = #{user_phone} OR user_email = #{user_email}) " +
+            "AND user_Administrator = FALSE")
+    public ArrayList<UserBean> FINDUSER(UserBean userBean);
+
     /**
-     * 增加用户信心
+     * 增加用户信息
      *      1、用户注册
      */
-    @Insert("insert into user (user_name,user_phone,user_email,user_pwd) " +
+    @Insert("insert into user (user_name,user_phone,user_email,user_pwd,user_Administrator) " +
             "values " +
-            "(#{user_name},#{user_phone},#{user_email},#{user_pwd})")
+            "(#{user_name},#{user_phone},#{user_email},#{user_pwd},#{user_Administrator})")
     public int insertUser(UserBean userBean);
 
     /**
      * 修改用户信息
      *      1、用户修改，手机号和邮箱不允许修改
+     *      2、管理员修改用户信息
      */
     @Update("update user set user_name=#{user_name},user_pwd=#{user_pwd}," +
             "user_birthday=#{user_birthday},user_introduced=#{user_introduced} where (user_phone=#{user_phone} or user_email=#{user_email})")
     public int updateuser(UserBean userBean);
 
+    @Update("update user set user_name=#{user_name},user_pwd=#{user_pwd}," +
+            "user_phone=#{user_phone},user_email=#{user_email},user_introduced=#{user_introduced} " +
+            "where user_id=#{user_id} ")
+    public boolean AUPDATEUSER(UserBean userBean);
+
     /**
      * 注销用户
      *      1、删除用户
      */
-    @Delete("DELETE FROM user WHERE (user_phone=#{user_phone} or user_email=#{user_email})")
-    public int deleteuser(UserBean userBean);
+    @Delete("DELETE FROM user WHERE user_id=#{user_id} and user_Administrator=#{user_Administrator}")
+    public int DELETEUSER(UserBean userBean);
 
 }

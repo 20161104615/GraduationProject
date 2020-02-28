@@ -68,4 +68,25 @@ public class UserServiceImpl implements UserService {
         ArrayList<UserBean> allUser = userMapper.findAllUser(userAdministrator);
         return allUser;
     }
+
+    @Override
+    public boolean USERUPDATE(UserBean userBean) {
+        ArrayList<UserBean> arrayList = userMapper.FINDUSER(userBean);
+        if (arrayList.isEmpty()) {
+            boolean aupdateuser = userMapper.AUPDATEUSER(userBean);
+            return aupdateuser;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public boolean DELETEUSER(UserBean userBean) {
+        int num = userMapper.DELETEUSER(userBean);
+        if (num != 0) {
+            return true;
+        } else{
+            return false;
+        }
+    }
 }
