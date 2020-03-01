@@ -35,9 +35,6 @@ public interface MusicMapper {
     @Select("select * from music where music_name like concat('%',#{music_name},'%')")
     public ArrayList<MusicBean> FINDMUSICBYNAME(String music_name);
 
-    @Select("SELECT * FROM music WHERE music_id = #{music_id}")
-    public MusicBean FINDMUSICBYID(Integer music_id);
-
     /**
      * 添加歌曲
      * 1、添加歌曲名、歌手、歌曲路径、歌曲图片路径
