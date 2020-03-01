@@ -36,6 +36,8 @@
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                         <p id="tip_nouser"
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
+                        <p th:text="${emsg}" th:if="${not #strings.isEmpty(emsg)}"
+                           style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                     </div>
                 </div>
             </div>

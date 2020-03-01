@@ -250,16 +250,36 @@ public class UserController {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
-        ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
-        if (musicOfPlayListinformation.isEmpty()) {
-            map.put("statt", "0");
+        if ("".equals(userphone)) {
+            map.put("statt", "2");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
         } else {
-            request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
-            map.put("statt", "1");
-            jsonObject = JSONObject.fromObject(map);
-            response.getWriter().print(jsonObject);
+            ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
+            if (musicOfPlayListinformation.isEmpty()) {
+                map.put("statt", "0");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            } else {
+                request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
+                map.put("statt", "1");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            }
         }
+    }
+
+    @PostMapping(value = "/allmusicbean")
+    public void allMusicBean(Map<String, Object> map,
+                             HttpServletRequest request,
+                             HttpServletResponse response) throws IOException{
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
+        request.getSession().setAttribute("MusicList", allMusicBean);
+        map.put("stat", "1");
+        jsonObject = JSONObject.fromObject(map);
+        response.getWriter().print(jsonObject);
     }
 }

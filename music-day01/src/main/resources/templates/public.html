@@ -75,7 +75,8 @@
                    style="width: 14rem;height: 6rem;background-color: #1acf74;color: white">
                     音乐馆
                 </a>
-                <a name="personalinformation" th:href="@{/profile.html}" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
+                <a name="personalinformation" th:href="@{/profile.html}" class="btn bg-white-only "
+                   style="width: 14rem;height: 6rem">我的</a>
             </div>
         </div>
     </div>
@@ -102,10 +103,12 @@
             </li>
             <li class="dropdown" style="margin-left: 16px;margin-top: 0.1rem">
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                                <img th:src="@{/asserts/images/a0.png}" alt="...">
-                              </span>
-                    [[${session.LoginUser.getUser_name()}]] <b class="caret"></b>
+                    <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                        <img th:src="@{/asserts/images/a0.png}" alt="...">
+                    </span>
+                    <span th:text="${(session.LoginUser ne null) ? session.LoginUser.getUser_name() :'未登录'}"></span>
+                    <input id="loginuserphone" class="hide" th:value="${(session.LoginUser ne null) ? session.LoginUser.getUser_phone():''}">
+                    <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInRight">
                     <li>
@@ -121,27 +124,31 @@
             <script type="text/javascript" th:inline="javascript">
                 $("a[name = 'personalinformation']").click(function () {
                     var song = $(this).html();
-                    /* alert(song);*/
-                    $.ajax({
-                        url: "user/personalinformation",
-                        type: "post",
-                        dataType: 'json',
-                        data: {
-                            "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/"",
-                        },
-                        success: function (result) {
-                            // alert(result.stat);
-                            if (result.statt == 0) {
-                                alert("Error")
-                            } else if (result.statt == 1) {
-                                /*跳转到MusicController*/
-                                window.location.href = 'profile.html';
+                    var loginuser = $("#loginuserphone").attr("value");
+                    if (loginuser != null) {
+                        $.ajax({
+                            url: "user/personalinformation",
+                            type: "post",
+                            dataType: 'json',
+                            data: {
+                                "userphone": loginuser.attr("value"),
+                            },
+                            success: function (result) {
+                                // alert(result.stat);
+                                if (result.statt == 0) {
+                                    alert("Error")
+                                } else if (result.statt == 1) {
+                                    /*跳转到MusicController*/
+                                    window.location.href = 'profile.html';
+                                }
+                            },
+                            error: function () {
+                                //alert("ERROR");
                             }
-                        },
-                        error:function () {
-                            //alert("ERROR");
-                        }
-                    });
+                        });
+                    } else {
+                        alert("请先登录");
+                    }
                 });
             </script>
         </ul>
