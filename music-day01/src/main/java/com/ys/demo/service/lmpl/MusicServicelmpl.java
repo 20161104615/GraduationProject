@@ -169,5 +169,11 @@ public class MusicServicelmpl implements MusicService {
         return arrayList;
     }
 
+    @Override
+    public MusicBean FINDMUSICOFID(Integer music_id) {
+        MusicBean musicBean = musicMapper.FINDMUSICBYID(music_id);
+        return musicBean;
+    }
+
 
 }
