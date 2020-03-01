@@ -22,10 +22,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -164,6 +161,16 @@ class DemoApplicationTests {
         userBean.setUser_Administrator(false);
         UserBean finduser = userService.FINDUSER(userBean);
         System.out.println(finduser);
+    }
+
+    @Test
+    void UUID(){
+        /*for(int i=0;i<10;i++){
+            String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+            System.out.println(uuid);
+        }*/
+        String testuuid = UUID.randomUUID().toString().replaceAll("-","");
+        System.out.println(testuuid);
     }
 
 }

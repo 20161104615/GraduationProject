@@ -2,12 +2,20 @@ package com.ys.demo.controller;
 
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.service.MusicService;
+import net.sf.json.JSONObject;
+import org.apache.catalina.webresources.FileResourceSet;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.FileSystemResource;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,6 +24,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 /*
  * @Author 20161104615
@@ -133,7 +142,7 @@ public class FilesController {
         files.add(newMusicUrl);
         files.add(newMusicImgUrl);
         MultipartFile file = null;
-        if(musicID != 0) {
+        if (musicID != 0) {
             for (int i = 0; i < files.size(); i++) {
                 file = files.get(i);
                 fileName = file.getOriginalFilename();//获取文件名称
@@ -277,5 +286,28 @@ public class FilesController {
             request.getSession().setAttribute("AMusicList", allMusicBean);
             response.sendRedirect("/music/datatable.html");
         }
+    }
+
+    @PostMapping(value = "/downloadmusic")
+    public ResponseEntity downloadMusic(@RequestParam(value = "downloadmusicid") Integer songid,
+                                        HttpServletResponse response,
+                                        HttpServletRequest request) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        String pathName = "";
+        MusicBean musicBean = musicService.FINDMUSICOFID(songid);
+        String filePathMusicUrl = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/";//歌曲存放的路径
+        pathName = filePathMusicUrl + musicBean.getMusic_name()+".m4a";
+        String downloadName = UUID.randomUUID().toString().replaceAll("-", "") + musicBean.getMusic_name();
+        //FileSystemResource 以文件系统的绝对路径的方式访问静态资源
+        FileSystemResource fileSystemResource = new FileSystemResource(pathName);
+        HttpHeaders httpHeaders = new HttpHeaders();
+        //设置默认下载名称
+        httpHeaders.add("Content-Disposition", "attachment;filename=" + downloadName + ".m4a");
+        return ResponseEntity.ok()
+                .headers(httpHeaders)
+                .contentLength(fileSystemResource.contentLength())
+                .contentType(MediaType.parseMediaType("application/octet-strem"))
+                .body(new InputStreamResource(fileSystemResource.getInputStream()));
     }
 }
