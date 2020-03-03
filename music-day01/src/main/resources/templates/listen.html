@@ -16,18 +16,34 @@
                         <aside class="col-sm-5 no-padder" id="sidebar" style="background-color: white">
                             <section class="vbox animated fadeInUp ">
                                 <section class="scrollable r-b m-t-md">
-                                    <div class="m-t-n-xxs item pos-rlt m-t-md">
-                                        <th:block th:each="song:${session.playMusiconeinformation}">
-                                            <div class="bottom gd bg-info wrapper-lg">
-                                                <span class="h2 font-thin">[[${song.getMusic_singer()}]]</span>
+                                    <div class="col-lg-12">
+                                        <section class="panel panel-default">
+                                            <div class="carousel slide auto panel-body" id="c-slide">
+                                                <div class="carousel-inner">
+                                                    <th:block th:each="song,num:${session.playMusiconeinformation}">
+                                                        <div th:class="${(num.first)?'item active':'item'}">
+                                                            <p class="text-center">
+                                                                <em class="h4 text-mute">
+                                                                    <img class="col-sm-5"
+                                                                         th:src="${song.getMusic_img()}" alt="...">
+                                                                </em><br>
+                                                                <small class="text-muted">[[${song.getMusic_name()}]]</small><br><br>
+                                                                <small class="text-muted">[[${song.getMusic_singer()}]]</small>
+                                                            </p>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                                <a class="left carousel-control" href="#c-slide" data-slide="prev">
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
+                                                <a class="right carousel-control" href="#c-slide" data-slide="next">
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
                                             </div>
-                                            <img class="col-sm-4 img-circle"
-                                                 th:src="${song.getMusic_img()}" alt="...">
-                                        </th:block>
+                                        </section>
                                     </div>
                                 </section>
                             </section>
-
                         </aside>
                         <!-- / side content -->
                         <section class="col-sm-1 no-padder" style="background-color: white">
@@ -212,6 +228,7 @@
             $("#downloadmusicid").attr("value", song.attr("value"));
             $("#downloadForm").submit();
         });
+        $('.carousel').carousel('pause');
     });
 </script>
 </html>
