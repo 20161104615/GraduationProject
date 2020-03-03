@@ -48,8 +48,17 @@
 .A-insertmusic{}
 .A-updatemusic{}
 .A-deletemusic{}
-
-/*dt{*/
-/*    padding-left: 30rem;*/
-/*    margin-left: 10rem;*/
-/*}*/
+.Ulisten-list{
+    width: 100%;
+    margin-top: 1px;
+}
+.Ulisten-list-left{
+    width: 70%;
+    float: left;
+    margin-top: -10px;
+}
+.Ulisten-list-rigth{
+    width: 30%;
+    float: right;
+    margin-top: -10px;
+}

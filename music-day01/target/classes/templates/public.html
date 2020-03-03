@@ -82,7 +82,6 @@
     </div>
     <div class="aside-xxl" style="margin-left: 70rem;">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user" style="margin-left: 20rem">
-
             <li class="dropdown">
                 <div class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs">
                     <div class="form-group">
@@ -107,7 +106,8 @@
                         <img th:src="@{/asserts/images/a0.png}" alt="...">
                     </span>
                     <span th:text="${(session.LoginUser ne null) ? session.LoginUser.getUser_name() :'未登录'}"></span>
-                    <input id="loginuserphone" class="hide" th:value="${(session.LoginUser ne null) ? session.LoginUser.getUser_phone():''}">
+                    <input id="loginuserphone" class="hide"
+                           th:value="${(session.LoginUser ne null) ? session.LoginUser.getUser_phone():''}">
                     <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInRight">
@@ -116,7 +116,8 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="modal.lockme.html" data-toggle="ajaxModal">退出登录</a>
+                        <form id="userLogoutForm" method="post" th:action="@{/logout}"></form>
+                        <a name="logout" href="#" data-toggle="ajaxModal">退出登录</a>
                     </li>
                 </ul>
             </li>
@@ -127,11 +128,11 @@
                     var loginuser = $("#loginuserphone").attr("value");
                     if (loginuser != null) {
                         $.ajax({
-                            url: "user/personalinformation",
+                            url: "song/musicplaylistoffavorite",
                             type: "post",
                             dataType: 'json',
                             data: {
-                                "userphone": loginuser.attr("value"),
+                                "userphone": loginuser,
                             },
                             success: function (result) {
                                 // alert(result.stat);
@@ -150,8 +151,22 @@
                         alert("请先登录");
                     }
                 });
+
+                $("a[name = 'logout']").click(function () {
+                    $("#userLogoutForm").submit();
+                });
             </script>
         </ul>
+        <div class="top text-right">
+                <span class="musicbar animate bg-success bg-empty inline m-r-lg m-t"
+                      style="width:25px;height:30px">
+                    <span class="bar1 a3 lter"></span>
+                    <span class="bar2 a5 lt"></span>
+                    <span class="bar3 a1 bg"></span>
+                    <span class="bar4 a4 dk"></span>
+                    <span class="bar5 a2 dker"></span>
+                </span>
+        </div>
     </div>
 </header>
 <!--public_navigation-->
@@ -242,6 +257,4 @@
     </script>
 </footer>
 </body>
-
-
 </html>

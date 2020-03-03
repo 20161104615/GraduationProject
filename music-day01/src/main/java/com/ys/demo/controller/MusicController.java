@@ -61,7 +61,7 @@ public class MusicController {
                 //表示取值成功
                 request.getSession().setAttribute("searchResult", entry.getValue().toArray());
                 ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(user.getUser_phone());
-                
+
                 map.put("stat", "1");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
@@ -131,12 +131,9 @@ public class MusicController {
             ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
             request.getSession().setAttribute("playMusic", musicOfPlayList);
             request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
-
             map.put("listofstat", "1");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
-            System.out.println("出错，未完成");
         }
     }
-
 }

@@ -61,14 +61,4 @@ public class MyMvcConfig implements WebMvcConfigurer {
         return new MyLocaleResolver();
     }
 
-    /**
-     * 资源映射路径
-     * addResourceHandler：访问映射路径
-     * addResourceLocations：资源绝对路径
-     */
-//    @Override
-//    public void addResourceHandlers(ResourceHandlerRegistry registry) {
-//        registry.addResourceHandler("/asserts/media/**").addResourceLocations("file:D:/PythonProgram/PythonProgram");
-//    }
-
 }

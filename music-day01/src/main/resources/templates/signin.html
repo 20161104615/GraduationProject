@@ -36,7 +36,7 @@
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                         <p id="tip_nouser"
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
-                        <p th:text="${emsg}" th:if="${not #strings.isEmpty(emsg)}"
+                        <p id="cl" th:text="${emsg}" th:if="${not #strings.isEmpty(emsg)}"
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                     </div>
                 </div>
@@ -95,13 +95,16 @@
                 // alert(result.stat);
                 if (result.stat == 0) {
                     //登录失败
+
                     $("#user_password").val("");
+                    $("#cl").attr("class","hide");
                     document.getElementById("tip_passwordError").innerText = [[#{tip_passwordError}]];
                     document.getElementById("tip_success").innerText = "";
                     document.getElementById("tip_NoInformation").innerText = "";
                     document.getElementById("tip_nouser").innerText = "";
                 } else if (result.stat == 1) {
                     // 登录成功
+                    $("#cl").attr("class","hide");
                     document.getElementById("tip_passwordError").innerText = "";
                     document.getElementById("tip_success").innerText = [[#{tip_success}]];
                     document.getElementById("tip_NoInformation").innerText = "";
@@ -110,14 +113,17 @@
                     window.location.href = 'index.html';
                     /*setTimeout("location='/song/showmusic'", 150);*/
                 } else if (result.stat == 3) {
+                    $("#cl").attr("class","hide");
                     alert("网络拥堵，请稍后再试！")
                 } else if (result.stat == 4){
                     //该用户未注册
+                    $("#cl").attr("class","hide");
                     document.getElementById("tip_passwordError").innerText = "";
                     document.getElementById("tip_success").innerText = "";
                     document.getElementById("tip_NoInformation").innerText = "";
                     document.getElementById("tip_nouser").innerText = [[#{tip_nouser}]];
                 }else if(result.stat == 11){
+                    $("#cl").attr("class","hide");
                     location='datatable.html';
                     setTimeout("location='datatable.html'", 150);
                 }

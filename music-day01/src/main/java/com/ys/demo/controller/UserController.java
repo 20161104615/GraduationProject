@@ -242,7 +242,7 @@ public class UserController {
      * @Param []
      * @return void
      **/
-    @PostMapping(value = "/personalinformation")
+    /*@PostMapping(value = "/personalinformation")
     public void intoPersonInformation(@RequestParam("userphone") String userphone,
                                       Map<String, Object> map,
                                       HttpServletRequest request,
@@ -267,12 +267,12 @@ public class UserController {
                 response.getWriter().print(jsonObject);
             }
         }
-    }
+    }*/
 
     @PostMapping(value = "/allmusicbean")
     public void allMusicBean(Map<String, Object> map,
                              HttpServletRequest request,
-                             HttpServletResponse response) throws IOException{
+                             HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
