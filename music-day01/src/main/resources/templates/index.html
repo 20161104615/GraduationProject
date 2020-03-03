@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="public :: public_head_head">
-</head>
+<head th:replace="public :: public_head_head"></head>
 <body class="">
-
 <section class="vbox" style="background-color: rgba(53,255,84,0.04)">
     <div th:replace="~{public :: public_head}"></div>
     <section class="vbox">
@@ -136,10 +134,20 @@
                                                     class="r r-2x img-full"></a>
                                         </div>
                                         <div class="padder-v">
-                                            <a name="song" href="#" class="text-ellipsis">[[${session.MusicList[k+12+17].getMusic_name()}]]</a>
+                                            <div class="index-list">
+                                                <div class="index-list-left"></div>
+                                                <div class="index-list-rigth">
+                                                    <i th:value="${session.MusicList[k+12+17].getMusic_id()}"
+                                                       style="padding-left: 5px" class="icon-share-alt"></i>
+                                                </div>
+                                            </div>
+                                            <a name="song" href="#" class="text-ellipsis">
+                                                [[${session.MusicList[k+12+17].getMusic_name()}]]
+                                            </a>
                                             <div class="text-ellipsis text-xs text-muted">
                                                 [[${session.MusicList[k+12+17].getMusic_singer()}]]
                                             </div>
+
                                         </div>
                                     </div>
                                 </div>
@@ -173,7 +181,16 @@
                                                          class="r r-2x img-full">
                                                 </div>
                                                 <div class="padder-v">
-                                                    <a name="song" href="#" class="text-ellipsis text-center">[[${session.MusicList[k+8+33].getMusic_name()}]]</a>
+                                                    <div class="index-list">
+                                                        <div class="index-list-left"></div>
+                                                        <div class="index-list-rigth">
+                                                            <i th:value="${session.MusicList[k+8+33].getMusic_id()}"
+                                                               style="padding-left: 5px" class="icon-share-alt"></i>
+                                                        </div>
+                                                    </div>
+                                                    <a name="song" href="#" class="text-ellipsis text-center">
+                                                        [[${session.MusicList[k+8+33].getMusic_name()}]]
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -211,4 +228,27 @@
 </section>
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $(".icon-share-alt").click(function () {
+            var songs = $(this);
+            $.ajax({
+                url: "user/share",
+                type: "get",
+                dataType: 'json',
+                data: {
+                    "songid":songs.attr("value")
+                },
+                success:function (result) {
+                    if (result.stat == 1){
+                        window.location.href="share.html"
+                    }
+                },
+                error:function () {
+                    alert("ERROR");
+                }
+            });
+        });
+    });
+</script>
 </html>

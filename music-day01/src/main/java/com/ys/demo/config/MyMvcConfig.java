@@ -32,6 +32,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/list.html").setViewName("list");
                 registry.addViewController("/fileupload.html").setViewName("fileupload");
                 registry.addViewController("/datatable.html").setViewName("datatable");
+                registry.addViewController("/share.html").setViewName("share");
             }
 
             //拦截器注册，addPathPatterns()添加拦截请求，excludePathPatterns()排除拦截请求
@@ -43,6 +44,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
                                 "/datatable.html",
                                 "/profile.html",
                                 "/fileupload.html",
+                                "/share.html",
                                 "/listen.html").
                         excludePathPatterns("/","/signin.html",
                                 "/user/login",

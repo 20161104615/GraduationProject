@@ -88,25 +88,14 @@
                                             <div class="line"></div>
                                             <small class="text-uc text-xs text-muted">connection</small>
                                             <p class="m-t-sm">
-                                                <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i class="fa fa-twitter"></i></a>
-                                                <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i class="fa fa-facebook"></i></a>
-                                                <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i class="fa fa-google-plus"></i></a>
+                                                <a href="#" class="btn btn-rounded btn-twitter btn-icon"><i
+                                                        class="fa fa-twitter"></i></a>
+                                                <a href="#" class="btn btn-rounded btn-facebook btn-icon"><i
+                                                        class="fa fa-facebook"></i></a>
+                                                <a href="#" class="btn btn-rounded btn-gplus btn-icon"><i
+                                                        class="fa fa-google-plus"></i></a>
                                             </p>
                                         </div>
-
-                                        <!--<div class="col-lg-4 center m-t-md m-l-md">
-                                            <div class="inline">
-                                                <div class="easypiechart" data-percent="60" data-line-width="10"
-                                                     data-track-color="#eee" data-bar-color="#1ccc88"
-                                                     data-scale-color="#fff" data-size="188" data-line-cap='butt'>
-                                                    <div>
-                                                        <span class="h2 m-l-sm step">60</span>%
-                                                        <div class="text text-sm">new visits</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>-->
-
                                     </div>
                                 </section>
                             </section>
@@ -115,33 +104,69 @@
                             <section class="vbox">
                                 <header class="header bg-light lt">
                                     <ul class="nav nav-tabs nav-white">
-                                        <li class="active"><a href="#activity" data-toggle="tab"><i
-                                                class="icon-heart"></i>&nbsp;我喜欢</a></li>
-                                        <li class=""><a href="#events" data-toggle="tab">Events</a></li>
-                                        <li class=""><a href="#interaction" data-toggle="tab">Interaction</a></li>
+                                        <li class="active">
+                                            <a href="#events" data-toggle="tab">
+                                                <i class="icon-cup"></i> 时光轴</a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#activity" data-toggle="tab">
+                                                <i class="icon-heart"></i>&nbsp;我喜欢
+                                            </a>
+                                        </li>
+                                        <li class="">
+                                            <a href="#interaction" data-toggle="tab">Interaction</a>
+                                        </li>
                                     </ul>
                                 </header>
                                 <section class="scrollable">
                                     <div class="tab-content">
-                                        <div class="tab-pane active" id="activity">
+                                        <div class="tab-pane active" id="events">
+                                            <div class="hbox stretch">
+                                                <div class="vbox">
+                                                    <div class="scrollable wrapper text-left">
+                                                        <div class="timeline col-xs-pull-5">
+                                                            <article class="timeline-item">
+                                                                <div class="timeline-caption">
+                                                                    <div class="panel panel-default" style="width: 700px">
+                                                                        <div class="panel-body">
+                                                                            <span class="arrow right"></span>
+                                                                            <span class="timeline-icon"><i
+                                                                                    class="fa fa-male time-icon bg-success"></i></span>
+                                                                            <span class="timeline-date">10:00 am</span>
+                                                                            <div class="text-sm">Appointment</div>
+                                                                            <h5>
+                                                                                Carmark Sook (.inc company)
+                                                                            </h5>
+                                                                            <p>Morbi nec nunc condimentum, egestas dui
+                                                                                nec, </p>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </article>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane" id="activity">
                                             <ul class="list-group no-radius m-b-none m-t-n-xxs list-group-lg no-border">
                                                 <th:block th:each="song:${session.playMusiconeinformation}">
-                                                <li class="list-group-item">
-                                                    <a href="#" class="thumb-sm pull-left m-r-sm">
-                                                        <img th:src="${song.getMusic_img()}" class="img-circle">
-                                                    </a>
-                                                    <span class="clear pull-right m-t-lg ">
+                                                    <li class="list-group-item">
+                                                        <a href="#" class="thumb-sm pull-left m-r-sm">
+                                                            <img th:src="${song.getMusic_img()}" class="img-circle">
+                                                        </a>
+                                                        <span class="clear pull-right m-t-lg ">
                                                       <a href="#">
                                                           <i class="fa fa-times icon-muted fa-fw"></i>
                                                       </a>
                                                     </span>
-                                                    <a href="#" class="clear">
-                                                        <strong class="block"> [[${song.getMusic_name()}]]</strong>
-                                                        <small>
-                                                            [[${song.getMusic_singer()}]]
-                                                        </small>
-                                                    </a>
-                                                </li>
+                                                        <a href="#" class="clear">
+                                                            <strong class="block"> [[${song.getMusic_name()}]]</strong>
+                                                            <small>
+                                                                [[${song.getMusic_singer()}]]
+                                                            </small>
+                                                        </a>
+                                                    </li>
                                                 </th:block>
                                             </ul>
                                         </div>
@@ -222,7 +247,7 @@
                     window.location.href = 'listen.html';
                 }
             },
-            error:function () {
+            error: function () {
                 alert("Error")
             }
         });

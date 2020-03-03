@@ -2,14 +2,17 @@ package com.ys.demo.controller;
 
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.service.MusicService;
+import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
 
 @Controller
 public class LoginController {

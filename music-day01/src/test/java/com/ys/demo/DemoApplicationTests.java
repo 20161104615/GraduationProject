@@ -7,7 +7,6 @@ import com.ys.demo.mapper.MusicMapper;
 import com.ys.demo.mapper.UserMapper;
 import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.json.JSONException;
@@ -16,13 +15,18 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.sql.DataSource;
+import java.net.MalformedURLException;
+import java.net.*;
+import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -170,7 +174,25 @@ class DemoApplicationTests {
             System.out.println(uuid);
         }*/
         String testuuid = UUID.randomUUID().toString().replaceAll("-","");
+        URL url = null;
+        try {
+            url = new URL("http", "localhost", 8080, "/media/Snowdreams.m4a");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(url.toString());
         System.out.println(testuuid);
+    }
+
+    @Test
+    void ShareUrl() {
+        URL url = null;
+        try {
+            url =  url = new URL("http", "localhost", 8081, "/media/Snowdreams.m4a");
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        System.out.println(url.toString());
     }
 
 }

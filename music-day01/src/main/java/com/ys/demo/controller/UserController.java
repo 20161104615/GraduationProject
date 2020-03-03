@@ -282,4 +282,19 @@ public class UserController {
         jsonObject = JSONObject.fromObject(map);
         response.getWriter().print(jsonObject);
     }
+
+    @RequestMapping(value = "/share")
+    public void share(@RequestParam("songid") Integer songid,
+                      Map<String, Object> map,
+                      HttpServletRequest request,
+                      HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        MusicBean musicBean = musicService.FINDMUSICOFID(songid);
+        request.getSession().setAttribute("sharemusic",musicBean);
+        map.put("stat", "1");
+        jsonObject = JSONObject.fromObject(map);
+        response.getWriter().print(jsonObject);
+    }
 }
