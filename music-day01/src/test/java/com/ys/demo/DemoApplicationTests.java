@@ -22,7 +22,9 @@ import java.net.MalformedURLException;
 import java.net.*;
 import java.io.*;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -193,6 +195,12 @@ class DemoApplicationTests {
             e.printStackTrace();
         }
         System.out.println(url.toString());
+    }
+
+    @Test
+    void sharedate(){
+        Date date = new Date(System.currentTimeMillis());
+        System.out.println(date);
     }
 
 }

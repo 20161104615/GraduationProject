@@ -233,11 +233,12 @@
         $(".icon-share-alt").click(function () {
             var songs = $(this);
             $.ajax({
-                url: "share",
-                type: "get",
+                url: "user/share",
+                type: "post",
                 dataType: 'json',
                 data: {
-                    "songid":songs.attr("value")
+                    "songid":songs.attr("value"),
+                    "tips":"index"
                 },
                 success:function (result) {
                     if (result.stat == 1){

@@ -3,6 +3,7 @@ package com.ys.demo.controller;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
+import com.ys.demo.bean.ShareSongs;
 import com.ys.demo.bean.UserBean;
 import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
@@ -235,40 +236,6 @@ public class UserController {
         }
     }
 
-    /*
-     * @Author 20161104615
-     * @Description //TODO 获取用户收藏列表
-     * @Date 21:47 2020/2/24
-     * @Param []
-     * @return void
-     **/
-    /*@PostMapping(value = "/personalinformation")
-    public void intoPersonInformation(@RequestParam("userphone") String userphone,
-                                      Map<String, Object> map,
-                                      HttpServletRequest request,
-                                      HttpServletResponse response) throws IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
-        JSONObject jsonObject;
-        if ("".equals(userphone)) {
-            map.put("statt", "2");
-            jsonObject = JSONObject.fromObject(map);
-            response.getWriter().print(jsonObject);
-        } else {
-            ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
-            if (musicOfPlayListinformation.isEmpty()) {
-                map.put("statt", "0");
-                jsonObject = JSONObject.fromObject(map);
-                response.getWriter().print(jsonObject);
-            } else {
-                request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
-                map.put("statt", "1");
-                jsonObject = JSONObject.fromObject(map);
-                response.getWriter().print(jsonObject);
-            }
-        }
-    }*/
-
     @PostMapping(value = "/allmusicbean")
     public void allMusicBean(Map<String, Object> map,
                              HttpServletRequest request,
@@ -283,8 +250,9 @@ public class UserController {
         response.getWriter().print(jsonObject);
     }
 
-    @RequestMapping(value = "/share")
+    @PostMapping(value = "/share")
     public void share(@RequestParam("songid") Integer songid,
+                      @RequestParam("tips") String tips,
                       Map<String, Object> map,
                       HttpServletRequest request,
                       HttpServletResponse response) throws IOException {
@@ -292,9 +260,32 @@ public class UserController {
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
         MusicBean musicBean = musicService.FINDMUSICOFID(songid);
-        request.getSession().setAttribute("sharemusic",musicBean);
-        map.put("stat", "1");
-        jsonObject = JSONObject.fromObject(map);
-        response.getWriter().print(jsonObject);
+        if ("".equals(tips)){
+            map.put("stat", "0");
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        } else if("index".equals(tips)){
+            request.getSession().setAttribute("sharemusic",musicBean);
+            map.put("stat", "1");
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        } else if ("share".equals(tips)){
+            UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
+            Date date = new Date(System.currentTimeMillis());
+            ShareSongs shareSongs = new ShareSongs(musicBean.getMusic_id(),
+                    loginUser.getUser_phone(),musicBean.getMusic_name(),date,musicBean.getMusic_singer());
+            boolean b = musicService.shareSongs(shareSongs);
+            if (b){
+                ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(shareSongs);
+                request.getSession().setAttribute("sharemusiclist",arrayList);
+                map.put("stat", "2");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            } else {
+                map.put("stat", "0");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            }
+        }
     }
 }

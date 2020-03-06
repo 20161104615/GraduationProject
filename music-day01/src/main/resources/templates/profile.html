@@ -113,9 +113,6 @@
                                                 <i class="icon-heart"></i>&nbsp;我喜欢
                                             </a>
                                         </li>
-                                        <li class="">
-                                            <a href="#interaction" data-toggle="tab">Interaction</a>
-                                        </li>
                                     </ul>
                                 </header>
                                 <section class="scrollable">
@@ -124,23 +121,26 @@
                                             <div class="hbox stretch">
                                                 <div class="vbox">
                                                     <div class="scrollable wrapper text-left">
-                                                        <div class="timeline col-xs-pull-5">
+                                                        <div class="timeline col-xs-pull-4">
                                                             <article class="timeline-item">
                                                                 <div class="timeline-caption">
-                                                                    <div class="panel panel-default" style="width: 700px">
-                                                                        <div class="panel-body">
-                                                                            <span class="arrow right"></span>
-                                                                            <span class="timeline-icon"><i
-                                                                                    class="fa fa-male time-icon bg-success"></i></span>
-                                                                            <span class="timeline-date">10:00 am</span>
-                                                                            <div class="text-sm">Appointment</div>
-                                                                            <h5>
-                                                                                Carmark Sook (.inc company)
-                                                                            </h5>
-                                                                            <p>Morbi nec nunc condimentum, egestas dui
-                                                                                nec, </p>
+                                                                    <th:block th:each="song:${session.sharemusiclist}" th:if="${session.sharemusiclist ne null}">
+                                                                        <div class="panel panel-default"
+                                                                             style="width: 600px">
+                                                                            <div class="panel-body">
+                                                                                <span class="arrow right"></span>
+                                                                                <span class="timeline-icon"><i
+                                                                                        class="fa fa-male time-icon bg-success"></i></span>
+                                                                                <span class="timeline-date">[[${song.getShare_date()}]]</span>
+                                                                                <div class="text-sm">分享歌曲</div><br>
+                                                                                <h5>
+                                                                                    &nbsp;&nbsp;&nbsp;&nbsp;<b>[[${song.getMusic_name()}]]</b>
+                                                                                </h5>
+                                                                                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                                                                    ----[[${song.getMusic_singer()}]]</p>
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
+                                                                    </th:block>
                                                                 </div>
                                                             </article>
                                                         </div>

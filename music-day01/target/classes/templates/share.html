@@ -225,13 +225,9 @@
 
     <a class="card" href="#">
         <div class="front" style="background-image: url('asserts/images/p10.jpg')">
-
         </div>
         <div class="front" th:style="'background-image:url(' + ${session.sharemusic.getMusic_img()} + ');'"></div>
         <div class="back">
-            <form id="shareForm" method="post" th:action="@{/share}" style="display: none">
-                <input id="sharemusicid" name="sharemusicid"  style="display: none">
-            </form>
             <div>
                 <p>音乐分享</p>
                 <hr>
@@ -245,16 +241,29 @@
     </a>
 </div>
 </body>
-<script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script th:src="@{/asserts/js/jquery-v1.10.2.min.js}"></script>
+<script th:inline="javascript">
     $(document).ready(function () {
-        $("#sharesignin").click(function () {
-            window.location.href='signin.html'
-        });
-        $("#sharesignup").click(function () {
-            window.location.href='signup.html'
-        });
         $("#sharemusic").click(function () {
-
+            var musicid = /*[[${session.sharemusic.getMusic_id()}]]*/"";
+            $.ajax({
+                url: "user/share",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "songid":musicid.toString(),
+                    "tips":"share"
+                },
+                success:function (result) {
+                    if (result.stat == 2){
+                        window.location.href="profile.html"
+                    }
+                },
+                error:function () {
+                    alert("ERROR");
+                }
+            });
         });
     });
 </script>

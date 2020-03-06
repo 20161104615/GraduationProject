@@ -124,13 +124,14 @@
                     document.getElementById("tip_nouser").innerText = [[#{tip_nouser}]];
                 }else if(result.stat == 11){
                     $("#cl").attr("class","hide");
-                    location='datatable.html';
+                    window.location.href='datatable.html';
                     setTimeout("location='datatable.html'", 150);
                 }
+            },
+            error:function () {
+                alert("ERROE");
             }
         });
     };
-
-
 </script>
 </html>

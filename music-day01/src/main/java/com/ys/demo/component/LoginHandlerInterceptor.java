@@ -15,9 +15,13 @@ public class LoginHandlerInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         Object user = request.getSession().getAttribute("LoginUser");
-        Object musicList = request.getSession().getAttribute("MusicList");
+        Object A_user = request.getSession().getAttribute("ALoginUser");
         if(user == null){
             //未登录,返回登录页面
+            if(A_user != null){
+                //管理员已登录，放行请求
+                return true;
+            }
             request.setAttribute("emsg","没有权限，请登录后再试");
             request.getRequestDispatcher("/signin.html").forward(request,response);
             return false;

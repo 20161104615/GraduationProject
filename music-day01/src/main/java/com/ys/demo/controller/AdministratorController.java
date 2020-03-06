@@ -135,6 +135,7 @@ public class AdministratorController {
         boolean b = userService.INSERTUSER(userBean);
         if (b) {
             ArrayList<UserBean> allUser = userService.allUser(false);
+            System.out.println(allUser);
             request.getSession().setAttribute("ALLUSER", allUser);
             map.put("stat", "1");
             jsonObject = JSONObject.fromObject(map);

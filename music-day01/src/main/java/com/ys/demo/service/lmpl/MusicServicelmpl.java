@@ -2,6 +2,7 @@ package com.ys.demo.service.lmpl;
 
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
+import com.ys.demo.bean.ShareSongs;
 import com.ys.demo.mapper.MusicMapper;
 import com.ys.demo.service.MusicService;
 import net.sf.json.JSONArray;
@@ -175,5 +176,15 @@ public class MusicServicelmpl implements MusicService {
         return musicBean;
     }
 
+    @Override
+    public boolean shareSongs(ShareSongs shareSongs) {
+        boolean b = musicMapper.uploadMusicShare(shareSongs);
+        return b;
+    }
 
+    @Override
+    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(ShareSongs shareSongs) {
+        ArrayList<ShareSongs> arrayList = musicMapper.SHARE_SONGS_ARRAY_LIST(shareSongs);
+        return arrayList;
+    }
 }

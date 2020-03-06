@@ -24,12 +24,6 @@ public class LoginController {
         response.setContentType("text/html;charset=utf-8");
         ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
         request.getSession().setAttribute("MusicList", allMusicBean);
-        return "index";
-    }
-    @RequestMapping(value = "/logout")
-    public String userLogout(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        request.setCharacterEncoding("utf-8");
-        response.setContentType("text/html;charset=utf-8");
         request.getSession().removeAttribute("LoginUser");
         request.getSession().removeAttribute("playMusiconeinformation");
         request.getSession().removeAttribute("playMusic");

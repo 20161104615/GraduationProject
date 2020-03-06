@@ -2,6 +2,7 @@ package com.ys.demo.service;
 
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
+import com.ys.demo.bean.ShareSongs;
 import net.sf.json.JSONArray;
 import org.json.JSONException;
 
@@ -24,4 +25,6 @@ public interface MusicService {
     public boolean DELETEMUSIC(Integer music_id);
     public ArrayList<MusicBean> FINDMUSIC(String music_name);
     public MusicBean FINDMUSICOFID(Integer music_id);
+    public boolean shareSongs(ShareSongs shareSongs);
+    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(ShareSongs shareSongs);
 }
