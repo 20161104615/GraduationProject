@@ -175,8 +175,8 @@
     <a href="#" th:href="@{/index.html}" th:class="${activeUri=='index'?'text-success':'h6'}">首页</a>
     <a href="#" th:href="@{/singer.html}" th:class="${activeUri=='singer'?'text-success':'h6'}"
        style="margin-left: 5rem">歌手</a>
-    <a href="#" style="margin-left: 5rem">排行榜</a>
-    <a href="#" style="margin-left: 5rem">分类</a>
+   <!-- <a href="#" style="margin-left: 5rem">排行榜</a>
+    <a href="#" style="margin-left: 5rem">分类</a>-->
 </div>
 <footer th:fragment="public_footer_footer">
     <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
@@ -243,12 +243,10 @@
                         "playmusic": song,
                     },
                     success: function (result) {
-                        // alert(result.stat);
                         if (result.stats == 0) {
                             alert("暂无这首歌曲")
                         } else if (result.stats == 1) {
-                            /*跳转到MusicController*/
-                            window.location.href = 'listen.html';
+                            window.location.href = 'musicinfor.html';
                         }
                     }
                 });

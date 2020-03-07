@@ -75,13 +75,13 @@
                    style="width: 14rem;height: 6rem;background-color: #1acf74;color: white">
                     音乐馆
                 </a>
-                <a name="personalinformation" th:href="@{/profile.html}" class="btn bg-white-only " style="width: 14rem;height: 6rem">我的</a>
+                <a name="personalinformation" th:href="@{/profile.html}" class="btn bg-white-only "
+                   style="width: 14rem;height: 6rem">我的</a>
             </div>
         </div>
     </div>
     <div class="aside-xxl" style="margin-left: 70rem;">
         <ul class="nav navbar-nav m-n hidden-xs nav-user user" style="margin-left: 20rem">
-
             <li class="dropdown">
                 <div class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs">
                     <div class="form-group">
@@ -102,10 +102,13 @@
             </li>
             <li class="dropdown" style="margin-left: 16px;margin-top: 0.1rem">
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
-                              <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                                <img th:src="@{/asserts/images/a0.png}" alt="...">
-                              </span>
-                    [[${session.LoginUser.getUser_name()}]] <b class="caret"></b>
+                    <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
+                        <img th:src="@{/asserts/images/a0.png}" alt="...">
+                    </span>
+                    <span th:text="${(session.LoginUser ne null) ? session.LoginUser.getUser_name() :'未登录'}"></span>
+                    <input id="loginuserphone" class="hide"
+                           th:value="${(session.LoginUser ne null) ? session.LoginUser.getUser_phone():''}">
+                    <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu animated fadeInRight">
                     <li>
@@ -113,7 +116,8 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a href="modal.lockme.html" data-toggle="ajaxModal">退出登录</a>
+                        <form id="userLogoutForm" method="post" th:action="@{/index}"></form>
+                        <a name="logout" href="#" data-toggle="ajaxModal">退出登录</a>
                     </li>
                 </ul>
             </li>
@@ -121,30 +125,48 @@
             <script type="text/javascript" th:inline="javascript">
                 $("a[name = 'personalinformation']").click(function () {
                     var song = $(this).html();
-                    /* alert(song);*/
-                    $.ajax({
-                        url: "user/personalinformation",
-                        type: "post",
-                        dataType: 'json',
-                        data: {
-                            "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/"",
-                        },
-                        success: function (result) {
-                            // alert(result.stat);
-                            if (result.statt == 0) {
-                                alert("Error")
-                            } else if (result.statt == 1) {
-                                /*跳转到MusicController*/
-                                window.location.href = 'profile.html';
+                    var loginuser = $("#loginuserphone").attr("value");
+                    if (loginuser != null) {
+                        $.ajax({
+                            url: "song/musicplaylistoffavorite",
+                            type: "post",
+                            dataType: 'json',
+                            data: {
+                                "userphone": loginuser,
+                            },
+                            success: function (result) {
+                                // alert(result.stat);
+                                if (result.statt == 0) {
+                                    alert("Error")
+                                } else if (result.statt == 1) {
+                                    /*跳转到MusicController*/
+                                    window.location.href = 'profile.html';
+                                }
+                            },
+                            error: function () {
+                                //alert("ERROR");
                             }
-                        },
-                        error:function () {
-                            alert("ERROR");
-                        }
-                    });
+                        });
+                    } else {
+                        alert("请先登录");
+                    }
+                });
+
+                $("a[name = 'logout']").click(function () {
+                    $("#userLogoutForm").submit();
                 });
             </script>
         </ul>
+        <div class="top text-right">
+                <span class="musicbar animate bg-success bg-empty inline m-r-lg m-t"
+                      style="width:25px;height:30px">
+                    <span class="bar1 a3 lter"></span>
+                    <span class="bar2 a5 lt"></span>
+                    <span class="bar3 a1 bg"></span>
+                    <span class="bar4 a4 dk"></span>
+                    <span class="bar5 a2 dker"></span>
+                </span>
+        </div>
     </div>
 </header>
 <!--public_navigation-->
@@ -153,8 +175,8 @@
     <a href="#" th:href="@{/index.html}" th:class="${activeUri=='index'?'text-success':'h6'}">首页</a>
     <a href="#" th:href="@{/singer.html}" th:class="${activeUri=='singer'?'text-success':'h6'}"
        style="margin-left: 5rem">歌手</a>
-    <a href="#" style="margin-left: 5rem">排行榜</a>
-    <a href="#" style="margin-left: 5rem">分类</a>
+   <!-- <a href="#" style="margin-left: 5rem">排行榜</a>
+    <a href="#" style="margin-left: 5rem">分类</a>-->
 </div>
 <footer th:fragment="public_footer_footer">
     <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
@@ -221,12 +243,10 @@
                         "playmusic": song,
                     },
                     success: function (result) {
-                        // alert(result.stat);
                         if (result.stats == 0) {
                             alert("暂无这首歌曲")
                         } else if (result.stats == 1) {
-                            /*跳转到MusicController*/
-                            window.location.href = 'listen.html';
+                            window.location.href = 'musicinfor.html';
                         }
                     }
                 });
@@ -235,6 +255,4 @@
     </script>
 </footer>
 </body>
-
-
 </html>

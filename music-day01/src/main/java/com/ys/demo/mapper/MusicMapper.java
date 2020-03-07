@@ -1,5 +1,6 @@
 package com.ys.demo.mapper;
 
+import com.ys.demo.bean.Comments;
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.bean.ShareSongs;
@@ -40,13 +41,17 @@ public interface MusicMapper {
     public MusicBean FINDMUSICBYID(Integer music_id);
 
     @Select("SELECT * FROM sharesongs WHERE user_phone = #{user_phone}")
-    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(ShareSongs shareSongs);
+    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(String user_phone);
+
+    @Select("SELECT * FROM comments WHERE music_id=#{music_id}")
+    public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id);
 
     /**
      * 添加歌曲
      * 1、添加歌曲名、歌手、歌曲路径、歌曲图片路径
      * 2、添加收藏
      * 3、添加分享
+     * 4、添加评论
      */
     @Insert("insert into music (music_name,music_singer,music_img,music_storagepath) " +
             "values " +
@@ -63,7 +68,10 @@ public interface MusicMapper {
             "(#{music_id},#{user_phone},#{music_name},#{share_date},#{music_singer})")
     public boolean uploadMusicShare(ShareSongs shareSongs);
 
-
+    @Insert("insert into comments (user_phone,music_id,music_name,music_singer,comments,comments_date,user_name)" +
+            "values" +
+            "(#{user_phone},#{music_id},#{music_name},#{music_singer},#{comments},#{comments_date},#{user_name})")
+    public boolean uploadMusicComments(Comments comments);
     /**
      * 更新歌曲
      */

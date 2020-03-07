@@ -1,6 +1,8 @@
 package com.ys.demo.controller;
 
+import com.ys.demo.bean.Comments;
 import com.ys.demo.bean.MusicBean;
+import com.ys.demo.bean.ShareSongs;
 import com.ys.demo.bean.UserBean;
 import com.ys.demo.service.MusicService;
 import net.sf.json.JSONArray;
@@ -100,6 +102,9 @@ public class MusicController {
         ArrayList<MusicBean> accuratefindmusicinformation = musicService.accuratefindmusicinformation(music_name);
         request.getSession().setAttribute("playMusic", jsonArray);
         request.getSession().setAttribute("playMusiconeinformation", accuratefindmusicinformation);
+        MusicBean oneMusic = musicService.findONEMusic(music_name);
+        ArrayList<Comments> arrayList = musicService.COMMENTS_ARRAY_LIST(oneMusic.getMusic_id());
+        request.getSession().setAttribute("commentslist",arrayList);
         map.put("stats", "1");
         jsonObject = JSONObject.fromObject(map);
         response.getWriter().print(jsonObject);
@@ -128,6 +133,8 @@ public class MusicController {
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
         } else {
+            ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(userphone);
+            request.getSession().setAttribute("sharemusiclist",arrayList);
             ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
             request.getSession().setAttribute("playMusic", musicOfPlayList);
             request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);

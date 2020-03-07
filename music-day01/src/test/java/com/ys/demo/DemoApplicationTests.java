@@ -2,6 +2,7 @@ package com.ys.demo;
 
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
+import com.ys.demo.bean.UserAll;
 import com.ys.demo.bean.UserBean;
 import com.ys.demo.mapper.MusicMapper;
 import com.ys.demo.mapper.UserMapper;
@@ -22,13 +23,10 @@ import java.net.MalformedURLException;
 import java.net.*;
 import java.io.*;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -199,8 +197,25 @@ class DemoApplicationTests {
 
     @Test
     void sharedate(){
-        Date date = new Date(System.currentTimeMillis());
-        System.out.println(date);
+/*        long currentTimeMillis = System.currentTimeMillis();
+        Timestamp timestamp = new Timestamp(currentTimeMillis);
+        System.out.println(timestamp);*/
+
+        Date date = new Date();
+        //得到一个timestamp格式的时间，存入mysql中的时间格式为"yyyy-MM-dd HH:mm:ss"
+        Timestamp timestamp1 = new Timestamp(date.getTime());
+        System.out.println(timestamp1);
+    }
+    
+    @Test
+    void testalluser(){
+        UserAll userAll = new UserAll();
+        UserBean userBean = userService.userfindstring("1234");
+        ArrayList<MusicBean> musicBeans = musicService.findMusicOfPlayListinformation("1234");
+
+        userAll.setUserBean(userBean);
+
+        System.out.println(userAll.getUserBean().getUser_name());
     }
 
 }

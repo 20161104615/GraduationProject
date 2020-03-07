@@ -144,8 +144,7 @@
                                                     <a href="#"><i class="icon-control-play i-2x"></i></a>
                                                 </div>
                                             </div>
-                                            <img
-                                                    th:src="${(session.isEmpty()) ? '/asserts/images/a1.png':session.MusicList[k+12+17].getMusic_img()}"
+                                            <img th:src="${(session.isEmpty()) ? '/asserts/images/a1.png':session.MusicList[k+12+17].getMusic_img()}"
                                                     alt=""
                                                     class="r r-2x img-full"></a>
                                         </div>
@@ -155,7 +154,6 @@
                                             </a>
                                             <div class="text-ellipsis text-xs text-muted">
                                                 <span th:text="${(session.isEmpty()) ? '未查询':session.MusicList[k+12+17].getMusic_singer()}"></span>
-
                                             </div>
                                         </div>
                                     </div>

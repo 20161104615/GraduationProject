@@ -6,22 +6,17 @@ import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
 import net.sf.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import sun.rmi.runtime.NewThreadAction;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 /*
@@ -140,6 +135,7 @@ public class AdministratorController {
         boolean b = userService.INSERTUSER(userBean);
         if (b) {
             ArrayList<UserBean> allUser = userService.allUser(false);
+            System.out.println(allUser);
             request.getSession().setAttribute("ALLUSER", allUser);
             map.put("stat", "1");
             jsonObject = JSONObject.fromObject(map);

@@ -1,5 +1,6 @@
 package com.ys.demo.service;
 
+import com.ys.demo.bean.Comments;
 import com.ys.demo.bean.UserBean;
 
 import java.util.ArrayList;

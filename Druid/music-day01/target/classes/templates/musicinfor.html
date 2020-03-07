@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public :: public_head_head"></head>
+<body class="">
+<section class="vbox">
+    <div th:replace="~{public :: public_head}"></div>
+    <section>
+        <section class="hbox stretch">
+            <section id="content">
+                <section class="vbox">
+                    <section class="scrollable wrapper-lg">
+                        <div class="row" style="margin-left: 216px">
+                            <div class="col-sm-9">
+                                <div class="post-item">
+                                    <th:block th:each="song:${session.playMusiconeinformation}">
+                                        <div class="caption wrapper-lg" style="height: 350px">
+                                            <div class="music-list">
+                                                <div class="music-list-left">
+                                                    <img class="m-l-xl" th:src="${song.getMusic_img()}">
+                                                </div>
+                                                <div class="music-list-rigth">
+                                                    <p>
+                                                    <div class="text-muted">
+                                                        <input id="pmi_name" th:value="${song.getMusic_name()}" class="hide">
+                                                        <input id="pmi_singer" th:value="${song.getMusic_singer()}" class="hide">
+                                                        <input id="pmi_id" th:value="${song.getMusic_id()}" class="hide">
+                                                        <h2><b>[[${song.getMusic_name()}]]</b></h2><br>
+                                                        <i class="fa fa-user icon-muted">
+                                                        </i> [[${song.getMusic_singer()}]]
+                                                    </div>
+                                                    <div class="line line-lg" style="margin-top: 100px"></div>
+                                                    <a id="song_play" class="btn btn-s-md btn-success">
+                                                        <i class="icon-control-play"></i>
+                                                        播放</a>
+                                                    <a class="btn btn-s-md btn-default">
+                                                        <i class="fa fa-heart-o" id="favorite_song_id_like"
+                                                           th:value="${song.getMusic_name()}"
+                                                           th:text="${' 收藏'}"></i>
+                                                        <i class="fa fa-heart hide" id="favorite_song_id_ulike"
+                                                           th:text="${' 取消收藏'}"></i>
+                                                    </a>
+                                                    <a id="share_music" class="btn btn-s-md btn-default">
+                                                        <i id="share_music_id" class="icon-share-alt"
+                                                            th:value="${song.getMusic_id()}"></i>
+                                                        分享</a>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </th:block>
+                                </div>
+                                <h4 class="m-t-lg m-b">评论</h4>
+                                <div class="form-group">
+                                    <textarea id="commentsmusic" class="form-control" rows="5" placeholder="期待你的神评论~~~"></textarea>
+                                </div>
+                                <div class="form-group">
+                                    <button id="submitcomments" type="submit" class="btn btn-success" style="margin-left: 832px">发表评论</button>
+                                </div>
+                                <!--/输入内容-->
+                                <h4 class="m-t-lg m-b">最新评论</h4>
+                                <section class="comment-list block">
+                                    <hr/>
+                                    <!--循环体-->
+                                    <th:block th:each="co:${session.commentslist}" th:if="${session.commentslist ne null}">
+                                        <article id="comment-id-1" class="comment-item">
+                                            <a class="pull-left thumb-sm">
+                                                <img th:src="@{/asserts/images/m2.jpg}" class="img-circle">
+                                            </a>
+                                            <section class="comment-body m-b">
+                                                <header>
+                                                    <a href="#"><strong>[[${co.getUser_name()}]]</strong></a>
+                                                </header>
+                                                <div class="m-t-sm m-l-lg">
+                                                    <p>[[${co.getComments()}]]</p>
+                                                </div>
+                                                <span th:text="${#dates.format(co.getComments_date(), 'yyyy-MM-dd HH:mm')}" class="text-muted text-xs block m-t-xs"></span>
+                                            </section>
+                                        </article>
+                                        <hr class="ys-style-one m-l-n"/>
+                                    </th:block>
+                                    <!--/循环体-->
+                                </section>
+                            </div>
+                            <!--<div class="col-sm-3">
+                                <h5 class="font-bold">
+                                    <span th:text="${session.searchuser.getUser_name()}"
+                                          th:if="${session.searchuser ne null}"></span>
+                                </h5>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <span class="pull-right"><i class="icon-call-end"></i></span>
+                                        <span th:text="${session.searchuser.getUser_phone()}"
+                                              th:if="${session.searchuser ne null}"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right"><i class="icon-envelope"></i></span>
+                                        <span th:text="${session.searchuser.getUser_email()}"
+                                              th:if="${session.searchuser ne null}"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right"><i class="icon-calendar"></i></span>
+                                        <span th:text="${session.searchuser.getUser_birthday()}"
+                                              th:if="${session.searchuser ne null}"></span>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <span class="pull-right"><i class="icon-emoticon-smile"></i></span>
+                                        <span th:text="${session.searchuser.getUser_introduced()}"
+                                              th:if="${session.searchuser ne null}"></span>
+                                    </li>
+                                </ul>
+                            </div>-->
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<script th:src="@{/asserts/js/jquery-v1.10.2.min.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/asserts/js/bootstrap.js}"></script>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        $("#song_play").click(function () {
+            window.location.href = "listen.html";
+        });
+
+        $("#favorite_song_id_like").click(function () {
+            var songname = $(this);
+            $.ajax({
+                url: "user/addfavoritesong",
+                type: "get",
+                dataType: 'json',
+                data: {
+                    "songname": songname.attr("value"),
+                    //<![CDATA[
+                    "userphone":/*[[${session.LoginUser.getUser_phone()}]]*/""
+                    //]]>
+                },
+                success: function (result) {
+                    // alert(result.stat);
+                    if (result.statt == 0) {
+                        alert("添加收藏失败")
+                    } else if (result.statt == 1) {
+                        alert("添加成功");
+                        $("#favorite_song_id_ulike").removeClass("hide");
+                        $("#favorite_song_id_ulike").attr("value", songname.attr("value"));
+                        $("#favorite_song_id_like").addClass("hide");
+                        $("#favorite_song_id_like").removeAttr("value");
+                    }
+                },
+                error: function () {
+                    alert("Error")
+                }
+            });
+        });
+
+        $("#favorite_song_id_ulike").click(function () {
+            var songname = $(this);
+            $.ajax({
+                url: "user/delfavoritesong",
+                type: "get",
+                dataType: "json",
+                data: {
+                    "songname": songname.attr("value"),
+                    //<![CDATA[
+                    "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/""
+                    //]]>
+                },
+                success: function (result) {
+                    if (result.statt == 0) {
+                        alert("删除收藏失败")
+                    } else if (result.statt == 1) {
+                        alert("删除成功");
+                        $("#favorite_song_id_like").removeClass("hide");
+                        $("#favorite_song_id_like").attr("value", songname.attr("value"));
+                        $("#favorite_song_id_ulike").addClass("hide");
+                        $("#favorite_song_id_ulike").removeAttr("value");
+                    }
+                },
+                error: function () {
+                    alert("Error")
+                }
+            });
+        });
+
+        $("#share_music").click(function () {
+            var musicid = $("#share_music_id").attr("value");
+            $.ajax({
+                url: "user/share",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "songid":musicid.toString(),
+                    "tips":"share"
+                },
+                success:function (result) {
+                    if (result.stat == 2){
+                        window.location.href="profile.html"
+                    }
+                },
+                error:function () {
+                    alert("ERROR");
+                }
+            });
+        });
+
+        $("#submitcomments").click(function () {
+            var comments = $("#commentsmusic").val();
+            var pmi_n = $("#pmi_name").attr("value");
+            var pmi_s = $("#pmi_singer").attr("value");
+            var pmi_i = $("#pmi_id").attr("value");
+            $.ajax({
+                url: "user/comments",
+                type: "post",
+                dataType: 'json',
+                data:{
+                    "comments":comments,
+                    "music_name":pmi_n,
+                    "music_singer":pmi_s,
+                    "music_id":pmi_i,
+                },
+                success:function (result) {
+                    if (result.stat == 1){
+                        alert("success");
+                        window.location.reload();
+                    } else if (result.stat ==0){
+                        alert("error");
+                    }
+                },
+                error:function () {
+                    alert("ERROR");
+                }
+            });
+        });
+
+    });
+</script>
+</body>
+</html>

@@ -1,9 +1,11 @@
 package com.ys.demo.service;
 
+import com.ys.demo.bean.Comments;
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.bean.ShareSongs;
 import net.sf.json.JSONArray;
+import org.apache.ibatis.annotations.Insert;
 import org.json.JSONException;
 
 import java.util.ArrayList;
@@ -26,5 +28,7 @@ public interface MusicService {
     public ArrayList<MusicBean> FINDMUSIC(String music_name);
     public MusicBean FINDMUSICOFID(Integer music_id);
     public boolean shareSongs(ShareSongs shareSongs);
-    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(ShareSongs shareSongs);
+    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(String user_phone);
+    public boolean insertComments(Comments comments);
+    public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id);
 }

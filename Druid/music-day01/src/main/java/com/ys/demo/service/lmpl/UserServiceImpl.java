@@ -1,5 +1,6 @@
 package com.ys.demo.service.lmpl;
 
+import com.ys.demo.bean.Comments;
 import com.ys.demo.bean.UserBean;
 import com.ys.demo.mapper.UserMapper;
 import com.ys.demo.service.UserService;

@@ -8,20 +8,22 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  * 登录检查
- *
- * 二次登录出错
  */
 public class LoginHandlerInterceptor implements HandlerInterceptor {
 
     //目标方法执行之前
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-        Object user = request.getSession().getAttribute("loginUser");
+        Object user = request.getSession().getAttribute("LoginUser");
+        Object A_user = request.getSession().getAttribute("ALoginUser");
         if(user == null){
             //未登录,返回登录页面
+            if(A_user != null){
+                //管理员已登录，放行请求
+                return true;
+            }
             request.setAttribute("emsg","没有权限，请登录后再试");
             request.getRequestDispatcher("/signin.html").forward(request,response);
-            System.out.println("上一条已经执行");
             return false;
         } else{
             //已登录，放行请求

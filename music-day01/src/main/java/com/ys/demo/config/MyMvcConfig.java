@@ -33,23 +33,28 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/fileupload.html").setViewName("fileupload");
                 registry.addViewController("/datatable.html").setViewName("datatable");
                 registry.addViewController("/share.html").setViewName("share");
+                registry.addViewController("/musicinfor.html").setViewName("musicinfor");
+                registry.addViewController("/index2.html").setViewName("index2");
             }
 
             //拦截器注册，addPathPatterns()添加拦截请求，excludePathPatterns()排除拦截请求
             @Override
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginHandlerInterceptor()).
-                        addPathPatterns("/singer.html",
+                        addPathPatterns(
                                 "/list.html",
                                 "/datatable.html",
                                 "/profile.html",
                                 "/fileupload.html",
                                 "/share.html",
+                                "/musicinfor.html",
                                 "/listen.html").
                         excludePathPatterns("/","/signin.html",
+                                "/singer.html",
                                 "/user/login",
                                 "/user/register",
                                 "/index.html",
+                                "/index2.html",
                                 "/404.html",
                                 "public.html");
             }

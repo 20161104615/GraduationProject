@@ -1,5 +1,6 @@
 package com.ys.demo.service.lmpl;
 
+import com.ys.demo.bean.Comments;
 import com.ys.demo.bean.FavoriteSongs;
 import com.ys.demo.bean.MusicBean;
 import com.ys.demo.bean.ShareSongs;
@@ -7,6 +8,7 @@ import com.ys.demo.mapper.MusicMapper;
 import com.ys.demo.service.MusicService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
+import org.apache.ibatis.annotations.Insert;
 import org.json.JSONException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -183,8 +185,20 @@ public class MusicServicelmpl implements MusicService {
     }
 
     @Override
-    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(ShareSongs shareSongs) {
-        ArrayList<ShareSongs> arrayList = musicMapper.SHARE_SONGS_ARRAY_LIST(shareSongs);
+    public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(String user_phone) {
+        ArrayList<ShareSongs> arrayList = musicMapper.SHARE_SONGS_ARRAY_LIST(user_phone);
+        return arrayList;
+    }
+
+    @Override
+    public boolean insertComments(Comments comments) {
+        boolean b = musicMapper.uploadMusicComments(comments);
+        return b;
+    }
+
+    @Override
+    public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id) {
+        ArrayList<Comments> arrayList = musicMapper.COMMENTS_ARRAY_LIST(music_id);
         return arrayList;
     }
 }

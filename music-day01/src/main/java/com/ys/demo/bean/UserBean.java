@@ -164,5 +164,11 @@ public class UserBean {
         this.user_introduced = user_introduced;
     }
 
-
+    public UserBean(String user_name, String user_phone, Date user_birthday, String user_email, String user_introduced) {
+        this.user_name = user_name;
+        this.user_phone = user_phone;
+        this.user_birthday = user_birthday;
+        this.user_email = user_email;
+        this.user_introduced = user_introduced;
+    }
 }

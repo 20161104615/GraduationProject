@@ -15,46 +15,55 @@
                         <!-- side content -->
                         <aside class="col-sm-5 no-padder" id="sidebar" style="background-color: white">
                             <section class="vbox animated fadeInUp ">
-                                <section class="scrollable r-b">
-                                    <div class="m-t-n-xxs item pos-rlt ">
-                                        <!--动画-->
-                                        <div class="top text-right">
-                                            <span class="musicbar animate bg-success bg-empty inline m-r-lg m-t"
-                                                  style="width:25px;height:30px">
-                                                <span class="bar1 a3 lter"></span>
-                                                <span class="bar2 a5 lt"></span>
-                                                <span class="bar3 a1 bg"></span>
-                                                <span class="bar4 a4 dk"></span>
-                                                <span class="bar5 a2 dker"></span>
-                                            </span>
-                                        </div>
-                                        <!--/动画-->
-                                        <th:block th:each="song:${session.playMusiconeinformation}">
-                                            <div class="bottom gd bg-info wrapper-lg">
-                                                <span class="h2 font-thin">[[${song.getMusic_singer()}]]</span>
+                                <section class="scrollable r-b m-t-md">
+                                    <div class="col-lg-12">
+                                        <section class="panel panel-default">
+                                            <div class="carousel slide auto panel-body" id="c-slide">
+                                                <div class="carousel-inner">
+                                                    <th:block th:each="song,num:${session.playMusiconeinformation}">
+                                                        <div th:class="${(num.first)?'item active':'item'}">
+                                                            <p class="text-center">
+                                                                <em class="h4 text-mute">
+                                                                    <img class="col-sm-5"
+                                                                         th:src="${song.getMusic_img()}" alt="...">
+                                                                </em><br>
+                                                                <small class="text-muted">[[${song.getMusic_name()}]]</small><br><br>
+                                                                <small class="text-muted">[[${song.getMusic_singer()}]]</small>
+                                                            </p>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                                <a class="left carousel-control" href="#c-slide" data-slide="prev">
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
+                                                <a class="right carousel-control" href="#c-slide" data-slide="next">
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
                                             </div>
-                                            <img class="col-sm-4 "
-                                                 th:src="${song.getMusic_img()}" alt="...">
-                                        </th:block>
+                                        </section>
                                     </div>
-                                    <!--歌曲信息-->
-
-
-                                    <!--/歌曲信息-->
                                 </section>
                             </section>
-
                         </aside>
                         <!-- / side content -->
-                        <section class="col-sm-4 no-padder" style="background-color: white">
-                            <section class="vbox" style="background-color: rgba(22,255,44,0.05)">
+                        <section class="col-sm-1 no-padder" style="background-color: white">
+                            <section class="vbox">
                                 <section class="scrollable">
-                                    <strong>收藏列表</strong>
+                                    <strong>列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表</strong>
+                                    <form id="downloadForm" method="post" th:action="@{files/downloadmusic}">
+                                        <input id="downloadmusicid" name="downloadmusicid" class="hide">
+                                    </form>
                                     <th:block th:each="song:${session.playMusiconeinformation}">
-                                        <div class="alert alert-info">
-                                            <!--<button type="button" class="close" data-dismiss="alert">&times;</button>-->
-                                            <i class="fa fa-info-sign"></i>
+                                        <div class="alert alert-info" style="margin-top: 15px">
+                                            <div class="Ulisten-list-left">
+                                                <i class="fa fa-info-sign"></i>
                                                 [[${song.getMusic_name()}]]
+                                            </div>
+                                            <div class="Ulisten-list-rigth text-right">
+                                                <i class="icon-cloud-download"
+                                                   th:value="${song.getMusic_id()}">
+                                                    <span>下载</span></i>
+                                            </div>
                                         </div>
                                     </th:block>
                                 </section>
@@ -168,7 +177,6 @@
                 keyEnabled: true,
                 audioFullScreen: false
             });
-
         $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer, function () {
             $('.musicbar').removeClass('animate');
             $('.jp-play-me').removeClass('active');
@@ -195,7 +203,6 @@
                 var i = Math.floor(Math.random() * (1 + 7 - 1));
                 myPlaylist.play(i);
             }
-
         }).jPlayer("play");
 
         $("#findmusicbyNames").click(function () {
@@ -207,7 +214,6 @@
                     "searchmusic": $("#findmusic").val()
                 },
                 success: function (result) {
-                    // alert(result.stat);
                     if (result.stat == 0) {
                         alert("暂无这首歌曲")
                     } else if (result.stat == 1) {
@@ -217,7 +223,12 @@
                 }
             });
         });
-
+        $(".icon-cloud-download").click(function () {
+            var song = $(this);
+            $("#downloadmusicid").attr("value", song.attr("value"));
+            $("#downloadForm").submit();
+        });
+        $('.carousel').carousel('pause');
     });
 </script>
 </html>

@@ -1,10 +1,7 @@
 package com.ys.demo.controller;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.ys.demo.bean.FavoriteSongs;
-import com.ys.demo.bean.MusicBean;
-import com.ys.demo.bean.ShareSongs;
-import com.ys.demo.bean.UserBean;
+import com.ys.demo.bean.*;
 import com.ys.demo.service.MusicService;
 import com.ys.demo.service.UserService;
 import net.sf.json.JSONObject;
@@ -20,12 +17,15 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Map;
 
 /*
  * @Author 20161104615
  * @Description //TODO LoginUser(UserBean):存放用户登录信息；MusicList（ArrayList<MusicBean>）：音乐整体列表；
+ *                 sharemusiclist:存放用户分享列表；sharemusic：存放分享的音乐信息
+ *                 searchuser：存放查找的用户信息
  * @Date 17:53 2020/2/22
  * @Param
  * @return
@@ -260,25 +260,90 @@ public class UserController {
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
         MusicBean musicBean = musicService.FINDMUSICOFID(songid);
-        if ("".equals(tips)){
+        if ("".equals(tips)) {
             map.put("stat", "0");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
-        } else if("index".equals(tips)){
-            request.getSession().setAttribute("sharemusic",musicBean);
+        } else if ("index".equals(tips)) {
+            request.getSession().setAttribute("sharemusic", musicBean);
             map.put("stat", "1");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
-        } else if ("share".equals(tips)){
+        } else if ("share".equals(tips)) {
             UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
             Date date = new Date(System.currentTimeMillis());
             ShareSongs shareSongs = new ShareSongs(musicBean.getMusic_id(),
-                    loginUser.getUser_phone(),musicBean.getMusic_name(),date,musicBean.getMusic_singer());
+                    loginUser.getUser_phone(), musicBean.getMusic_name(), date, musicBean.getMusic_singer());
             boolean b = musicService.shareSongs(shareSongs);
-            if (b){
-                ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(shareSongs);
-                request.getSession().setAttribute("sharemusiclist",arrayList);
+            if (b) {
+                ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(loginUser.getUser_phone());
+                request.getSession().setAttribute("sharemusiclist", arrayList);
                 map.put("stat", "2");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            } else {
+                map.put("stat", "0");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            }
+        }
+    }
+
+    /*
+     * @Author 20161104615
+     * @Description //TODO 利用UserAll（暂未完成）
+     * @Date 23:59 2020/3/6
+     * @Param [userphone, map, request, response]
+     * @return void
+     **/
+    @PostMapping(value = "/searchuser")
+    public void searchUser(@RequestParam("userphone") String userphone,
+                           Map<String, Object> map,
+                           HttpServletRequest request,
+                           HttpServletResponse response) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        if ("".equals(userphone)) {
+            map.put("stat", "0");
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        } else {
+            UserBean userBean = userService.userfindstring(userphone);
+            UserBean bean = new UserBean(userBean.getUser_name(),userBean.getUser_phone(),userBean.getUser_birthday()
+                    ,userBean.getUser_email(),userBean.getUser_introduced());
+            request.getSession().setAttribute("searchuser",bean);
+            map.put("stat", "1");
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        }
+    }
+
+    @PostMapping(value = "/comments")
+    public void commentsMusic(@RequestParam("comments") String comments,
+                              @RequestParam("music_name") String music_name,
+                              @RequestParam("music_singer") String music_singer,
+                              @RequestParam("music_id") Integer music_id,
+                              Map<String, Object> map,
+                              HttpServletRequest request,
+                              HttpServletResponse response) throws IOException{
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        if ("".equals(comments)){
+            map.put("stat", "0");
+            jsonObject = JSONObject.fromObject(map);
+            response.getWriter().print(jsonObject);
+        } else {
+            UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
+            long currentTimeMillis = System.currentTimeMillis();
+            Timestamp timestamp = new Timestamp(currentTimeMillis);
+            Comments c1 = new Comments(loginUser.getUser_phone(), music_name, music_singer, music_id, comments, timestamp,loginUser.getUser_name());
+            boolean b = musicService.insertComments(c1);
+            if (b){
+                ArrayList<Comments> arrayList = musicService.COMMENTS_ARRAY_LIST(music_id);
+                request.getSession().setAttribute("commentslist",arrayList);
+                map.put("stat", "1");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
             } else {
