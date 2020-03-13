@@ -10,10 +10,32 @@ Target Server Type    : MYSQL
 Target Server Version : 50562
 File Encoding         : 65001
 
-Date: 2020-02-28 00:04:32
+Date: 2020-03-13 15:12:03
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `comments`
+-- ----------------------------
+DROP TABLE IF EXISTS `comments`;
+CREATE TABLE `comments` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_phone` varchar(11) DEFAULT NULL,
+  `music_id` int(11) DEFAULT NULL,
+  `music_name` varchar(500) DEFAULT NULL,
+  `music_singer` varchar(500) DEFAULT NULL,
+  `comments` text,
+  `comments_date` datetime DEFAULT NULL,
+  `user_name` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of comments
+-- ----------------------------
+INSERT INTO `comments` VALUES ('1', '1234', '45', '用尽我的一切奔向你', '周笔畅', '这是测试数据', '2020-03-07 13:49:28', '测试员');
+INSERT INTO `comments` VALUES ('2', '12345', '45', '用尽我的一切奔向你', '周笔畅', '这是我的测试', '2020-03-07 13:50:25', '杰克逊');
 
 -- ----------------------------
 -- Table structure for `favoritesongs`
@@ -25,19 +47,37 @@ CREATE TABLE `favoritesongs` (
   `music_name` varchar(500) DEFAULT NULL,
   `user_phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=97 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of favoritesongs
 -- ----------------------------
-INSERT INTO `favoritesongs` VALUES ('1', '30', '演员', '1234');
-INSERT INTO `favoritesongs` VALUES ('2', '30', '演员', '123');
 INSERT INTO `favoritesongs` VALUES ('3', '55', '2002年的第一场雪', '123');
 INSERT INTO `favoritesongs` VALUES ('4', '15', '年少有为', '123');
 INSERT INTO `favoritesongs` VALUES ('5', '73', '小半', '123');
 INSERT INTO `favoritesongs` VALUES ('88', '62', '星星 (Live)', '1234');
 INSERT INTO `favoritesongs` VALUES ('93', '28', '分手快乐', '123');
 INSERT INTO `favoritesongs` VALUES ('94', '39', '关键词', '123');
+INSERT INTO `favoritesongs` VALUES ('95', '79', '山水又一程 (Live)', '1234');
+INSERT INTO `favoritesongs` VALUES ('97', '19', '会呼吸的痛', '1234');
+INSERT INTO `favoritesongs` VALUES ('98', '17', '老街', '1234');
+INSERT INTO `favoritesongs` VALUES ('99', '16', '不将就', '1234');
+INSERT INTO `favoritesongs` VALUES ('100', '27', '爱久见人心', '1234');
+INSERT INTO `favoritesongs` VALUES ('101', '26', '梦醒时分 (Live)', '1234');
+INSERT INTO `favoritesongs` VALUES ('102', '31', '刚刚好', '1234');
+INSERT INTO `favoritesongs` VALUES ('103', '33', '绅士', '1234');
+INSERT INTO `favoritesongs` VALUES ('104', '46', '怒放的生命', '1234');
+INSERT INTO `favoritesongs` VALUES ('105', '47', '光明', '1234');
+INSERT INTO `favoritesongs` VALUES ('106', '48', '春天里', '1234');
+INSERT INTO `favoritesongs` VALUES ('107', '49', '北京北京', '1234');
+INSERT INTO `favoritesongs` VALUES ('108', '50', '飞得更高', '1234');
+INSERT INTO `favoritesongs` VALUES ('109', '51', '冲动的惩罚', '1234');
+INSERT INTO `favoritesongs` VALUES ('110', '52', '西海情歌', '1234');
+INSERT INTO `favoritesongs` VALUES ('111', '53', '喀什噶尔胡杨', '1234');
+INSERT INTO `favoritesongs` VALUES ('112', '54', '披着羊皮的狼', '1234');
+INSERT INTO `favoritesongs` VALUES ('113', '16', '不将就', '1234');
+INSERT INTO `favoritesongs` VALUES ('119', '43', '笔记 (Live)', '15648161601');
+INSERT INTO `favoritesongs` VALUES ('120', '45', '用尽我的一切奔向你', '1234');
 
 -- ----------------------------
 -- Table structure for `music`
@@ -51,7 +91,7 @@ CREATE TABLE `music` (
   `music_storagepath` varchar(500) DEFAULT NULL COMMENT '歌曲路径',
   `music_img` varchar(500) DEFAULT NULL COMMENT '歌曲图片',
   PRIMARY KEY (`music_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of music
@@ -123,7 +163,35 @@ INSERT INTO `music` VALUES ('83', '蓝莲花', '许巍', null, 'http://localhost
 INSERT INTO `music` VALUES ('84', '故乡', '许巍', null, 'http://localhost:8080/media/故乡.m4a', 'http://localhost:8080/media/img/故乡-许巍.jpg');
 INSERT INTO `music` VALUES ('85', '像风一样自由', '许巍', null, 'http://localhost:8080/media/像风一样自由.m4a', 'http://localhost:8080/media/img/像风一样自由-许巍.jpg');
 INSERT INTO `music` VALUES ('86', '生活不止眼前的苟且', '许巍', null, 'http://localhost:8080/media/生活不止眼前的苟且.m4a', 'http://localhost:8080/media/img/生活不止眼前的苟且-许巍.jpg');
-INSERT INTO `music` VALUES ('102', 'Snowdreams', '班得瑞', null, 'http://localhost:8080/media/Snowdreams.m4a', 'http://localhost:8080/media/img/Snowdreams-班得瑞.jpg');
+INSERT INTO `music` VALUES ('108', 'Snowdreams', '班得瑞', null, 'http://localhost:8080/media/Snowdreams.m4a', 'http://localhost:8080/media/img/Snowdreams-班得瑞.jpg');
+INSERT INTO `music` VALUES ('109', '追', '韩磊-谭维维', null, 'http://localhost:8080/media/追.m4a', 'http://localhost:8080/media/img/追-韩磊-谭维维.jpg');
+INSERT INTO `music` VALUES ('110', '中华民族', '莫文蔚-韩磊-谭维维-孙楠', null, 'http://localhost:8080/media/中华民族.m4a', 'http://localhost:8080/media/img/中华民族-莫文蔚-韩磊-谭维维-孙楠.jpg');
+INSERT INTO `music` VALUES ('111', '向天再借五百年', '韩磊', null, 'http://localhost:8080/media/向天再借五百年.m4a', 'http://localhost:8080/media/img/向天再借五百年-韩磊.jpg');
+INSERT INTO `music` VALUES ('112', '时间里的小偷', '庄心妍', null, 'http://localhost:8080/media/时间里的小偷.m4a', 'http://localhost:8080/media/img/时间里的小偷-庄心妍.jpg');
+
+-- ----------------------------
+-- Table structure for `sharesongs`
+-- ----------------------------
+DROP TABLE IF EXISTS `sharesongs`;
+CREATE TABLE `sharesongs` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_phone` varchar(11) DEFAULT NULL,
+  `music_id` int(11) DEFAULT NULL,
+  `music_name` varchar(500) DEFAULT NULL,
+  `share_date` date DEFAULT NULL,
+  `music_singer` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of sharesongs
+-- ----------------------------
+INSERT INTO `sharesongs` VALUES ('3', '1234', '43', '笔记 (Live)', '2020-03-06', '周笔畅');
+INSERT INTO `sharesongs` VALUES ('4', '1234', '46', '怒放的生命', '2020-03-06', '汪峰');
+INSERT INTO `sharesongs` VALUES ('5', '1234', '62', '星星 (Live)', '2020-03-06', '张杰');
+INSERT INTO `sharesongs` VALUES ('6', '1234', '45', '用尽我的一切奔向你', '2020-03-07', '周笔畅');
+INSERT INTO `sharesongs` VALUES ('7', '1234', '45', '用尽我的一切奔向你', '2020-03-07', '周笔畅');
+INSERT INTO `sharesongs` VALUES ('8', '1234', '51', '冲动的惩罚', '2020-03-12', '刀郎');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -140,11 +208,12 @@ CREATE TABLE `user` (
   `user_introduced` text,
   `user_Administrator` tinyint(4) DEFAULT NULL COMMENT '是否为管理员',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', '123', '123', '123', '123', '2020-02-05', '123@qq.om', '123', '1');
-INSERT INTO `user` VALUES ('2', '威尔', '1234', '123', '12346', '2020-02-07', '1234@126.com', '红格尔', '0');
+INSERT INTO `user` VALUES ('2', '测试员', '1234', '1234', '12346', '2020-03-17', '1234@126.com', '这是测试员', '0');
 INSERT INTO `user` VALUES ('7', '杰克逊', '12345', '123', '123', '2020-02-26', '12345@qq.com', '美国的杰克逊', '0');
+INSERT INTO `user` VALUES ('12', '测试员', '15648161601', '123', null, '2020-03-13', '1019172727@qq.com', '这是一位测试员', '0');
