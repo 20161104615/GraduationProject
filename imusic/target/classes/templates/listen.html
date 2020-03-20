@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public :: public_head_head"></head>
+<body class="" style="background-color: white">
+<section class="vbox" style="background-color: white">
+    <div th:replace="~{public :: public_head}"></div>
+    <div th:replace="public :: public_navigation(activeUri='index')"></div>
+    <section>
+        <section class="hbox stretch" style="background-color: white">
+            <section class="vbox" style="background-color: white">
+                <!-- 在一个容器中 -->
+                <section class="w-f-md" style="background-color: white">
+                    <!-- 页面底端播放器 -->
+                    <section class="hbox stretch bg-black dker" style="background-color: white">
+                        <!-- side content -->
+                        <aside class="col-sm-5 no-padder" id="sidebar" style="background-color: white">
+                            <section class="vbox animated fadeInUp ">
+                                <section class="scrollable r-b m-t-md">
+                                    <div class="col-lg-12">
+                                        <section class="panel panel-default">
+                                            <div class="carousel slide auto panel-body" id="c-slide">
+                                                <div class="carousel-inner">
+                                                    <th:block th:each="song,num:${session.playMusiconeinformation}">
+                                                        <div th:class="${(num.first)?'item active':'item'}">
+                                                            <p class="text-center">
+                                                                <em class="h4 text-mute">
+                                                                    <img class="col-sm-5"
+                                                                         th:src="${song.getMusic_img()}" alt="...">
+                                                                </em><br>
+                                                                <small class="text-muted">[[${song.getMusic_name()}]]</small><br><br>
+                                                                <small class="text-muted">[[${song.getMusic_singer()}]]</small>
+                                                            </p>
+                                                        </div>
+                                                    </th:block>
+                                                </div>
+                                                <a class="left carousel-control" href="#c-slide" data-slide="prev">
+                                                    <i class="fa fa-angle-left"></i>
+                                                </a>
+                                                <a class="right carousel-control" href="#c-slide" data-slide="next">
+                                                    <i class="fa fa-angle-right"></i>
+                                                </a>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </section>
+                        </aside>
+                        <!-- / side content -->
+                        <section class="col-sm-1 no-padder" style="background-color: white">
+                            <section class="vbox">
+                                <section class="scrollable">
+                                    <strong>列&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;表</strong>
+                                    <form id="downloadForm" method="post" th:action="@{files/downloadmusic}">
+                                        <input id="downloadmusicid" name="downloadmusicid" class="hide">
+                                    </form>
+                                    <th:block th:each="song:${session.playMusiconeinformation}">
+                                        <div class="alert alert-info" style="margin-top: 15px">
+                                            <div class="Ulisten-list-left">
+                                                <i class="fa fa-info-sign"></i>
+                                                [[${song.getMusic_name()}]]
+                                            </div>
+                                            <div class="Ulisten-list-rigth text-right">
+                                                <i class="icon-cloud-download"
+                                                   th:value="${song.getMusic_id()}">
+                                                    <span>下载</span></i>
+                                            </div>
+                                        </div>
+                                    </th:block>
+                                </section>
+                            </section>
+                        </section>
+                    </section>
+                </section>
+                <!--播放器-->
+                <footer class="footer bg-success dker" style="background-color: white">
+                    <div id="jp_container_N">
+                        <div class="jp-type-playlist">
+                            <div id="jplayer_N" class="jp-jplayer hide"></div>
+                            <div class="jp-gui">
+                                <div class="jp-video-play hide">
+                                    <a class="jp-video-play-icon">play</a>
+                                </div>
+                                <div class="jp-interface">
+                                    <div class="jp-controls">
+                                        <div><a class="jp-previous"><i class="icon-control-rewind i-lg"></i></a>
+                                        </div>
+                                        <div>
+                                            <a class="jp-play"><i class="icon-control-play i-2x"></i></a>
+                                            <a class="jp-pause hid"><i class="icon-control-pause i-2x"></i></a>
+                                        </div>
+                                        <div><a class="jp-next"><i class="icon-control-forward i-lg"></i></a></div>
+                                        <div class="hide"><a class="jp-stop"><i class="fa fa-stop"></i></a></div>
+                                        <div><a class="" data-toggle="dropdown" data-target="#playlist"><i
+                                                class="icon-list"></i></a></div>
+                                        <div class="jp-progress hidden-xs" style="background-color: white">
+                                            <div class="jp-seek-bar dk" style="background-color: white">
+                                                <div class="jp-play-bar bg">
+                                                </div>
+                                                <div class="jp-title text-lt">
+                                                    <ul>
+                                                        <li></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="hidden-xs hidden-sm jp-current-time text-xs text-muted"></div>
+                                        <div class="hidden-xs hidden-sm jp-duration text-xs text-muted"></div>
+                                        <div class="hidden-xs hidden-sm">
+                                            <a class="jp-mute" title="mute"><i class="icon-volume-2"></i></a>
+                                            <a class="jp-unmute hid" title="unmute"><i class="icon-volume-off"></i></a>
+                                        </div>
+                                        <div class="hidden-xs hidden-sm jp-volume">
+                                            <div class="jp-volume-bar dk">
+                                                <div class="jp-volume-bar-value lter"></div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <a class="jp-shuffle" title="shuffle"><i
+                                                    class="icon-shuffle text-muted"></i></a>
+                                            <a class="jp-shuffle-off hid" title="shuffle off"><i
+                                                    class="icon-shuffle text-lt"></i></a>
+                                        </div>
+                                        <div>
+                                            <a class="jp-repeat" title="repeat"><i class="icon-loop text-muted"></i></a>
+                                            <a class="jp-repeat-off hid" title="repeat off"><i
+                                                    class="icon-loop text-lt"></i></a>
+                                        </div>
+                                        <div class="hide">
+                                            <a class="jp-full-screen" title="full screen"><i
+                                                    class="fa fa-expand"></i></a>
+                                            <a class="jp-restore-screen" title="restore screen"><i
+                                                    class="fa fa-compress text-lt"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="jp-playlist dropup" id="playlist">
+                                <ul class="dropdown-menu aside-xl dker" style="background-color: white">
+                                    &lt;!&ndash; The method Playlist.displayPlaylist() uses this unordered list &ndash;&gt;
+                                    <li class="list-group-item"></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </footer>
+                <!--/播放器-->
+            </section>
+        </section>
+    </section>
+</section>
+
+</body>
+<script th:src="@{/asserts/js/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+<!-- Bootstrap -->
+<script th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.js}"></script>
+<script th:src="@{/asserts/js/jPlayer/jquery.jplayer.min.js}"></script>
+<script th:src="@{/asserts/js/jPlayer/add-on/jplayer.playlist.min.js}"></script>
+<script th:src="@{/asserts/js/slider/bootstrap-slider.js}"></script>
+<script th:inline="javascript">
+    $(document).ready(function () {
+        var myPlaylist = new jPlayerPlaylist({
+                jPlayer: "#jplayer_N",
+                cssSelectorAncestor: "#jp_container_N"
+            },
+            //<![CDATA[
+            [[${session.playMusic}]]
+            //]]>
+            , {
+                playlistOptions: {
+                    enableRemoveControls: true,
+                    autoPlay: false
+                },
+                swfPath: "asserts/js/jPlayer",
+                supplied: "webmv, ogv, m4v, oga, mp3, m4a",
+                smoothPlayBar: true,
+                keyEnabled: true,
+                audioFullScreen: false
+            });
+        $(document).on($.jPlayer.event.pause, myPlaylist.cssSelector.jPlayer, function () {
+            $('.musicbar').removeClass('animate');
+            $('.jp-play-me').removeClass('active');
+            $('.jp-play-me').parent('li').removeClass('active');
+        });
+
+        $(document).on($.jPlayer.event.play, myPlaylist.cssSelector.jPlayer, function () {
+            $('.musicbar').addClass('animate');
+        });
+
+        $(document).on('click', '.jp-play-me', function (e) {
+            e && e.preventDefault();
+            var $this = $(e.target);
+            if (!$this.is('a')) $this = $this.closest('a');
+
+            $('.jp-play-me').not($this).removeClass('active');
+            $('.jp-play-me').parent('li').not($this.parent('li')).removeClass('active');
+
+            $this.toggleClass('active');
+            $this.parent('li').toggleClass('active');
+            if (!$this.hasClass('active')) {
+                myPlaylist.pause();
+            } else {
+                var i = Math.floor(Math.random() * (1 + 7 - 1));
+                myPlaylist.play(i);
+            }
+        }).jPlayer("play");
+
+        $("#findmusicbyNames").click(function () {
+            $.ajax({
+                url: "song/findmusicbyname",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "searchmusic": $("#findmusic").val()
+                },
+                success: function (result) {
+                    if (result.stat == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stat == 1) {
+                        /*跳转到MusicController*/
+                        window.location.href = 'list.html';
+                    }
+                }
+            });
+        });
+        $(".icon-cloud-download").click(function () {
+            var song = $(this);
+            $("#downloadmusicid").attr("value", song.attr("value"));
+            $("#downloadForm").submit();
+        });
+        $('.carousel').carousel('pause');
+    });
+</script>
+</html>
