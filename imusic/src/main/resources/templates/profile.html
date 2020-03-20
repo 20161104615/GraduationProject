@@ -35,6 +35,32 @@
         </div>
     </header>
     <section>
+        <div class="modal fade" id="myModa7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabe7">
+                            删除
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>确认删除这首歌曲吗？</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            关闭
+                        </button>
+                        <button id="delfm" type="button" class="btn btn-primary">
+                            确认
+                        </button>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
         <section class="hbox stretch">
             <section class="vbox">
                 <section class="scrollable">
@@ -161,8 +187,8 @@
                                                             <img th:src="${song.getMusic_img()}" class="img-circle">
                                                         </a>
                                                         <span class="clear pull-right m-t-lg ">
-                                                      <a href="#">
-                                                          <i class="fa fa-times icon-muted fa-fw"></i>
+                                                      <a data-toggle="modal" data-target="#myModa7">
+                                                          <i th:value="${song.getMusic_name()}" class="fa fa-times icon-muted fa-fw"></i>
                                                       </a>
                                                     </span>
                                                         <a href="#" class="clear">
@@ -332,6 +358,34 @@
             }
         });
     }
+
+    $(".icon-muted").click(function (){
+        var s = $(this);
+        /*alert(s.attr("value"));*/
+        $("#delfm").click(function () {
+            $.ajax({
+                url: "user/delfavoritesong",
+                type: "get",
+                dataType: "json",
+                data: {
+                    "songname": s.attr("value"),
+                    //<![CDATA[
+                    "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/""
+                    //]]>
+                },
+                success:function (result) {
+                    if (result.statt == 0) {
+                        alert("删除收藏失败")
+                    } else if (result.statt == 1) {
+                        window.location.reload();
+                    }
+                },
+                error:function () {
+                    alert("ERROR");
+                }
+            });
+        });
+    });
 
 
 </script>

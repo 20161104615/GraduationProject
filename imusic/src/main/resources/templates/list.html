@@ -30,18 +30,11 @@
                                     </div>
                                     <div class="pull-right text-success"
                                          style="margin-top: -20px;padding-right: 30px;padding-right:10px">
-                                        <a href="#">
-                                            <i th:value="${song.getMusic_name()}"
-                                               th:id="${#numbers.formatInteger(num.count,1)}" class="fa fa-heart-o"></i>
-                                            <i th:id="${#numbers.formatInteger(num.count+500,1)}"
-                                               class="fa fa-heart hide"></i>
-                                        </a>
                                     </div>
                                 </div>
                             </li>
                         </ul>
                     </th:block>
-
                 </section>
             </div>
         </section>
@@ -49,70 +42,4 @@
 </section>
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
-<script th:inline="javascript">
-    $(".fa-heart-o").click(function () {
-        var songname = $(this);
-        //String
-        var hidid = songname.attr("id");
-        var showid = String(Number(hidid) + 500);
-        $.ajax({
-            url: "user/addfavoritesong",
-            type: "get",
-            dataType: 'json',
-            data: {
-                "songname": songname.attr("value"),
-                //<![CDATA[
-                "userphone":/*[[${session.LoginUser.getUser_phone()}]]*/""
-                //]]>
-            },
-            success: function (result) {
-                // alert(result.stat);
-                if (result.statt == 0) {
-                    alert("添加收藏失败")
-                } else if (result.statt == 1) {
-                    alert("添加成功");
-                    $("#" + showid + "").removeClass("hide");
-                    $("#" + showid + "").attr("value", songname.attr("value"));
-                    $("#" + hidid + "").addClass("hide");
-                    $("#" + hidid + "").removeAttr("value");
-                }
-            },
-            error: function () {
-                alert("Error")
-            }
-        });
-    });
-
-    $(".fa-heart").click(function () {
-        var songname = $(this);
-        var hidid = songname.attr("id");
-        var showid = String(Number(hidid) - 500);
-        $.ajax({
-            url: "user/delfavoritesong",
-            type: "get",
-            dataType: "json",
-            data: {
-                "songname": songname.attr("value"),
-                //<![CDATA[
-                "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/""
-                //]]>
-            },
-            success: function (result) {
-                if (result.statt == 0) {
-                    alert("删除收藏失败")
-                } else if (result.statt == 1) {
-                    alert("删除成功");
-                    $("#" + showid + "").removeClass("hide");
-                    $("#" + showid + "").attr("value", songname.attr("value"));
-                    $("#" + hidid + "").addClass("hide");
-                    $("#" + hidid + "").removeAttr("value");
-                }
-            },
-            error: function () {
-                alert("Error")
-            }
-        });
-    });
-</script>
-
 </html>

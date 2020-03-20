@@ -224,6 +224,8 @@ public class UserController {
         JSONObject jsonObject;
         boolean result = musicService.delFavoritesong(userphone, songname);
         if (result) {
+            ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
+            request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);
             map.put("statt", "1");
             map.put("songname", songname);
             jsonObject = JSONObject.fromObject(map);

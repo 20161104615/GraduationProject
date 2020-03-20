@@ -96,14 +96,23 @@ public class MusicController {
                                         HttpServletRequest request) throws IOException, JSONException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
+        request.getSession().removeAttribute("userfm");
         JSONObject jsonObject;
         JSONArray jsonArray = musicService.AccurateFindMusic(music_name);
         ArrayList<MusicBean> accuratefindmusicinformation = musicService.accuratefindmusicinformation(music_name);
         request.getSession().setAttribute("playMusic", jsonArray);
         request.getSession().setAttribute("playMusiconeinformation", accuratefindmusicinformation);
+        UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
+        ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(loginUser.getUser_phone());
+        for (MusicBean musicBean : musicOfPlayListinformation) {
+            if (musicBean.getMusic_name().equals(music_name)){
+                System.out.println("哈哈哈哈啊哈");
+                request.getSession().setAttribute("userfm","yes");
+            }
+        }
         MusicBean oneMusic = musicService.findONEMusic(music_name);
         ArrayList<Comments> arrayList = musicService.COMMENTS_ARRAY_LIST(oneMusic.getMusic_id());
-        request.getSession().setAttribute("commentslist",arrayList);
+        request.getSession().setAttribute("commentslist", arrayList);
         map.put("stats", "1");
         jsonObject = JSONObject.fromObject(map);
         response.getWriter().print(jsonObject);
@@ -133,7 +142,7 @@ public class MusicController {
             response.getWriter().print(jsonObject);
         } else {
             ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(userphone);
-            request.getSession().setAttribute("sharemusiclist",arrayList);
+            request.getSession().setAttribute("sharemusiclist", arrayList);
             ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
             request.getSession().setAttribute("playMusic", musicOfPlayList);
             request.getSession().setAttribute("playMusiconeinformation", musicOfPlayListinformation);

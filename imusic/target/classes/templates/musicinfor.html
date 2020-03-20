@@ -34,9 +34,12 @@
                                                         播放</a>
                                                     <a class="btn btn-s-md btn-default">
                                                         <i class="fa fa-heart-o" id="favorite_song_id_like"
+                                                           th:class="${session.userfm == 'yes'}?'fa fa-heart-o hide':'fa fa-heart-o'"
                                                            th:value="${song.getMusic_name()}"
                                                            th:text="${' 收藏'}"></i>
                                                         <i class="fa fa-heart hide" id="favorite_song_id_ulike"
+                                                           th:class="${session.userfm == 'yes'}?'fa fa-heart':'fa fa-heart hide'"
+                                                           th:value="${song.getMusic_name()}"
                                                            th:text="${' 取消收藏'}"></i>
                                                     </a>
                                                     <a id="share_music" class="btn btn-s-md btn-default">
@@ -117,9 +120,9 @@
                     } else if (result.statt == 1) {
                         alert("添加成功");
                         $("#favorite_song_id_ulike").removeClass("hide");
-                        $("#favorite_song_id_ulike").attr("value", songname.attr("value"));
+                        /*$("#favorite_song_id_ulike").attr("value", songname.attr("value"));*/
                         $("#favorite_song_id_like").addClass("hide");
-                        $("#favorite_song_id_like").removeAttr("value");
+                        /*$("#favorite_song_id_like").removeAttr("value");*/
                     }
                 },
                 error: function () {
@@ -146,9 +149,9 @@
                     } else if (result.statt == 1) {
                         alert("删除成功");
                         $("#favorite_song_id_like").removeClass("hide");
-                        $("#favorite_song_id_like").attr("value", songname.attr("value"));
+                        /*$("#favorite_song_id_like").attr("value", songname.attr("value"));*/
                         $("#favorite_song_id_ulike").addClass("hide");
-                        $("#favorite_song_id_ulike").removeAttr("value");
+                       /* $("#favorite_song_id_ulike").removeAttr("value");*/
                     }
                 },
                 error: function () {

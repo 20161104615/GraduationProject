@@ -31,6 +31,7 @@ public class LoginController {
         request.getSession().removeAttribute("sharemusic");
         request.getSession().removeAttribute("ALoginUser");
         request.getSession().removeAttribute("commentslist");
+        request.getSession().removeAttribute("userfm");
         return "index";
     }
 }
