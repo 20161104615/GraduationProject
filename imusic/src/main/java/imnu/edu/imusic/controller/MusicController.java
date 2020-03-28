@@ -76,11 +76,6 @@ public class MusicController {
         }
     }
 
-    @PostMapping(value = "/findmusicbysinger")
-    public void findMusicBySinger() {
-        ArrayList<MusicBean> musicBySinger = musicService.findMusicBySinger("musicBean");
-    }
-
     /*
      * @Author 20161104615
      * @Description //TODO 点击事件获取歌名，通过精确查找返回ArrayList，将list中的MusicBean的信息重写，对应于Jplayer的播放列表
@@ -91,6 +86,7 @@ public class MusicController {
      **/
     @PostMapping(value = "/musicplaylist", produces = {"application/json;charset=UTF-8"})
     public void findMusicByNamePlayList(@RequestParam("playmusic") String music_name,
+                                        @RequestParam("userphone") String userphone,
                                         HttpServletResponse response,
                                         Map<String, Object> map,
                                         HttpServletRequest request) throws IOException, JSONException {
@@ -102,11 +98,9 @@ public class MusicController {
         ArrayList<MusicBean> accuratefindmusicinformation = musicService.accuratefindmusicinformation(music_name);
         request.getSession().setAttribute("playMusic", jsonArray);
         request.getSession().setAttribute("playMusiconeinformation", accuratefindmusicinformation);
-        UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
-        ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(loginUser.getUser_phone());
+        ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
         for (MusicBean musicBean : musicOfPlayListinformation) {
             if (musicBean.getMusic_name().equals(music_name)){
-                System.out.println("哈哈哈哈啊哈");
                 request.getSession().setAttribute("userfm","yes");
             }
         }

@@ -6,9 +6,6 @@
     <div th:replace="~{public :: public_head}"></div>
     <section class="vbox">
         <section class="scrollable padder-lg-ys-1 w-f-md" id="bjax-target">
-            <section class="panel center">
-                <div th:replace="~{public :: public_navigation}"></div>
-            </section>
             <!-- 论播2 -->
             <div class="col-lg-12" style="margin-top: 5px;border: 20px">
                 <section class="panel panel-default">
@@ -250,40 +247,52 @@
 
         $(".icon-control-play").click(function () {
             var playsongname = $(this);
-            $.ajax({
-                url: "song/musicplaylist",
-                type: "post",
-                dataType: 'json',
-                data: {
-                    "playmusic": playsongname.attr("value"),
-                },
-                success: function (result) {
-                    if (result.stats == 0) {
-                        alert("暂无这首歌曲")
-                    } else if (result.stats == 1) {
-                        window.location.href = 'listen.html';
+            var loginuser = $("#loginuserphone").attr("value");
+            if (loginuser != null) {
+                $.ajax({
+                    url: "song/musicplaylist",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        "playmusic": playsongname.attr("value"),
+                        "userphone": loginuser
+                    },
+                    success: function (result) {
+                        if (result.stats == 0) {
+                            alert("暂无这首歌曲")
+                        } else if (result.stats == 1) {
+                            window.location.href = 'listen.html';
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                alert("请先登录");
+            }
         });
 
         $(".fa-play-circle").click(function () {
             var playsongname = $(this);
-            $.ajax({
-                url: "song/musicplaylist",
-                type: "post",
-                dataType: 'json',
-                data: {
-                    "playmusic": playsongname.attr("value"),
-                },
-                success: function (result) {
-                    if (result.stats == 0) {
-                        alert("暂无这首歌曲")
-                    } else if (result.stats == 1) {
-                        window.location.href = 'listen.html';
+            var loginuser = $("#loginuserphone").attr("value");
+            if (loginuser != null) {
+                $.ajax({
+                    url: "song/musicplaylist",
+                    type: "post",
+                    dataType: 'json',
+                    data: {
+                        "playmusic": playsongname.attr("value"),
+                        "userphone": loginuser
+                    },
+                    success: function (result) {
+                        if (result.stats == 0) {
+                            alert("暂无这首歌曲")
+                        } else if (result.stats == 1) {
+                            window.location.href = 'listen.html';
+                        }
                     }
-                }
-            });
+                });
+            } else {
+                alert("请先登录");
+            }
         });
 
     });

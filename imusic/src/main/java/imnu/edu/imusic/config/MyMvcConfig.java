@@ -23,7 +23,6 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/signup.html").setViewName("signup");
                 registry.addViewController("/modal.lockme.html").setViewName("signin");
                 registry.addViewController("/profile.html").setViewName("profile");
-                registry.addViewController("/singer.html").setViewName("singer");
                 registry.addViewController("/404.html").setViewName("404");
                 registry.addViewController("/listen.html").setViewName("listen");
                 registry.addViewController("/OLDlisten.html").setViewName("OLDlisten");
@@ -34,6 +33,7 @@ public class MyMvcConfig implements WebMvcConfigurer {
                 registry.addViewController("/share.html").setViewName("share");
                 registry.addViewController("/musicinfor.html").setViewName("musicinfor");
                 registry.addViewController("/index2.html").setViewName("index2");
+                registry.addViewController("/vvhp.html").setViewName("vvhp");
             }
 
             //拦截器注册，addPathPatterns()添加拦截请求，excludePathPatterns()排除拦截请求
@@ -49,12 +49,12 @@ public class MyMvcConfig implements WebMvcConfigurer {
                                 "/musicinfor.html",
                                 "/listen.html").
                         excludePathPatterns("/","/signin.html",
-                                "/singer.html",
                                 "/user/login",
                                 "/user/register",
                                 "/index.html",
                                 "/index2.html",
                                 "/404.html",
+                                "/vvhp.html",
                                 "public.html");
             }
         };
