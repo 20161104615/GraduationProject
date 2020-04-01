@@ -1,5 +1,6 @@
 package imnu.edu.imusic.service.lmpl;
 
+import imnu.edu.imusic.bean.MusicBean;
 import imnu.edu.imusic.bean.UserBean;
 import imnu.edu.imusic.mapper.UserMapper;
 import imnu.edu.imusic.service.UserService;
@@ -28,6 +29,8 @@ public class UserServiceImpl implements UserService {
             //添加失败,手机号或邮箱重复
             return false;
         } else {
+            String newUserAvatarUrl = "asserts/images/m18.jpg";
+            userBean.setUser_avatar(newUserAvatarUrl);
             int insertUser = userMapper.insertUser(userBean);
             if (insertUser != 0) {
                 //添加成功
@@ -108,5 +111,15 @@ public class UserServiceImpl implements UserService {
         } else {
             return false;
         }
+    }
+
+    @Override
+    public boolean uploadUserAvatar(String userphone) {
+        String newUserAvatarUrl = "http://localhost:8080/media/useravatar/" + userphone + ".jpg";
+        UserBean userBean = new UserBean();
+        userBean.setUser_phone(userphone);
+        userBean.setUser_avatar(newUserAvatarUrl);
+        boolean b = userMapper.updateuseravatar(userBean);
+        return b;
     }
 }

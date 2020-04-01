@@ -2,7 +2,9 @@ package imnu.edu.imusic.controller;
 
 
 import imnu.edu.imusic.bean.MusicBean;
+import imnu.edu.imusic.bean.UserBean;
 import imnu.edu.imusic.service.MusicService;
+import imnu.edu.imusic.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.core.io.InputStreamResource;
@@ -12,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import org.thymeleaf.util.StringUtils;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -37,6 +40,9 @@ public class FilesController {
 
     @Autowired
     MusicService musicService;
+
+    @Autowired
+    UserService userService;
 
     @GetMapping(value = "/fileUpload")
     public String file() {
@@ -306,5 +312,55 @@ public class FilesController {
                 .contentLength(fileSystemResource.contentLength())
                 .contentType(MediaType.parseMediaType("application/octet-strem"))
                 .body(new InputStreamResource(fileSystemResource.getInputStream()));
+    }
+
+    @PostMapping(value = "/updateuserAvatar")
+    @ResponseBody
+    public void updateUserAvatar(@RequestParam(value = "newUserAvatar") MultipartFile newUserAvatar,
+                                 @RequestParam(value = "useravatarphone") String userPhone,
+                                 HttpServletResponse response,
+                                 HttpServletRequest request) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        UserBean userBean = new UserBean();
+        if (newUserAvatar.isEmpty() && StringUtils.isEmpty(userPhone)) {
+            response.sendRedirect("/music/profile.html");
+        }
+        userBean.setUser_phone(userPhone);
+        String fileName = "";//文件名称
+        String suffixName = "";//文件后缀名称
+        String newName = "";
+        String newNameImg = "";
+        List<MultipartFile> files = new ArrayList<MultipartFile>();
+        files.add(newUserAvatar);
+        MultipartFile file = null;
+        for (int i = 0; i < files.size(); i++) {
+            file = files.get(i);
+            fileName = file.getOriginalFilename();//获取文件名称
+            suffixName = fileName.substring(fileName.lastIndexOf("."));//获取文件的后缀名
+            /*newName = fileName.substring(0, fileName.indexOf("."));*/
+            System.out.println("文件名称：" + fileName + ";  文件后缀名称：" + suffixName);
+            if (".jpg".equals(suffixName) || ".png".equals(suffixName)) {
+                System.out.println("进入图片处理");
+                String filePath_newUserAvatarUrl = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/useravatar/";//图片存放的路径
+                newNameImg = userPhone + ".jpg";//统一处理为.jpg
+                /*File file_music_img = new File(filePath_newMusicImgUrl + fileName);*/
+                File file_music_img = new File(filePath_newUserAvatarUrl + newNameImg);
+                try {
+                    file.transferTo(file_music_img);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } else {
+                System.out.println("判断出错");
+                break;
+            }
+        }
+        boolean checkUpload = userService.uploadUserAvatar(userPhone);
+        if (checkUpload != false){
+            UserBean loginUser = userService.userFind(userBean);
+            request.getSession().setAttribute("LoginUser", loginUser);
+        }
+        response.sendRedirect("/music/profile.html");
     }
 }

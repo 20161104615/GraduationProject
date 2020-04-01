@@ -45,9 +45,9 @@ public interface UserMapper {
      * 增加用户信息
      *      1、用户注册
      */
-    @Insert("insert into user (user_name,user_phone,user_email,user_pwd,user_Administrator) " +
+    @Insert("insert into user (user_name,user_phone,user_email,user_pwd,user_Administrator,user_avatar) " +
             "values " +
-            "(#{user_name},#{user_phone},#{user_email},#{user_pwd},#{user_Administrator})")
+            "(#{user_name},#{user_phone},#{user_email},#{user_pwd},#{user_Administrator},#{user_avatar})")
     public int insertUser(UserBean userBean);
 
     @Insert("INSERT INTO user (user_name,user_phone,user_email,user_pwd,user_Administrator) " +
@@ -68,6 +68,9 @@ public interface UserMapper {
             "user_phone=#{user_phone},user_email=#{user_email},user_introduced=#{user_introduced} " +
             "where user_id=#{user_id} ")
     public boolean AUPDATEUSER(UserBean userBean);
+
+    @Update("update user set user_avatar=#{user_avatar} where user_phone=#{user_phone}")
+    public boolean updateuseravatar(UserBean userBean);
 
     /**
      * 注销用户

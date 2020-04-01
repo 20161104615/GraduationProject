@@ -61,6 +61,49 @@
                 </div><!-- /.modal-content -->
             </div><!-- /.modal -->
         </div>
+        <div class="modal fade" id="myModa8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                            &times;
+                        </button>
+                        <h4 class="modal-title" id="myModalLabe8">
+                            修改头像
+                        </h4>
+                    </div>
+                    <form id="uploadForm8" enctype="multipart/form-data"
+                          method="post"
+                          th:action="@{files/updateuserAvatar}">
+                        <div class="modal-body">
+                            <div class="panel-body modal-ys ">
+                                <label class="col-sm-3 control-label text-right  m-t-xs">图片上传：</label>
+                                <div class="col-sm-9">
+                                    <div class="row">
+                                        <div class="col-md-11">
+                                            <input id="newUserAvatar" name="newUserAvatar" type="file"
+                                                   data-icon="false"
+                                                   data-classButton="btn btn-default"
+                                                   data-classInput="form-control inline v-middle input-s">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <input class="hide" id="useravatarphone" name="useravatarphone" th:value="${session.LoginUser.getUser_phone()}">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">
+                                关闭
+                            </button>
+                            <button id="updateuserAvatar" type="submit" class="btn btn-primary">
+                                确定
+                            </button>
+                        </div>
+                    </form>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal -->
+        </div>
         <section class="hbox stretch">
             <section class="vbox">
                 <section class="scrollable">
@@ -70,8 +113,9 @@
                                 <section class="scrollable">
                                     <div class="wrapper" id="nowUser">
                                         <div class="text-center m-b m-t" style="overflow-y: hidden;overflow-x: hidden">
-                                            <a href="#" onclick="updateUserAvatar()" id="userAvatar" class="thumb-lg">
-                                                <img th:src="@{/asserts/images/a0.png}" class="img-circle">
+                                            <a href="#" data-toggle="modal"
+                                               data-target="#myModa8"  id="userAvatar" class="thumb-lg">
+                                                <img th:src="${(session.LoginUser.getUser_avatar() ne null)? session.LoginUser.getUser_avatar():'asserts/images/a1.png'}" class="img-circle">
                                             </a>
                                             <div>
                                                 <div class="h3 m-t-xs m-b-xs" th:fragment="loginUserGetUserName">
@@ -386,6 +430,13 @@
             });
         });
     });
+
+    $("#userAvatar").click(function () {
+        $("#updateuserAvatar").click(function () {
+            $("#updateuserAvatar").submit();
+        })
+    });
+
 
 
 </script>

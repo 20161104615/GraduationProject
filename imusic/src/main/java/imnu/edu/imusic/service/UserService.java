@@ -16,4 +16,5 @@ public interface UserService {
     public boolean DELETEUSER(UserBean userBean);
     public UserBean FINDUSER(UserBean userBean);
     public boolean INSERTUSER(UserBean userBean);
+    public boolean uploadUserAvatar(String userphone);
 }

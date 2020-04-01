@@ -103,7 +103,7 @@
             <li class="dropdown" style="margin-left: 16px;margin-top: 0.1rem">
                 <a href="#" class="dropdown-toggle bg clear" data-toggle="dropdown">
                     <span class="thumb-sm avatar pull-right m-t-n-sm m-b-n-sm m-l-sm">
-                        <img th:src="@{/asserts/images/a0.png}" alt="...">
+                        <img th:src="${(session.LoginUser ne null) ? session.LoginUser.getUser_avatar() :'asserts/images/a1.png'}" alt="...">
                     </span>
                     <span th:text="${(session.LoginUser ne null) ? session.LoginUser.getUser_name() :'未登录'}"></span>
                     <input id="loginuserphone" class="hide"

@@ -98,7 +98,8 @@
 <script th:inline="javascript">
     $(document).ready(function () {
         $("#song_play").click(function () {
-            window.location.href = "listen.html";
+            /*window.location.href = "listen.html";*/
+            window.open("listen.html", "_blank");
         });
 
         $("#favorite_song_id_like").click(function () {
@@ -210,6 +211,24 @@
             });
         });
 
+        $("#findmusicbyNames").click(function () {
+            $.ajax({
+                url: "song/findmusicbyname",
+                type: "post",
+                dataType: 'json',
+                data: {
+                    "searchmusic": $("#findmusic").val()
+                },
+                success: function (result) {
+                    if (result.stat == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stat == 1) {
+                        /*跳转到MusicController*/
+                        window.location.href = 'list.html';
+                    }
+                }
+            });
+        });
     });
 </script>
 </body>
