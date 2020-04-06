@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50562
 File Encoding         : 65001
 
-Date: 2020-03-13 15:12:03
+Date: 2020-04-06 23:53:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -28,14 +28,19 @@ CREATE TABLE `comments` (
   `comments` text,
   `comments_date` datetime DEFAULT NULL,
   `user_name` varchar(500) DEFAULT NULL,
+  `user_avatar` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of comments
 -- ----------------------------
-INSERT INTO `comments` VALUES ('1', '1234', '45', '用尽我的一切奔向你', '周笔畅', '这是测试数据', '2020-03-07 13:49:28', '测试员');
-INSERT INTO `comments` VALUES ('2', '12345', '45', '用尽我的一切奔向你', '周笔畅', '这是我的测试', '2020-03-07 13:50:25', '杰克逊');
+INSERT INTO `comments` VALUES ('1', '1234', '45', '用尽我的一切奔向你', '周笔畅', '这是测试数据', '2020-03-07 13:49:28', '测试员', 'http://localhost:8080/media/useravatar/1234.jpg');
+INSERT INTO `comments` VALUES ('2', '12345', '45', '用尽我的一切奔向你', '周笔畅', '这是我的测试', '2020-03-07 13:50:25', '杰克逊', '');
+INSERT INTO `comments` VALUES ('3', '1234', '71', '红颜', '胡彦斌', '哈哈哈', '2020-04-01 11:13:23', '测试员', 'http://localhost:8080/media/useravatar/1234.jpg');
+INSERT INTO `comments` VALUES ('4', '1234', '43', '笔记 (Live)', '周笔畅', '哈哈哈啊', '2020-04-01 11:17:24', '测试员', 'http://localhost:8080/media/useravatar/1234.jpg');
+INSERT INTO `comments` VALUES ('5', '1234', '34', '我和我的祖国', '华语群星', '我和我的祖国', '2020-04-03 11:39:33', '测试员', 'http://localhost:8080/media/useravatar/1234.jpg');
+INSERT INTO `comments` VALUES ('6', '1234', '45', '用尽我的一切奔向你', '周笔畅', 'hahha', '2020-04-06 19:12:11', '测试员', 'http://localhost:8080/media/useravatar/1234.jpg');
 
 -- ----------------------------
 -- Table structure for `favoritesongs`
@@ -47,7 +52,7 @@ CREATE TABLE `favoritesongs` (
   `music_name` varchar(500) DEFAULT NULL,
   `user_phone` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of favoritesongs
@@ -55,29 +60,10 @@ CREATE TABLE `favoritesongs` (
 INSERT INTO `favoritesongs` VALUES ('3', '55', '2002年的第一场雪', '123');
 INSERT INTO `favoritesongs` VALUES ('4', '15', '年少有为', '123');
 INSERT INTO `favoritesongs` VALUES ('5', '73', '小半', '123');
-INSERT INTO `favoritesongs` VALUES ('88', '62', '星星 (Live)', '1234');
 INSERT INTO `favoritesongs` VALUES ('93', '28', '分手快乐', '123');
 INSERT INTO `favoritesongs` VALUES ('94', '39', '关键词', '123');
-INSERT INTO `favoritesongs` VALUES ('95', '79', '山水又一程 (Live)', '1234');
-INSERT INTO `favoritesongs` VALUES ('97', '19', '会呼吸的痛', '1234');
-INSERT INTO `favoritesongs` VALUES ('98', '17', '老街', '1234');
-INSERT INTO `favoritesongs` VALUES ('99', '16', '不将就', '1234');
-INSERT INTO `favoritesongs` VALUES ('100', '27', '爱久见人心', '1234');
-INSERT INTO `favoritesongs` VALUES ('101', '26', '梦醒时分 (Live)', '1234');
-INSERT INTO `favoritesongs` VALUES ('102', '31', '刚刚好', '1234');
-INSERT INTO `favoritesongs` VALUES ('103', '33', '绅士', '1234');
-INSERT INTO `favoritesongs` VALUES ('104', '46', '怒放的生命', '1234');
-INSERT INTO `favoritesongs` VALUES ('105', '47', '光明', '1234');
-INSERT INTO `favoritesongs` VALUES ('106', '48', '春天里', '1234');
-INSERT INTO `favoritesongs` VALUES ('107', '49', '北京北京', '1234');
-INSERT INTO `favoritesongs` VALUES ('108', '50', '飞得更高', '1234');
-INSERT INTO `favoritesongs` VALUES ('109', '51', '冲动的惩罚', '1234');
-INSERT INTO `favoritesongs` VALUES ('110', '52', '西海情歌', '1234');
-INSERT INTO `favoritesongs` VALUES ('111', '53', '喀什噶尔胡杨', '1234');
-INSERT INTO `favoritesongs` VALUES ('112', '54', '披着羊皮的狼', '1234');
-INSERT INTO `favoritesongs` VALUES ('113', '16', '不将就', '1234');
 INSERT INTO `favoritesongs` VALUES ('119', '43', '笔记 (Live)', '15648161601');
-INSERT INTO `favoritesongs` VALUES ('120', '45', '用尽我的一切奔向你', '1234');
+INSERT INTO `favoritesongs` VALUES ('124', '34', '我和我的祖国', '1234');
 
 -- ----------------------------
 -- Table structure for `music`
@@ -91,7 +77,7 @@ CREATE TABLE `music` (
   `music_storagepath` varchar(500) DEFAULT NULL COMMENT '歌曲路径',
   `music_img` varchar(500) DEFAULT NULL COMMENT '歌曲图片',
   PRIMARY KEY (`music_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=113 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=186 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of music
@@ -168,6 +154,79 @@ INSERT INTO `music` VALUES ('109', '追', '韩磊-谭维维', null, 'http://loca
 INSERT INTO `music` VALUES ('110', '中华民族', '莫文蔚-韩磊-谭维维-孙楠', null, 'http://localhost:8080/media/中华民族.m4a', 'http://localhost:8080/media/img/中华民族-莫文蔚-韩磊-谭维维-孙楠.jpg');
 INSERT INTO `music` VALUES ('111', '向天再借五百年', '韩磊', null, 'http://localhost:8080/media/向天再借五百年.m4a', 'http://localhost:8080/media/img/向天再借五百年-韩磊.jpg');
 INSERT INTO `music` VALUES ('112', '时间里的小偷', '庄心妍', null, 'http://localhost:8080/media/时间里的小偷.m4a', 'http://localhost:8080/media/img/时间里的小偷-庄心妍.jpg');
+INSERT INTO `music` VALUES ('113', '世界这么大还是遇见你', '程响', null, 'http://localhost:8080/media/世界这么大还是遇见你.m4a', 'http://localhost:8080/media/img/世界这么大还是遇见你-程响.jpg');
+INSERT INTO `music` VALUES ('114', '彻悟', '程响', null, 'http://localhost:8080/media/彻悟.m4a', 'http://localhost:8080/media/img/彻悟-程响.jpg');
+INSERT INTO `music` VALUES ('115', '不再联系', '程响', null, 'http://localhost:8080/media/不再联系.m4a', 'http://localhost:8080/media/img/不再联系-程响.jpg');
+INSERT INTO `music` VALUES ('116', '新娘不是我', '程响', null, 'http://localhost:8080/media/新娘不是我.m4a', 'http://localhost:8080/media/img/新娘不是我-程响.jpg');
+INSERT INTO `music` VALUES ('117', '美丽女人', '程响', null, 'http://localhost:8080/media/美丽女人.m4a', 'http://localhost:8080/media/img/美丽女人-程响.jpg');
+INSERT INTO `music` VALUES ('118', '南方姑娘', '赵雷', null, 'http://localhost:8080/media/南方姑娘.m4a', 'http://localhost:8080/media/img/南方姑娘-赵雷.jpg');
+INSERT INTO `music` VALUES ('119', '成都', '赵雷', null, 'http://localhost:8080/media/成都.m4a', 'http://localhost:8080/media/img/成都-赵雷.jpg');
+INSERT INTO `music` VALUES ('120', '理想', '赵雷', null, 'http://localhost:8080/media/理想.m4a', 'http://localhost:8080/media/img/理想-赵雷.jpg');
+INSERT INTO `music` VALUES ('121', '画', '赵雷', null, 'http://localhost:8080/media/画.m4a', 'http://localhost:8080/media/img/画-赵雷.jpg');
+INSERT INTO `music` VALUES ('122', '我们的时光', '赵雷', null, 'http://localhost:8080/media/我们的时光.m4a', 'http://localhost:8080/media/img/我们的时光-赵雷.jpg');
+INSERT INTO `music` VALUES ('123', '情花几时开（DJheap九天 咚鼓版）', '魏新雨', null, 'http://localhost:8080/media/情花几时开（DJheap九天 咚鼓版）.m4a', 'http://localhost:8080/media/img/情花几时开（DJheap九天 咚鼓版）-魏新雨.jpg');
+INSERT INTO `music` VALUES ('124', '百花香', '魏新雨', null, 'http://localhost:8080/media/百花香.m4a', 'http://localhost:8080/media/img/百花香-魏新雨.jpg');
+INSERT INTO `music` VALUES ('125', '余情未了', '魏新雨', null, 'http://localhost:8080/media/余情未了.m4a', 'http://localhost:8080/media/img/余情未了-魏新雨.jpg');
+INSERT INTO `music` VALUES ('126', '最美的情缘', '魏新雨', null, 'http://localhost:8080/media/最美的情缘.m4a', 'http://localhost:8080/media/img/最美的情缘-魏新雨.jpg');
+INSERT INTO `music` VALUES ('127', '恋人心', '魏新雨', null, 'http://localhost:8080/media/恋人心.m4a', 'http://localhost:8080/media/img/恋人心-魏新雨.jpg');
+INSERT INTO `music` VALUES ('128', '老男孩', '筷子兄弟', null, 'http://localhost:8080/media/老男孩.m4a', 'http://localhost:8080/media/img/老男孩-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('129', '父亲', '筷子兄弟', null, 'http://localhost:8080/media/父亲.m4a', 'http://localhost:8080/media/img/父亲-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('130', '小苹果', '筷子兄弟', null, 'http://localhost:8080/media/小苹果.m4a', 'http://localhost:8080/media/img/小苹果-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('131', '猛龙过江', '筷子兄弟', null, 'http://localhost:8080/media/猛龙过江.m4a', 'http://localhost:8080/media/img/猛龙过江-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('132', '我从来没去过纽约', '筷子兄弟', null, 'http://localhost:8080/media/我从来没去过纽约.m4a', 'http://localhost:8080/media/img/我从来没去过纽约-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('133', '奔跑吧兄弟', '筷子兄弟', null, 'http://localhost:8080/media/奔跑吧兄弟.m4a', 'http://localhost:8080/media/img/奔跑吧兄弟-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('134', '小水果', '筷子兄弟', null, 'http://localhost:8080/media/小水果.m4a', 'http://localhost:8080/media/img/小水果-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('135', '祝福你亲爱的', '筷子兄弟', null, 'http://localhost:8080/media/祝福你亲爱的.m4a', 'http://localhost:8080/media/img/祝福你亲爱的-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('136', '我一定要得到你', '筷子兄弟', null, 'http://localhost:8080/media/我一定要得到你.m4a', 'http://localhost:8080/media/img/我一定要得到你-筷子兄弟.jpg');
+INSERT INTO `music` VALUES ('137', '老男孩 (Live)', '筷子兄弟-刘忻', null, 'http://localhost:8080/media/老男孩 (Live).m4a', 'http://localhost:8080/media/img/老男孩 (Live)-筷子兄弟-刘忻.jpg');
+INSERT INTO `music` VALUES ('138', '明天，你好', '牛奶咖啡', null, 'http://localhost:8080/media/明天，你好.m4a', 'http://localhost:8080/media/img/明天，你好-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('139', '越长大越孤单', '牛奶咖啡', null, 'http://localhost:8080/media/越长大越孤单.m4a', 'http://localhost:8080/media/img/越长大越孤单-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('140', '忘了牵手', '牛奶咖啡', null, 'http://localhost:8080/media/忘了牵手.m4a', 'http://localhost:8080/media/img/忘了牵手-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('141', '从你的全世界路过', '牛奶咖啡', null, 'http://localhost:8080/media/从你的全世界路过.m4a', 'http://localhost:8080/media/img/从你的全世界路过-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('142', '再见，昨天', '牛奶咖啡', null, 'http://localhost:8080/media/再见，昨天.m4a', 'http://localhost:8080/media/img/再见，昨天-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('143', '星星', '牛奶咖啡', null, 'http://localhost:8080/media/星星.m4a', 'http://localhost:8080/media/img/星星-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('144', '一个人的风景', '牛奶咖啡', null, 'http://localhost:8080/media/一个人的风景.m4a', 'http://localhost:8080/media/img/一个人的风景-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('145', '咖喱咖喱', '牛奶咖啡', null, 'http://localhost:8080/media/咖喱咖喱.m4a', 'http://localhost:8080/media/img/咖喱咖喱-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('146', '遇见你', '牛奶咖啡', null, 'http://localhost:8080/media/遇见你.m4a', 'http://localhost:8080/media/img/遇见你-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('147', '习惯了寂寞', '牛奶咖啡', null, 'http://localhost:8080/media/习惯了寂寞.m4a', 'http://localhost:8080/media/img/习惯了寂寞-牛奶咖啡.jpg');
+INSERT INTO `music` VALUES ('148', '佛系少女', '冯提莫', null, 'http://localhost:8080/media/佛系少女.m4a', 'http://localhost:8080/media/img/佛系少女-冯提莫.jpg');
+INSERT INTO `music` VALUES ('149', '沙漠骆驼', '冯提莫', null, 'http://localhost:8080/media/沙漠骆驼.m4a', 'http://localhost:8080/media/img/沙漠骆驼-冯提莫.jpg');
+INSERT INTO `music` VALUES ('150', '空心 (Live)', '冯提莫', null, 'http://localhost:8080/media/空心 (Live).m4a', 'http://localhost:8080/media/img/空心 (Live)-冯提莫.jpg');
+INSERT INTO `music` VALUES ('151', '星月神话', '金莎', null, 'http://localhost:8080/media/星月神话.m4a', 'http://localhost:8080/media/img/星月神话-金莎.jpg');
+INSERT INTO `music` VALUES ('152', '被风吹过的夏天', '金莎-林俊杰', null, 'http://localhost:8080/media/被风吹过的夏天.m4a', 'http://localhost:8080/media/img/被风吹过的夏天-金莎-林俊杰.jpg');
+INSERT INTO `music` VALUES ('153', '画中仙', '金莎', null, 'http://localhost:8080/media/画中仙.m4a', 'http://localhost:8080/media/img/画中仙-金莎.jpg');
+INSERT INTO `music` VALUES ('154', '相思垢', '金莎', null, 'http://localhost:8080/media/相思垢.m4a', 'http://localhost:8080/media/img/相思垢-金莎.jpg');
+INSERT INTO `music` VALUES ('155', '不可思议', '金莎', null, 'http://localhost:8080/media/不可思议.m4a', 'http://localhost:8080/media/img/不可思议-金莎.jpg');
+INSERT INTO `music` VALUES ('156', '天空之外', '弦子', null, 'http://localhost:8080/media/天空之外.m4a', 'http://localhost:8080/media/img/天空之外-弦子.jpg');
+INSERT INTO `music` VALUES ('157', '不得不爱', '潘玮柏-弦子', null, 'http://localhost:8080/media/不得不爱.m4a', 'http://localhost:8080/media/img/不得不爱-潘玮柏-弦子.jpg');
+INSERT INTO `music` VALUES ('158', '沿海地带', '弦子', null, 'http://localhost:8080/media/沿海地带.m4a', 'http://localhost:8080/media/img/沿海地带-弦子.jpg');
+INSERT INTO `music` VALUES ('159', '万物生', '萨顶顶', null, 'http://localhost:8080/media/万物生.m4a', 'http://localhost:8080/media/img/万物生-萨顶顶.jpg');
+INSERT INTO `music` VALUES ('160', '左手指月（Cover：萨顶顶）', '炎雪', null, 'http://localhost:8080/media/左手指月（Cover：萨顶顶）.m4a', 'http://localhost:8080/media/img/左手指月（Cover：萨顶顶）-炎雪.jpg');
+INSERT INTO `music` VALUES ('161', '自由行走的花', '萨顶顶', null, 'http://localhost:8080/media/自由行走的花.m4a', 'http://localhost:8080/media/img/自由行走的花-萨顶顶.jpg');
+INSERT INTO `music` VALUES ('162', '一剪梅', '费玉清', null, 'http://localhost:8080/media/一剪梅.m4a', 'http://localhost:8080/media/img/一剪梅-费玉清.jpg');
+INSERT INTO `music` VALUES ('163', '千里之外', '费玉清', null, 'http://localhost:8080/media/千里之外.m4a', 'http://localhost:8080/media/img/千里之外-费玉清.jpg');
+INSERT INTO `music` VALUES ('164', '涛声依旧', '费玉清', null, 'http://localhost:8080/media/涛声依旧.m4a', 'http://localhost:8080/media/img/涛声依旧-费玉清.jpg');
+INSERT INTO `music` VALUES ('165', '南屏晚钟', '费玉清', null, 'http://localhost:8080/media/南屏晚钟.m4a', 'http://localhost:8080/media/img/南屏晚钟-费玉清.jpg');
+INSERT INTO `music` VALUES ('166', '昨夜小楼又东风', '费玉清', null, 'http://localhost:8080/media/昨夜小楼又东风.m4a', 'http://localhost:8080/media/img/昨夜小楼又东风-费玉清.jpg');
+INSERT INTO `music` VALUES ('167', '梦驼铃', '费玉清', null, 'http://localhost:8080/media/梦驼铃.m4a', 'http://localhost:8080/media/img/梦驼铃-费玉清.jpg');
+INSERT INTO `music` VALUES ('168', '新鸳鸯·蝴蝶梦 (Live)', '费玉清-阿云嘎', null, 'http://localhost:8080/media/新鸳鸯·蝴蝶梦 (Live).m4a', 'http://localhost:8080/media/img/新鸳鸯·蝴蝶梦 (Live)-费玉清-阿云嘎.jpg');
+INSERT INTO `music` VALUES ('169', '青花瓷 (Live)', '费玉清', null, 'http://localhost:8080/media/青花瓷 (Live).m4a', 'http://localhost:8080/media/img/青花瓷 (Live)-费玉清.jpg');
+INSERT INTO `music` VALUES ('170', '上海滩 (Live)', '费玉清', null, 'http://localhost:8080/media/上海滩 (Live).m4a', 'http://localhost:8080/media/img/上海滩 (Live)-费玉清.jpg');
+INSERT INTO `music` VALUES ('171', '一帘幽梦', '费玉清', null, 'http://localhost:8080/media/一帘幽梦.m4a', 'http://localhost:8080/media/img/一帘幽梦-费玉清.jpg');
+INSERT INTO `music` VALUES ('172', '恋曲1990', '罗大佑', null, 'http://localhost:8080/media/恋曲1990.m4a', 'http://localhost:8080/media/img/恋曲1990-罗大佑.jpg');
+INSERT INTO `music` VALUES ('173', '光阴的故事', '罗大佑', null, 'http://localhost:8080/media/光阴的故事.m4a', 'http://localhost:8080/media/img/光阴的故事-罗大佑.jpg');
+INSERT INTO `music` VALUES ('174', '你的样子 (Live)', '罗大佑', null, 'http://localhost:8080/media/你的样子 (Live).m4a', 'http://localhost:8080/media/img/你的样子 (Live)-罗大佑.jpg');
+INSERT INTO `music` VALUES ('175', '童年 (Live)', '罗大佑', null, 'http://localhost:8080/media/童年 (Live).m4a', 'http://localhost:8080/media/img/童年 (Live)-罗大佑.jpg');
+INSERT INTO `music` VALUES ('176', '东方之珠', '罗大佑', null, 'http://localhost:8080/media/东方之珠.m4a', 'http://localhost:8080/media/img/东方之珠-罗大佑.jpg');
+INSERT INTO `music` VALUES ('177', '兄弟抱一下', '庞龙', null, 'http://localhost:8080/media/兄弟抱一下.m4a', 'http://localhost:8080/media/img/兄弟抱一下-庞龙.jpg');
+INSERT INTO `music` VALUES ('178', '两只蝴蝶', '庞龙', null, 'http://localhost:8080/media/两只蝴蝶.m4a', 'http://localhost:8080/media/img/两只蝴蝶-庞龙.jpg');
+INSERT INTO `music` VALUES ('179', '你是我的玫瑰花', '庞龙', null, 'http://localhost:8080/media/你是我的玫瑰花.m4a', 'http://localhost:8080/media/img/你是我的玫瑰花-庞龙.jpg');
+INSERT INTO `music` VALUES ('180', '家在东北', '庞龙', null, 'http://localhost:8080/media/家在东北.m4a', 'http://localhost:8080/media/img/家在东北-庞龙.jpg');
+INSERT INTO `music` VALUES ('181', '幸福的两口子', '庞龙', null, 'http://localhost:8080/media/幸福的两口子.m4a', 'http://localhost:8080/media/img/幸福的两口子-庞龙.jpg');
+INSERT INTO `music` VALUES ('182', '野子 (Live)', '苏运莹', null, 'http://localhost:8080/media/野子 (Live).m4a', 'http://localhost:8080/media/img/野子 (Live)-苏运莹.jpg');
+INSERT INTO `music` VALUES ('183', '有可能的夜晚 (Live)', '曾轶可', null, 'http://localhost:8080/media/有可能的夜晚 (Live).m4a', 'http://localhost:8080/media/img/有可能的夜晚 (Live)-曾轶可.jpg');
+INSERT INTO `music` VALUES ('184', '私奔', '曾轶可', null, 'http://localhost:8080/media/私奔.m4a', 'http://localhost:8080/media/img/私奔-曾轶可.jpg');
+INSERT INTO `music` VALUES ('185', '狮子座 (Live)', '曾轶可', null, 'http://localhost:8080/media/狮子座 (Live).m4a', 'http://localhost:8080/media/img/狮子座 (Live)-曾轶可.jpg');
 
 -- ----------------------------
 -- Table structure for `sharesongs`
@@ -181,7 +240,7 @@ CREATE TABLE `sharesongs` (
   `share_date` date DEFAULT NULL,
   `music_singer` varchar(500) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of sharesongs
@@ -192,6 +251,10 @@ INSERT INTO `sharesongs` VALUES ('5', '1234', '62', '星星 (Live)', '2020-03-06
 INSERT INTO `sharesongs` VALUES ('6', '1234', '45', '用尽我的一切奔向你', '2020-03-07', '周笔畅');
 INSERT INTO `sharesongs` VALUES ('7', '1234', '45', '用尽我的一切奔向你', '2020-03-07', '周笔畅');
 INSERT INTO `sharesongs` VALUES ('8', '1234', '51', '冲动的惩罚', '2020-03-12', '刀郎');
+INSERT INTO `sharesongs` VALUES ('9', '1234', '63', '三生三世', '2020-03-28', '张杰');
+INSERT INTO `sharesongs` VALUES ('10', '333', '46', '怒放的生命', '2020-04-01', '汪峰');
+INSERT INTO `sharesongs` VALUES ('11', '333', '51', '冲动的惩罚', '2020-04-01', '刀郎');
+INSERT INTO `sharesongs` VALUES ('12', '1234', '34', '我和我的祖国', '2020-04-03', '华语群星');
 
 -- ----------------------------
 -- Table structure for `user`
@@ -208,12 +271,14 @@ CREATE TABLE `user` (
   `user_introduced` text,
   `user_Administrator` tinyint(4) DEFAULT NULL COMMENT '是否为管理员',
   PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of user
 -- ----------------------------
 INSERT INTO `user` VALUES ('1', '123', '123', '123', '123', '2020-02-05', '123@qq.om', '123', '1');
-INSERT INTO `user` VALUES ('2', '测试员', '1234', '1234', '12346', '2020-03-17', '1234@126.com', '这是测试员', '0');
+INSERT INTO `user` VALUES ('2', '测试员', '1234', '1234', 'http://localhost:8080/media/useravatar/1234.jpg', '2020-03-17', '1234@126.com', '这是测试员', '0');
 INSERT INTO `user` VALUES ('7', '杰克逊', '12345', '123', '123', '2020-02-26', '12345@qq.com', '美国的杰克逊', '0');
-INSERT INTO `user` VALUES ('12', '测试员', '15648161601', '123', null, '2020-03-13', '1019172727@qq.com', '这是一位测试员', '0');
+INSERT INTO `user` VALUES ('12', '测试员', '15648161601', '123', 'http://localhost:8080/media/useravatar/15648161601.jpg', '2020-03-13', '1019172727@qq.com', '这是一位测试员', '0');
+INSERT INTO `user` VALUES ('18', '111', '111', '111111', 'http://localhost:8080/media/useravatar/111.jpg', null, '111', null, '0');
+INSERT INTO `user` VALUES ('19', '110', '119', '110', null, null, '110@qq.com', null, '1');

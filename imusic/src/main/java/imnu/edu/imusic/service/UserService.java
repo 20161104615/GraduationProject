@@ -3,6 +3,7 @@ package imnu.edu.imusic.service;
 
 import imnu.edu.imusic.bean.UserBean;
 
+import javax.mail.MessagingException;
 import java.util.ArrayList;
 
 public interface UserService {
@@ -17,4 +18,6 @@ public interface UserService {
     public UserBean FINDUSER(UserBean userBean);
     public boolean INSERTUSER(UserBean userBean);
     public boolean uploadUserAvatar(String userphone);
+    public void getCode(String useremail) throws MessagingException;
+    public boolean Resetpassword(String useremail,String code,String newuserpwd);
 }

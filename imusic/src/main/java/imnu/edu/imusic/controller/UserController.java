@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
+import javax.mail.MessagingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -340,7 +341,7 @@ public class UserController {
             UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
             long currentTimeMillis = System.currentTimeMillis();
             Timestamp timestamp = new Timestamp(currentTimeMillis);
-            Comments c1 = new Comments(loginUser.getUser_phone(), music_name, music_singer, music_id, comments, timestamp,loginUser.getUser_name());
+            Comments c1 = new Comments(loginUser.getUser_phone(), music_name, music_singer, music_id, comments, timestamp,loginUser.getUser_name(),loginUser.getUser_avatar());
             boolean b = musicService.insertComments(c1);
             if (b){
                 ArrayList<Comments> arrayList = musicService.COMMENTS_ARRAY_LIST(music_id);
@@ -355,4 +356,35 @@ public class UserController {
             }
         }
     }
+
+    @PostMapping("getforgetcode")
+    public void forgetcode(@RequestParam("useremail") String useremail,
+                           Map<String, Object> map,
+                           HttpServletRequest request,
+                           HttpServletResponse response) throws IOException, MessagingException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        userService.getCode(useremail);
+        map.put("stat", "1");
+        jsonObject = JSONObject.fromObject(map);
+        response.getWriter().print(jsonObject);
+    }
+
+    @RequestMapping("resetpassword")
+    public void resetpassword(@RequestParam("forget1") String useremail,
+                                @RequestParam("forget2") String code,
+                                @RequestParam("forget3") String newpwd,
+                                HttpServletRequest request,
+                                HttpServletResponse response) throws IOException, ServletException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        boolean b = userService.Resetpassword(useremail, code, newpwd);
+        System.out.println(b);
+        if(!b){
+            request.getSession().setAttribute("rp","修改失败，请重试");
+        }
+        response.sendRedirect("/music/signin.html");
+    }
+
 }

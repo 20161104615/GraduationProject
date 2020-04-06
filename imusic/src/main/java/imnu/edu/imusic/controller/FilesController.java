@@ -39,10 +39,10 @@ import java.util.UUID;
 public class FilesController {
 
     @Autowired
-    MusicService musicService;
+    private MusicService musicService;
 
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @GetMapping(value = "/fileUpload")
     public String file() {

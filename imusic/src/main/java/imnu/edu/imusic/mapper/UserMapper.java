@@ -72,6 +72,9 @@ public interface UserMapper {
     @Update("update user set user_avatar=#{user_avatar} where user_phone=#{user_phone}")
     public boolean updateuseravatar(UserBean userBean);
 
+    @Update("update user set user_pwd=#{user_pwd} where user_email=#{user_email}")
+    public boolean updateuserpwd(UserBean userBean);
+
     /**
      * 注销用户
      *      1、删除用户

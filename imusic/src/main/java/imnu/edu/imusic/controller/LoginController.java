@@ -15,7 +15,7 @@ import java.util.ArrayList;
 @Controller
 public class LoginController {
     @Autowired
-    MusicService musicService;
+    private MusicService musicService;
     @RequestMapping(value = "/index")
     public String allMusicBean(HttpServletRequest request,HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
@@ -32,6 +32,7 @@ public class LoginController {
         request.getSession().removeAttribute("ALoginUser");
         request.getSession().removeAttribute("commentslist");
         request.getSession().removeAttribute("userfm");
+        request.getSession().removeAttribute("rp");
         return "index";
     }
 }

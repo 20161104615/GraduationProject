@@ -68,9 +68,9 @@ public interface MusicMapper {
             "(#{music_id},#{user_phone},#{music_name},#{share_date},#{music_singer})")
     public boolean uploadMusicShare(ShareSongs shareSongs);
 
-    @Insert("insert into comments (user_phone,music_id,music_name,music_singer,comments,comments_date,user_name)" +
+    @Insert("insert into comments (user_phone,music_id,music_name,music_singer,comments,comments_date,user_name,user_avatar)" +
             "values" +
-            "(#{user_phone},#{music_id},#{music_name},#{music_singer},#{comments},#{comments_date},#{user_name})")
+            "(#{user_phone},#{music_id},#{music_name},#{music_singer},#{comments},#{comments_date},#{user_name},#{user_avatar})")
     public boolean uploadMusicComments(Comments comments);
     /**
      * 更新歌曲

@@ -21,9 +21,12 @@
                                                 <div class="music-list-rigth">
                                                     <p>
                                                     <div class="text-muted">
-                                                        <input id="pmi_name" th:value="${song.getMusic_name()}" class="hide">
-                                                        <input id="pmi_singer" th:value="${song.getMusic_singer()}" class="hide">
-                                                        <input id="pmi_id" th:value="${song.getMusic_id()}" class="hide">
+                                                        <input id="pmi_name" th:value="${song.getMusic_name()}"
+                                                               class="hide">
+                                                        <input id="pmi_singer" th:value="${song.getMusic_singer()}"
+                                                               class="hide">
+                                                        <input id="pmi_id" th:value="${song.getMusic_id()}"
+                                                               class="hide">
                                                         <h2><b>[[${song.getMusic_name()}]]</b></h2><br>
                                                         <i class="fa fa-user icon-muted">
                                                         </i> [[${song.getMusic_singer()}]]
@@ -44,7 +47,7 @@
                                                     </a>
                                                     <a id="share_music" class="btn btn-s-md btn-default">
                                                         <i id="share_music_id" class="icon-share-alt"
-                                                            th:value="${song.getMusic_id()}"></i>
+                                                           th:value="${song.getMusic_id()}"></i>
                                                         分享</a>
                                                     </p>
                                                 </div>
@@ -54,20 +57,25 @@
                                 </div>
                                 <h4 class="m-t-lg m-b">评论</h4>
                                 <div class="form-group">
-                                    <textarea id="commentsmusic" class="form-control" rows="5" placeholder="期待你的神评论~~~"></textarea>
+                                    <textarea id="commentsmusic" class="form-control" rows="5"
+                                              placeholder="期待你的神评论~~~"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <button id="submitcomments" type="submit" class="btn btn-success" style="margin-left: 832px">发表评论</button>
+                                    <button id="submitcomments" type="submit" class="btn btn-success"
+                                            style="margin-left: 832px">发表评论
+                                    </button>
                                 </div>
                                 <!--/输入内容-->
                                 <h4 class="m-t-lg m-b">最新评论</h4>
                                 <section class="comment-list block">
                                     <hr/>
                                     <!--循环体-->
-                                    <th:block th:each="co:${session.commentslist}" th:if="${session.commentslist ne null}">
+                                    <th:block th:each="co:${session.commentslist}"
+                                              th:if="${session.commentslist ne null}">
                                         <article id="comment-id-1" class="comment-item">
                                             <a class="pull-left thumb-sm">
-                                                <img th:src="@{/asserts/images/m2.jpg}" class="img-circle">
+                                                <img th:src="${(co.getUser_avatar() ne null) ? co.getUser_avatar() :'asserts/images/a1.png'}"
+                                                     class="img-circle">
                                             </a>
                                             <section class="comment-body m-b">
                                                 <header>
@@ -76,7 +84,8 @@
                                                 <div class="m-t-sm m-l-lg">
                                                     <p>[[${co.getComments()}]]</p>
                                                 </div>
-                                                <span th:text="${#dates.format(co.getComments_date(), 'yyyy-MM-dd HH:mm')}" class="text-muted text-xs block m-t-xs"></span>
+                                                <span th:text="${#dates.format(co.getComments_date(), 'yyyy-MM-dd HH:mm')}"
+                                                      class="text-muted text-xs block m-t-xs"></span>
                                             </section>
                                         </article>
                                         <hr class="ys-style-one m-l-n"/>
@@ -152,7 +161,7 @@
                         $("#favorite_song_id_like").removeClass("hide");
                         /*$("#favorite_song_id_like").attr("value", songname.attr("value"));*/
                         $("#favorite_song_id_ulike").addClass("hide");
-                       /* $("#favorite_song_id_ulike").removeAttr("value");*/
+                        /* $("#favorite_song_id_ulike").removeAttr("value");*/
                     }
                 },
                 error: function () {
@@ -168,15 +177,15 @@
                 type: "post",
                 dataType: 'json',
                 data: {
-                    "songid":musicid.toString(),
-                    "tips":"share"
+                    "songid": musicid.toString(),
+                    "tips": "share"
                 },
-                success:function (result) {
-                    if (result.stat == 2){
-                        window.location.href="profile.html"
+                success: function (result) {
+                    if (result.stat == 2) {
+                        window.location.href = "profile.html"
                     }
                 },
-                error:function () {
+                error: function () {
                     alert("ERROR");
                 }
             });
@@ -191,21 +200,21 @@
                 url: "user/comments",
                 type: "post",
                 dataType: 'json',
-                data:{
-                    "comments":comments,
-                    "music_name":pmi_n,
-                    "music_singer":pmi_s,
-                    "music_id":pmi_i,
+                data: {
+                    "comments": comments,
+                    "music_name": pmi_n,
+                    "music_singer": pmi_s,
+                    "music_id": pmi_i,
                 },
-                success:function (result) {
-                    if (result.stat == 1){
+                success: function (result) {
+                    if (result.stat == 1) {
                         alert("success");
                         window.location.reload();
-                    } else if (result.stat ==0){
+                    } else if (result.stat == 0) {
                         alert("error");
                     }
                 },
-                error:function () {
+                error: function () {
                     alert("ERROR");
                 }
             });

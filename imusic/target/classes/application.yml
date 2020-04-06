@@ -56,17 +56,23 @@ spring:
     suffix: .html
     encoding: UTF-8
     mode: HTML
-  #jpa:
-    #显示SQL
-    #show-sql: true
-    #自动建表方式
-    #hibernate:
-      #ddl-auto: update
-      #dialect: org.hibernate.dialect.MySQL5Dialect
+
+  mail:
+    host: smtp.163.com
+    username: ys19970729@163.com
+    password: KZUVWHBGVEVBUWQO
 
 logging:
   level:
     org.springframework.boot.autoconfigure: ERROR
+
+      #jpa:
+      #显示SQL
+      #show-sql: true
+      #自动建表方式
+      #hibernate:
+      #ddl-auto: update
+    #dialect: org.hibernate.dialect.MySQL5Dialect
 ##server:
 ##  port: 8080
 ##  session-timeout: 30

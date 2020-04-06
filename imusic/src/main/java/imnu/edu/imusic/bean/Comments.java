@@ -12,11 +12,12 @@ public class Comments {
     private String comments;
     private Date comments_date;
     private String user_name;
+    private String user_avatar;//头像
 
     public Comments() {
     }
 
-    public Comments(String user_phone, String music_name, String music_singer, Integer music_id, String comments, Date comments_date, String user_name) {
+    public Comments(String user_phone, String music_name, String music_singer, Integer music_id, String comments, Date comments_date, String user_name, String user_avatar) {
         this.user_phone = user_phone;
         this.music_name = music_name;
         this.music_singer = music_singer;
@@ -24,6 +25,7 @@ public class Comments {
         this.comments = comments;
         this.comments_date = comments_date;
         this.user_name = user_name;
+        this.user_avatar = user_avatar;
     }
 
     @Override
@@ -37,6 +39,7 @@ public class Comments {
                 ", comments='" + comments + '\'' +
                 ", comments_date=" + comments_date +
                 ", user_name='" + user_name + '\'' +
+                ", user_avatar='" + user_avatar + '\'' +
                 '}';
     }
 
@@ -52,12 +55,13 @@ public class Comments {
                 Objects.equals(music_id, comments1.music_id) &&
                 Objects.equals(comments, comments1.comments) &&
                 Objects.equals(comments_date, comments1.comments_date) &&
-                Objects.equals(user_name, comments1.user_name);
+                Objects.equals(user_name, comments1.user_name) &&
+                Objects.equals(user_avatar, comments1.user_avatar);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, user_phone, music_name, music_singer, music_id, comments, comments_date, user_name);
+        return Objects.hash(id, user_phone, music_name, music_singer, music_id, comments, comments_date, user_name, user_avatar);
     }
 
     public Integer getId() {
@@ -122,5 +126,13 @@ public class Comments {
 
     public void setUser_name(String user_name) {
         this.user_name = user_name;
+    }
+
+    public String getUser_avatar() {
+        return user_avatar;
+    }
+
+    public void setUser_avatar(String user_avatar) {
+        this.user_avatar = user_avatar;
     }
 }

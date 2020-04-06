@@ -32,9 +32,9 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class AdministratorController {
     @Autowired
-    MusicService musicService;
+    private MusicService musicService;
     @Autowired
-    UserService userService;
+    private UserService userService;
 
     @PostMapping(value = "/updatauser")
     public void updataUser(@RequestParam("userphone") String userphone,

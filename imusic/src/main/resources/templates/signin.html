@@ -2,6 +2,87 @@
 <html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="public :: public_head_head"></head>
 <body class="bg-info dker">
+<div class="modal fade" id="forget" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    &times;
+                </button>
+                <h4 class="modal-title" id="myModalLabe6">
+                    <p style="color: black">[[#{singin.tip3}]]</p>
+                </h4>
+            </div>
+            <form id="ResetPassword" enctype="multipart/form-data"
+                  method="post"
+                  th:action="@{user/resetpassword}">
+                <div class="modal-body">
+                    <div class="panel-body modal-ys ">
+                        <label class="col-sm-3 control-label text-right  m-t-xs" style="color: black">邮箱：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <input id="forget1" name="forget1" type="text"
+                                           class="form-control"
+                                           placeholder="邮箱">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body modal-ys ">
+                        <label class="col-sm-3 control-label text-right  m-t-xs" style="color: black">验证码：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <input id="forget2" name="forget2" type="text"
+                                           class="form-control"
+                                           placeholder="验证码">
+                                </div>
+                                <div class="col-md-3" style="margin-left: 7px">
+                                    <input th:value="*{'获取验证码'}" onclick="getForgetCode()" id="getforgetcodes"
+                                           type="button" class="btn btn-success">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body modal-ys">
+                        <label class="col-sm-3 control-label text-right  m-t-xs" style="color: black">新密码：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <input id="forget3" name="forget3" type="text"
+                                           class="form-control"
+                                           placeholder="新密码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body modal-ys ">
+                        <label class="col-sm-3 control-label text-right  m-t-xs" style="color: black">确认新密码：</label>
+                        <div class="col-sm-9">
+                            <div class="row">
+                                <div class="col-md-11">
+                                    <input id="forget4" type="text"
+                                           class="form-control"
+                                           placeholder="确认新密码">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">
+                        关闭
+                    </button>
+                    <button id="GetForgetCode" onclick="resetPassword()" type="button" class="btn btn-primary">
+                        确定
+                    </button>
+                </div>
+            </form>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>
 <section id="content" class="m-t-lg wrapper-md animated fadeInUp">
     <div class="container aside-xl" style="margin-top: 60px">
         <a class="navbar-brand block" th:href="@{/index.html}">
@@ -38,6 +119,8 @@
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                         <p id="cl" th:text="${emsg}" th:if="${not #strings.isEmpty(emsg)}"
                            style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
+                        <p id="c2" th:text="${(session.rp ne null)? session.rp:''}"
+                           style="color: #f277da;font-size: 12px;text-align: center; margin-top: 15px"></p>
                     </div>
                 </div>
             </div>
@@ -47,7 +130,7 @@
                 <span class="m-r-n-lg" th:text="#{signin.signin}"></span>
             </button>
             <div class="text-center m-t m-b"><a href="#">
-                <a th:text="#{signin.forgot}">Forgot password?</a>&nbsp;&nbsp;&nbsp;&nbsp;
+                <a href="#" th:text="#{signin.forgot}" data-toggle="modal" data-target="#forget">Forgot password?</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{/signin.html(l='zh_CN')}">中文</a>&nbsp;&nbsp;&nbsp;&nbsp;
                 <a th:href="@{/signin.html(l='en_US')}">English</a>
             </a></div>
@@ -69,10 +152,55 @@
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
 <script th:inline="javascript">
+
+    function resetPassword() {
+        var form = document.getElementById('ResetPassword');
+        var email = document.getElementById('forget1');
+        var code = document.getElementById('forget2');
+        var newpwd = document.getElementById('forget3');
+        var renewpwd = document.getElementById('forget4');
+
+        if (email.value === "") {
+            alert("请填写邮箱");
+        } else if (code.value === "") {
+            alert("请填写验证码");
+        } else if (newpwd.value === ""){
+            alert("请填写新密码");
+        } else if (newpwd.value === renewpwd.value){
+            form.submit();
+        } else {
+            alert("两次密码不正确");
+            document.getElementById('forget4').value = '';
+        }
+    }
+
+    function getForgetCode() {
+        $.ajax({
+            url: "user/getforgetcode",
+            type: "post",
+            dataType: 'json',
+            data: {
+                "useremail": document.getElementById("forget1").value
+            },
+            success: function (result) {
+                // alert(result.stat);
+                if (result.stat == 0) {
+                    alert("请刷新后再试");
+                } else if (result.stat == 1) {
+                    document.getElementById("getforgetcodes").value = "邮件已发送";
+                }
+            },
+            error: function () {
+                alert("请刷新后再试");
+            }
+        });
+
+    }
+
     function checkInputs() {
         var userphoneoremail = document.getElementById("userphoneoremail").value;
         var user_password = document.getElementById("user_password").value;
-        if(userphoneoremail == "" || user_password == ""){
+        if (userphoneoremail == "" || user_password == "") {
             document.getElementById("tip_passwordError").innerText = "";
             document.getElementById("tip_success").innerText = "";
             document.getElementById("tip_NoInformation").innerText = [[#{tip_NoInformation}]];
@@ -81,6 +209,7 @@
             FormSubmit();
         }
     }
+
     // 前段判断输入框内的值是否为空，再向后端进行传值
     function FormSubmit() {
         $.ajax({
@@ -97,14 +226,14 @@
                     //登录失败
 
                     $("#user_password").val("");
-                    $("#cl").attr("class","hide");
+                    $("#cl").attr("class", "hide");
                     document.getElementById("tip_passwordError").innerText = [[#{tip_passwordError}]];
                     document.getElementById("tip_success").innerText = "";
                     document.getElementById("tip_NoInformation").innerText = "";
                     document.getElementById("tip_nouser").innerText = "";
                 } else if (result.stat == 1) {
                     // 登录成功
-                    $("#cl").attr("class","hide");
+                    $("#cl").attr("class", "hide");
                     document.getElementById("tip_passwordError").innerText = "";
                     document.getElementById("tip_success").innerText = [[#{tip_success}]];
                     document.getElementById("tip_NoInformation").innerText = "";
@@ -113,22 +242,22 @@
                     window.location.href = 'index.html';
                     /*setTimeout("location='/song/showmusic'", 150);*/
                 } else if (result.stat == 3) {
-                    $("#cl").attr("class","hide");
+                    $("#cl").attr("class", "hide");
                     alert("网络拥堵，请稍后再试！")
-                } else if (result.stat == 4){
+                } else if (result.stat == 4) {
                     //该用户未注册
-                    $("#cl").attr("class","hide");
+                    $("#cl").attr("class", "hide");
                     document.getElementById("tip_passwordError").innerText = "";
                     document.getElementById("tip_success").innerText = "";
                     document.getElementById("tip_NoInformation").innerText = "";
                     document.getElementById("tip_nouser").innerText = [[#{tip_nouser}]];
-                }else if(result.stat == 11){
-                    $("#cl").attr("class","hide");
-                    window.location.href='datatable.html';
+                } else if (result.stat == 11) {
+                    $("#cl").attr("class", "hide");
+                    window.location.href = 'datatable.html';
                     setTimeout("location='datatable.html'", 150);
                 }
             },
-            error:function () {
+            error: function () {
                 alert("ERROE");
             }
         });
