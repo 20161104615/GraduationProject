@@ -1,9 +1,6 @@
 package imnu.edu.imusic.service;
 
-import imnu.edu.imusic.bean.Comments;
-import imnu.edu.imusic.bean.FavoriteSongs;
-import imnu.edu.imusic.bean.MusicBean;
-import imnu.edu.imusic.bean.ShareSongs;
+import imnu.edu.imusic.bean.*;
 import net.sf.json.JSONArray;
 import org.json.JSONException;
 
@@ -31,4 +28,5 @@ public interface MusicService {
     public ArrayList<ShareSongs> SHARE_SONGS_ARRAY_LIST(String user_phone);
     public boolean insertComments(Comments comments);
     public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id);
+    public Singer findSinger(String singer_name);
 }

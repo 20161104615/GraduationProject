@@ -119,3 +119,31 @@
     margin-top: auto;
     float: right;
 }
+.music-list-left-singer{
+    width: 30%;
+    height: 100%;
+    margin-top: auto;
+    float: left;
+}
+
+.music-list-rigth-singer{
+    width: 70%;
+    height: 100%;
+    margin-top: auto;
+    float: right;
+}
+.music-list-lefts{
+    width: 30%;
+    height: 120px;
+    margin-top: auto;
+    padding-left: 100px;
+    float: left;
+}
+
+.music-list-rigths{
+    width: 70%;
+    height: 120px;
+    margin-top: auto;
+    padding-left: 300px;
+    float: right;
+}

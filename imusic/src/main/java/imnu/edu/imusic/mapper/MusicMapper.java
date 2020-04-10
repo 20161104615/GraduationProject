@@ -1,9 +1,6 @@
 package imnu.edu.imusic.mapper;
 
-import imnu.edu.imusic.bean.Comments;
-import imnu.edu.imusic.bean.FavoriteSongs;
-import imnu.edu.imusic.bean.MusicBean;
-import imnu.edu.imusic.bean.ShareSongs;
+import imnu.edu.imusic.bean.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.ArrayList;
@@ -45,6 +42,9 @@ public interface MusicMapper {
 
     @Select("SELECT * FROM comments WHERE music_id=#{music_id}")
     public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id);
+
+    @Select("SELECT * FROM singer WHERE singer_name like concat('%',#{singer_name},'%')")
+    public Singer findSingerByName(String singer_name);
 
     /**
      * 添加歌曲

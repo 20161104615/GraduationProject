@@ -674,6 +674,8 @@
                             window.location.reload();
                         } else if (result.stat == 0) {
                             alert("删除失败")
+                        } else if (result.stat == 2){
+                            alert("文件未删除")
                         }
                     },
                     error: function () {

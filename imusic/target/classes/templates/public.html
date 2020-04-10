@@ -56,12 +56,19 @@
                 </a>
                 <ul class="dropdown-menu animated fadeInRight">
                     <li>
-                        <a href="modal.lockme.html" data-toggle="ajaxModal">退出登录</a>
+                        <form id="adminLogoutForm1" method="post" th:action="@{/index}"></form>
+                        <a name="logout" href="#" data-toggle="ajaxModal">退出登录</a>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
+    <script th:src="@{/webjars/jquery/3.4.1/jquery.js}"></script>
+    <script type="text/javascript" th:inline="javascript">
+        $("a[name = 'logout']").click(function () {
+            $("#adminLogoutForm1").submit();
+        });
+    </script>
 </header>
 <!--公共_头部-->
 <header class="bg-white-only header header-md center" th:fragment="public_head">
@@ -249,6 +256,28 @@
                 }
             });
         });
+        $("a[name = 'singer']").click(function () {
+            var singer = $(this).html();
+            $.ajax({
+                url: "song/singer",
+                type: "get",
+                dataType: 'json',
+                data: {
+                    "singer": singer
+                },
+                success: function (result) {
+                    if (result.stats == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stats == 1) {
+                        window.location.href = 'singerinfor.html';
+                    }
+                },
+                error: function () {
+                    alert("ERROE");
+                }
+            });
+        });
+
     </script>
 </footer>
 </body>

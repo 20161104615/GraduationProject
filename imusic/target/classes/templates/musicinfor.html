@@ -29,7 +29,7 @@
                                                                class="hide">
                                                         <h2><b>[[${song.getMusic_name()}]]</b></h2><br>
                                                         <i class="fa fa-user icon-muted">
-                                                        </i> [[${song.getMusic_singer()}]]
+                                                        </i> <a name="singer" href="#">[[${song.getMusic_singer()}]]</a>
                                                     </div>
                                                     <div class="line line-lg" style="margin-top: 100px"></div>
                                                     <a id="song_play" class="btn btn-s-md btn-success">
@@ -235,6 +235,28 @@
                         /*跳转到MusicController*/
                         window.location.href = 'list.html';
                     }
+                }
+            });
+        });
+
+        $("a[name = 'singer']").click(function () {
+            var singer = $(this).html();
+            $.ajax({
+                url: "song/singer",
+                type: "get",
+                dataType: 'json',
+                data: {
+                    "singer": singer
+                },
+                success: function (result) {
+                    if (result.stats == 0) {
+                        alert("暂无这首歌曲")
+                    } else if (result.stats == 1) {
+                        window.location.href = 'singerinfor.html';
+                    }
+                },
+                error: function () {
+                    alert("ERROE");
                 }
             });
         });

@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
@@ -157,13 +158,26 @@ public class AdministratorController {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
+        MusicBean musicBean = musicService.FINDMUSICOFID(musicid);
+        String filemusic = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/" + musicBean.getMusic_name() + ".m4a";//歌曲存放的路径
+        String filemusicimg = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/img/" + musicBean.getMusic_name() + "-" + musicBean.getMusic_singer() + ".jpg";//歌曲存放的路径
         boolean b = musicService.DELETEMUSIC(musicid);
         if (b) {
-            ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
-            request.getSession().setAttribute("AMusicList", allMusicBean);
-            map.put("stat", "1");
-            jsonObject = JSONObject.fromObject(map);
-            response.getWriter().print(jsonObject);
+            File fm = new File(filemusic);
+            File fmi = new File(filemusicimg);
+            if (fm.isFile() && fm.exists() && fmi.isFile() && fmi.exists()) {
+                fm.delete();
+                fmi.delete();
+                ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
+                request.getSession().setAttribute("AMusicList", allMusicBean);
+                map.put("stat", "1");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            } else {
+                map.put("stat", "2");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            }
         } else {
             map.put("stat", "0");
             jsonObject = JSONObject.fromObject(map);
@@ -176,12 +190,12 @@ public class AdministratorController {
                           Map<String, Object> map,
                           HttpSession session,
                           HttpServletResponse response,
-                          HttpServletRequest request)throws IOException {
+                          HttpServletRequest request) throws IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
         ArrayList<MusicBean> arrayList = musicService.FINDMUSIC(music);
-        if(arrayList.isEmpty()){
+        if (arrayList.isEmpty()) {
             map.put("stat", "0");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);

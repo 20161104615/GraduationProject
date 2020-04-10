@@ -1,10 +1,7 @@
 package imnu.edu.imusic.controller;
 
 
-import imnu.edu.imusic.bean.Comments;
-import imnu.edu.imusic.bean.MusicBean;
-import imnu.edu.imusic.bean.ShareSongs;
-import imnu.edu.imusic.bean.UserBean;
+import imnu.edu.imusic.bean.*;
 import imnu.edu.imusic.service.MusicService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
@@ -76,6 +73,24 @@ public class MusicController {
         }
     }
 
+    @RequestMapping(value = "/singer")
+    public void findSinger(@RequestParam("singer") String singer,
+                           HttpServletResponse response,
+                           Map<String, Object> map,
+                           HttpServletRequest request) throws IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setContentType("text/html;charset=utf-8");
+        JSONObject jsonObject;
+        System.out.println(singer);
+        ArrayList<MusicBean> musicBySinger = musicService.findMusicBySinger(singer);
+        Singer singerinfor = musicService.findSinger(singer);
+        request.getSession().setAttribute("searchResultSingerMusic", musicBySinger);
+        request.getSession().setAttribute("searchResultSingerInfor", singerinfor);
+        map.put("stats", "1");
+        jsonObject = JSONObject.fromObject(map);
+        response.getWriter().print(jsonObject);
+    }
+
     /*
      * @Author 20161104615
      * @Description //TODO 点击事件获取歌名，通过精确查找返回ArrayList，将list中的MusicBean的信息重写，对应于Jplayer的播放列表
@@ -100,8 +115,8 @@ public class MusicController {
         request.getSession().setAttribute("playMusiconeinformation", accuratefindmusicinformation);
         ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);
         for (MusicBean musicBean : musicOfPlayListinformation) {
-            if (musicBean.getMusic_name().equals(music_name)){
-                request.getSession().setAttribute("userfm","yes");
+            if (musicBean.getMusic_name().equals(music_name)) {
+                request.getSession().setAttribute("userfm", "yes");
             }
         }
         MusicBean oneMusic = musicService.findONEMusic(music_name);

@@ -149,7 +149,6 @@ public class UserServiceImpl implements UserService {
         stringBuilder.append("<html><head><title></title></head><body>");
         stringBuilder.append("您好<br/>");
         stringBuilder.append("您的验证码是：").append(verifyCode).append("<br/>");
-        stringBuilder.append("您可以复制此验证码并返回至XXX，以验证您的邮箱。<br/>");
         stringBuilder.append("此验证码只能使用一次，在5分钟内有效。验证成功则自动失效。<br/>");
         stringBuilder.append("如果您没有进行上述操作，请忽略此邮件。");
         MimeMessage mimeMessage = mailSender.createMimeMessage();

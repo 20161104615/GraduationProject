@@ -94,7 +94,7 @@
                                                     <div class="media-body ">
                                                         <div><a name="song" href="#">[[${session.MusicList[k+i*5+1+13].getMusic_name()}]]</a>
                                                         </div>
-                                                        <small class="text-muted">[[${session.MusicList[k+i*5+1+13].getMusic_singer()}]]</small>
+                                                        <small class="text-muted"><a name="singer" href="#">[[${session.MusicList[k+i*5+1+13].getMusic_singer()}]]</a></small>
                                                     </div>
                                                 </div>
                                             </li>
@@ -135,7 +135,7 @@
                                                 <div class="index-list-left">
                                                     <a name="song" href="#" class="text-ellipsis">[[${session.MusicList[k+12+17].getMusic_name()}]]</a>
                                                     <div class="text-ellipsis text-xs text-muted">
-                                                        [[${session.MusicList[k+12+17].getMusic_singer()}]]
+                                                        <a name="singer" href="#">[[${session.MusicList[k+12+17].getMusic_singer()}]]</a>
                                                     </div>
                                                 </div>
                                                 <div class="index-list-rigth">
@@ -204,7 +204,7 @@
                                             </span>
                                             <span class="clear">
                                                 <span><a name="song" href="#">[[${session.MusicList[k+6+42].getMusic_name()}]]</a></span>
-                                                <small class="text-muted clear text-ellipsis">[[${session.MusicList[k+6+42].getMusic_singer()}]]</small>
+                                                <small class="text-muted clear text-ellipsis"><a name="singer" href="#">[[${session.MusicList[k+6+42].getMusic_singer()}]]</a></small>
                                             </span>
                                         </div>
                                     </th:block>
@@ -294,7 +294,6 @@
                 alert("请先登录");
             }
         });
-
     });
 </script>
 </html>

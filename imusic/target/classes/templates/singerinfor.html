@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public :: public_head_head"></head>
+<body class="">
+<section class="vbox">
+    <div th:replace="~{public :: public_head}"></div>
+    <section>
+        <section class="hbox stretch">
+            <section id="content">
+                <section class="vbox">
+                    <section class="scrollable wrapper-lg">
+                        <div class="row" style="margin-left: 185px">
+                            <div class="col-sm-10">
+                                <div class="post-item">
+                                    <div class="caption wrapper-lg" style="height: 600px">
+                                        <div class="music-list">
+                                            <div class="music-list-left-singer">
+                                                <img class="m-l-xl img-circle" style="width: 220px"
+                                                     th:src="${(session.searchResultSingerInfor.getSinger_img() ne null)? session.searchResultSingerInfor.getSinger_img():''}">
+                                            </div>
+                                            <div class="music-list-rigth-singer">
+                                                <div class="text-muted">
+                                                    <h2><b>[[${(session.searchResultSingerInfor.getSinger_name() ne null)? session.searchResultSingerInfor.getSinger_name():"暂无"}]]</b>
+                                                    </h2><br>
+                                                    <span>
+                                                        <p>签约公司：[[${(session.searchResultSingerInfor.getSinger_company() ne null)? session.searchResultSingerInfor.getSinger_company():"暂无"}]]</p>
+                                                        <p>国籍：[[${(session.searchResultSingerInfor.getSinger_nationality() ne null)? session.searchResultSingerInfor.getSinger_nationality():"暂无"}]]</p>
+                                                        <p>出生地：[[${(session.searchResultSingerInfor.getSinger_placeofbirth() ne null)? session.searchResultSingerInfor.getSinger_placeofbirth():"暂无" }]]</p>
+                                                        <p>生日：[[${(session.searchResultSingerInfor.getSinger_birthday() ne null)? session.searchResultSingerInfor.getSinger_birthday():"暂无" }]]</p>
+                                                        <p>职业：[[${(session.searchResultSingerInfor.getSinger_occupational() ne null)? session.searchResultSingerInfor.getSinger_occupational():"暂无"}]]</p>
+                                                        <p>身高：[[${(session.searchResultSingerInfor.getSinger_height() ne null)? session.searchResultSingerInfor.getSinger_height():"暂无"}]]</p>
+                                                        <p>体重：[[${(session.searchResultSingerInfor.getSinger_weight() ne null)? session.searchResultSingerInfor.getSinger_weight():"暂无"}]]</p>
+                                                        <p>血型：[[${(session.searchResultSingerInfor.getSinger_bloodtype() ne null)? session.searchResultSingerInfor.getSinger_bloodtype():"暂无"}]]</p>
+                                                        <p>星座：[[${(session.searchResultSingerInfor.getSinger_constellation() ne null)? session.searchResultSingerInfor.getSinger_constellation():"暂无"}]]</p>
+                                                        <p>简介：[[${(session.searchResultSingerInfor.getSinger_briefintroduction() ne null)? session.searchResultSingerInfor.getSinger_briefintroduction():"暂无"}]]</p>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="post-item">
+                                    <h3 style="padding-top: 20px;padding-left: 20px"><b>热门歌曲</b></h3><br>
+                                    <th:block th:each="song:${session.searchResultSingerMusic}">
+                                        <div class="music-list">
+                                            <div class="music-list-lefts">
+                                                <img class="m-l-xl" style="width: 120px"
+                                                     th:src="${song.getMusic_img()}">
+                                            </div>
+                                            <div class="music-list-rigths">
+                                                <p>
+                                                <div class="text-muted">
+                                                    <input id="pmi_name" th:value="${song.getMusic_name()}"
+                                                           class="hide">
+                                                    <input id="pmi_singer" th:value="${song.getMusic_singer()}"
+                                                           class="hide">
+                                                    <input id="pmi_id" th:value="${song.getMusic_id()}"
+                                                           class="hide">
+                                                    <h3><a name="song" href="#" class="text-ellipsis">[[${song.getMusic_name()}]]</a>
+                                                    </h3>
+                                                    <i class="fa fa-user icon-muted">
+                                                    </i> [[${song.getMusic_singer()}]]
+                                                </div>
+                                                <div class="line line-lg" style="margin-top: 20px"></div>
+                                            </div>
+                                        </div>
+                                    </th:block>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+<footer th:replace="public :: public_footer_footer"></footer>
+</body>
+</html>

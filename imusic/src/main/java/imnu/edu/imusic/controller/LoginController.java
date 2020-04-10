@@ -33,6 +33,8 @@ public class LoginController {
         request.getSession().removeAttribute("commentslist");
         request.getSession().removeAttribute("userfm");
         request.getSession().removeAttribute("rp");
+        request.getSession().removeAttribute("searchResultSingerMusic");
+        request.getSession().removeAttribute("searchResultSingerInfor");
         return "index";
     }
 }

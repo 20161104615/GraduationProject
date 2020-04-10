@@ -1,9 +1,6 @@
 package imnu.edu.imusic.service.lmpl;
 
-import imnu.edu.imusic.bean.Comments;
-import imnu.edu.imusic.bean.FavoriteSongs;
-import imnu.edu.imusic.bean.MusicBean;
-import imnu.edu.imusic.bean.ShareSongs;
+import imnu.edu.imusic.bean.*;
 import imnu.edu.imusic.mapper.MusicMapper;
 import imnu.edu.imusic.service.MusicService;
 import net.sf.json.JSONArray;
@@ -199,5 +196,10 @@ public class MusicServicelmpl implements MusicService {
     public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id) {
         ArrayList<Comments> arrayList = musicMapper.COMMENTS_ARRAY_LIST(music_id);
         return arrayList;
+    }
+
+    @Override
+    public Singer findSinger(String singer_name) {
+        return musicMapper.findSingerByName(singer_name);
     }
 }
