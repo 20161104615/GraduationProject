@@ -46,6 +46,9 @@ public interface MusicMapper {
     @Select("SELECT * FROM singer WHERE singer_name like concat('%',#{singer_name},'%')")
     public Singer findSingerByName(String singer_name);
 
+    @Select("SELECT * FROM sharesongs WHERE DATE_SUB(CURDATE(),INTERVAL 1 MONTH) <= DATE(share_date)")
+    public ArrayList<ShareSongs> findShareMusicByDate();
+
     /**
      * 添加歌曲
      * 1、添加歌曲名、歌手、歌曲路径、歌曲图片路径

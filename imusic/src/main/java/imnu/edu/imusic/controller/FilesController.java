@@ -80,6 +80,7 @@ public class FilesController {
             if (".m4a".equals(suffixName) || ".mp3".equals(suffixName)) {
                 System.out.println("进入音乐处理");
                 String filePath_newMusicUrl = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/";//歌曲存放的路径
+                /*request.getServletContext().getRealPath("midia");*/
                 newName = newMusicName + ".m4a";//统一处理为.m4a
                 /* File file_music = new File(filePath_newMusicUrl + fileName);*/
                 File file_music = new File(filePath_newMusicUrl + newName);
@@ -305,7 +306,7 @@ public class FilesController {
         //FileSystemResource 以文件系统的绝对路径的方式访问静态资源
         FileSystemResource fileSystemResource = new FileSystemResource(pathName);
         HttpHeaders httpHeaders = new HttpHeaders();
-        //设置默认下载名称
+        //设置响应头Content-Disposition浏览器根据这个响应头执行相应的操作和要下载的文件名
         httpHeaders.add("Content-Disposition", "attachment;filename=" + downloadName + ".m4a");
         return ResponseEntity.ok()
                 .headers(httpHeaders)

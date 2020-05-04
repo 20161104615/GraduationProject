@@ -8,17 +8,21 @@
             <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
                 <i class="icon-list"></i>
             </a>
+            <a th:href="@{/index.html}" id="myvisitprofile">
             <i class="navbar-brand text-lt">
+
                 <i class="icon-earphones"></i>
-                <a id="myvisitprofile">
-                <img th:src="@{/asserts/images/logo.png}" alt="." class="hide"></a>
+
+                    <img th:src="@{/asserts/images/logo.png}" alt="." class="hide">
                 <span class="hidden-nav-xs m-l-sm">Music</span>
+
             </i>
+            </a>
         </div>
         <div class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs">
             <div class="form-group">
                 <div class="input-group">
-            <span class="input-group-btn">
+             <span class="input-group-btn">
               <button type="submit" onclick="searchuser()" class="btn btn-sm bg-white btn-icon rounded">
                   <i class="fa fa-search"></i>
               </button>
@@ -27,11 +31,6 @@
                            placeholder="Search user's phone">
                 </div>
             </div>
-        </div>
-        <div class="navbar-brand" style="margin-left: 103rem;margin-top: 1.25rem">
-            <a th:href="@{/index.html}" data-toggle="tooltip" data-original-title="主页" style="width: 8rem">
-                <i class="icon-action-redo"></i>
-            </a>
         </div>
     </header>
     <section>
@@ -90,7 +89,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <input class="hide" id="useravatarphone" name="useravatarphone" th:value="${session.LoginUser.getUser_phone()}">
+                            <input class="hide" id="useravatarphone" name="useravatarphone"
+                                   th:value="${session.LoginUser.getUser_phone()}">
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -114,8 +114,9 @@
                                     <div class="wrapper" id="nowUser">
                                         <div class="text-center m-b m-t" style="overflow-y: hidden;overflow-x: hidden">
                                             <a href="#" data-toggle="modal"
-                                               data-target="#myModa8"  id="userAvatar" class="thumb-lg">
-                                                <img th:src="${(session.LoginUser.getUser_avatar() ne null)? session.LoginUser.getUser_avatar():'asserts/images/a1.png'}" class="img-circle">
+                                               data-target="#myModa8" id="userAvatar" class="thumb-lg">
+                                                <img th:src="${(session.LoginUser.getUser_avatar() ne null)? session.LoginUser.getUser_avatar():'asserts/images/a1.png'}"
+                                                     class="img-circle">
                                             </a>
                                             <div>
                                                 <div class="h3 m-t-xs m-b-xs" th:fragment="loginUserGetUserName">
@@ -127,23 +128,23 @@
                                                 </small>
                                             </div>
                                         </div>
-                                       <!-- <div class="panel wrapper">
-                                            <div class="row text-center">
-                                                <div class="col-xs-6">
-                                                    <a href="#">
-                                                        <span class="m-b-xs h4 block">245</span>
-                                                        <small class="text-muted">Followers</small>
-                                                    </a>
-                                                </div>
-                                                <div class="col-xs-6">
-                                                    <a href="#">
-                                                        <span class="m-b-xs h4 block">55</span>
-                                                        <small class="text-muted">Following</small>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        -->
+                                        <!-- <div class="panel wrapper">
+                                             <div class="row text-center">
+                                                 <div class="col-xs-6">
+                                                     <a href="#">
+                                                         <span class="m-b-xs h4 block">245</span>
+                                                         <small class="text-muted">Followers</small>
+                                                     </a>
+                                                 </div>
+                                                 <div class="col-xs-6">
+                                                     <a href="#">
+                                                         <span class="m-b-xs h4 block">55</span>
+                                                         <small class="text-muted">Following</small>
+                                                     </a>
+                                                 </div>
+                                             </div>
+                                         </div>
+                                         -->
                                         <div class="btn-group btn-group-justified m-b">
                                             <a th:href="@{fileupload.html}" class="btn btn-success btn-rounded">
                                                 上传音乐
@@ -233,7 +234,8 @@
                                                         </a>
                                                         <span class="clear pull-right m-t-lg ">
                                                       <a data-toggle="modal" data-target="#myModa7">
-                                                          <i th:value="${song.getMusic_name()}" class="fa fa-times icon-muted fa-fw"></i>
+                                                          <i th:value="${song.getMusic_name()}"
+                                                             class="fa fa-times icon-muted fa-fw"></i>
                                                       </a>
                                                     </span>
                                                         <a href="#" class="clear">
@@ -300,13 +302,12 @@
         </section>
     </section>
 </section>
-</section>
 <footer th:replace="public :: public_footer_footer"></footer>
 </body>
 <script th:inline="javascript">
 
     function searchuser() {
-        var username =  document.getElementById("finduser").value;
+        var username = document.getElementById("finduser").value;
         $.ajax({
             url: "user/searchuser",
             type: "post",
@@ -316,13 +317,13 @@
             },
             success: function (result) {
                 if (result.stat == 1) {
-                    window.location.href="#";
+                    window.location.href = "PersonalHomePage.html";
                 } else if (result.stat == 0) {
-                    alert("error");
+                    alert("没有该用户");
                 }
             },
             error: function () {
-                alert("ERROR");
+                alert("没有该用户");
             }
         });
     }
@@ -404,7 +405,7 @@
         });
     }
 
-    $(".icon-muted").click(function (){
+    $(".icon-muted").click(function () {
         var s = $(this);
         /*alert(s.attr("value"));*/
         $("#delfm").click(function () {
@@ -418,14 +419,14 @@
                     "userphone": /*[[${session.LoginUser.getUser_phone()}]]*/""
                     //]]>
                 },
-                success:function (result) {
+                success: function (result) {
                     if (result.statt == 0) {
                         alert("删除收藏失败")
                     } else if (result.statt == 1) {
                         window.location.reload();
                     }
                 },
-                error:function () {
+                error: function () {
                     alert("ERROR");
                 }
             });
@@ -437,7 +438,6 @@
             $("#updateuserAvatar").submit();
         })
     });
-
 
 
 </script>

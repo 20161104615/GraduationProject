@@ -1,10 +1,11 @@
 server:
   port: 8081
-  session-timeout: 30
   tomcat.max-threads: 0
   tomcat.uri-encoding: UTF-8
   servlet:
       context-path: /music
+      session:
+        timeout: 10800s
 
 
 spring:

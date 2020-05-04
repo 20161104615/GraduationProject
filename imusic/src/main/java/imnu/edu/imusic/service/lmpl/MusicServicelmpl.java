@@ -26,6 +26,12 @@ public class MusicServicelmpl implements MusicService {
     }
 
     @Override
+    public ArrayList<ShareSongs> findOneMouthShare() {
+        ArrayList<ShareSongs> shareMusicByDate = musicMapper.findShareMusicByDate();
+        return shareMusicByDate;
+    }
+
+    @Override
     public Map<String, ArrayList<MusicBean>> findMusicByName(String musicName) {
         MusicBean musicBean = new MusicBean();
         musicBean.setMusic_name(musicName);
@@ -201,5 +207,11 @@ public class MusicServicelmpl implements MusicService {
     @Override
     public Singer findSinger(String singer_name) {
         return musicMapper.findSingerByName(singer_name);
+    }
+
+    @Override
+    public ArrayList<MusicBean> findUserFavoriteSong(String user_phone) {
+        ArrayList<MusicBean> arrayList = musicMapper.findMusicByUserPhoneOfFavorite(user_phone);
+        return arrayList;
     }
 }

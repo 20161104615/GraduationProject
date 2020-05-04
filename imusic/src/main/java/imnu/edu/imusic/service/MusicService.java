@@ -10,6 +10,7 @@ import java.util.Map;
 
 public interface MusicService {
     public ArrayList<MusicBean> findAllMusicBean();
+    public ArrayList<ShareSongs> findOneMouthShare();
     public Map<String, ArrayList<MusicBean>> findMusicByName(String musicName);
     public ArrayList<MusicBean> findMusicBySinger(String musicSinger);
     public boolean uploadMusic(String newMusicName, String newMusicSinger);
@@ -29,4 +30,5 @@ public interface MusicService {
     public boolean insertComments(Comments comments);
     public ArrayList<Comments> COMMENTS_ARRAY_LIST(Integer music_id);
     public Singer findSinger(String singer_name);
+    public ArrayList<MusicBean> findUserFavoriteSong(String user_phone);
 }

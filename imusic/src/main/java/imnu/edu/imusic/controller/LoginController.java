@@ -2,6 +2,7 @@ package imnu.edu.imusic.controller;
 
 
 import imnu.edu.imusic.bean.MusicBean;
+import imnu.edu.imusic.bean.ShareSongs;
 import imnu.edu.imusic.service.MusicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,8 @@ public class LoginController {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
+        ArrayList<ShareSongs> oneMouthShare = musicService.findOneMouthShare();
+        request.getSession().setAttribute("oneMouthShare",oneMouthShare);
         request.getSession().setAttribute("MusicList", allMusicBean);
         request.getSession().removeAttribute("LoginUser");
         request.getSession().removeAttribute("playMusiconeinformation");
@@ -35,6 +38,8 @@ public class LoginController {
         request.getSession().removeAttribute("rp");
         request.getSession().removeAttribute("searchResultSingerMusic");
         request.getSession().removeAttribute("searchResultSingerInfor");
+        request.getSession().removeAttribute("searchsharemusiclist");
+        request.getSession().removeAttribute("searchplayMusiconeinformation");
         return "index";
     }
 }

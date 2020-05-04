@@ -294,7 +294,7 @@ public class UserController {
 
     /*
      * @Author 20161104615
-     * @Description //TODO 利用UserAll（暂未完成）
+     * @Description //TODO
      * @Date 23:59 2020/3/6
      * @Param [userphone, map, request, response]
      * @return void
@@ -312,10 +312,21 @@ public class UserController {
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
         } else {
-            UserBean userBean = userService.userfindstring(userphone);
-            UserBean bean = new UserBean(userBean.getUser_name(),userBean.getUser_phone(),userBean.getUser_birthday()
-                    ,userBean.getUser_email(),userBean.getUser_introduced());
-            request.getSession().setAttribute("searchuser",bean);
+            UserBean userBean = null;
+            try {
+                userBean = userService.userfindstring(userphone);
+                ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(userphone);
+                ArrayList<MusicBean> userFavoriteSong = musicService.findUserFavoriteSong(userphone);
+                UserBean bean = new UserBean(userBean.getUser_name(), userBean.getUser_phone(), userBean.getUser_birthday()
+                        , userBean.getUser_email(), userBean.getUser_introduced(), userBean.getUser_avatar());
+                request.getSession().setAttribute("searchuser", bean);
+                request.getSession().setAttribute("searchsharemusiclist", arrayList);
+                request.getSession().setAttribute("searchplayMusiconeinformation", userFavoriteSong);
+            } catch (Exception e) {
+                map.put("stat", "0");
+                jsonObject = JSONObject.fromObject(map);
+                response.getWriter().print(jsonObject);
+            }
             map.put("stat", "1");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
@@ -329,11 +340,11 @@ public class UserController {
                               @RequestParam("music_id") Integer music_id,
                               Map<String, Object> map,
                               HttpServletRequest request,
-                              HttpServletResponse response) throws IOException{
+                              HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
-        if ("".equals(comments)){
+        if ("".equals(comments)) {
             map.put("stat", "0");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
@@ -341,11 +352,11 @@ public class UserController {
             UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
             long currentTimeMillis = System.currentTimeMillis();
             Timestamp timestamp = new Timestamp(currentTimeMillis);
-            Comments c1 = new Comments(loginUser.getUser_phone(), music_name, music_singer, music_id, comments, timestamp,loginUser.getUser_name(),loginUser.getUser_avatar());
+            Comments c1 = new Comments(loginUser.getUser_phone(), music_name, music_singer, music_id, comments, timestamp, loginUser.getUser_name(), loginUser.getUser_avatar());
             boolean b = musicService.insertComments(c1);
-            if (b){
+            if (b) {
                 ArrayList<Comments> arrayList = musicService.COMMENTS_ARRAY_LIST(music_id);
-                request.getSession().setAttribute("commentslist",arrayList);
+                request.getSession().setAttribute("commentslist", arrayList);
                 map.put("stat", "1");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
@@ -373,16 +384,16 @@ public class UserController {
 
     @RequestMapping("resetpassword")
     public void resetpassword(@RequestParam("forget1") String useremail,
-                                @RequestParam("forget2") String code,
-                                @RequestParam("forget3") String newpwd,
-                                HttpServletRequest request,
-                                HttpServletResponse response) throws IOException, ServletException {
+                              @RequestParam("forget2") String code,
+                              @RequestParam("forget3") String newpwd,
+                              HttpServletRequest request,
+                              HttpServletResponse response) throws IOException, ServletException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         boolean b = userService.Resetpassword(useremail, code, newpwd);
         System.out.println(b);
-        if(!b){
-            request.getSession().setAttribute("rp","修改失败，请重试");
+        if (!b) {
+            request.getSession().setAttribute("rp", "修改失败，请重试");
         }
         response.sendRedirect("/music/signin.html");
     }

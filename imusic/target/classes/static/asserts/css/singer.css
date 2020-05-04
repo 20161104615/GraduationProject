@@ -10,7 +10,7 @@
     height: 100px;
 }
 
-.find_select-a{
+.find_select-a {
     margin-left: 20px;
     width: 20px;
     height: 20px;
@@ -31,108 +31,134 @@
 }
 
 .Afind-ys {
-    width: 300px;
+    width: 100%;
     height: 28px;
-    margin-left: 1140px;
     margin-bottom: 5px;
 }
 
-.Afind-left-ys {
-    width: 80%;
+.Afind-ys-showuser {
+    width: 10%;
     height: 100%;
     float: left;
-    padding-left: 40px;
+}
+
+.Afind-left-ys {
+    width: 15%;
+    height: 100%;
+    float: left;
+    margin-left: 1019px;
+    padding-left: 30px;
 }
 
 .Afind-right-ys {
-    width: 20%;
+    width: 5%;
     height: 100%;
     float: right;
     padding-top: 4px;
 }
-.A-findmusic{}
-.A-insertmusic{}
-.A-updatemusic{}
-.A-deletemusic{}
-.Ulisten-list{
+
+.A-findmusic {
+}
+
+.A-insertmusic {
+}
+
+.A-updatemusic {
+}
+
+.A-deletemusic {
+}
+
+.Ulisten-list {
     width: 100%;
     margin-top: 1px;
 }
-.Ulisten-list-left{
+
+.Ulisten-list-left {
     width: 70%;
     float: left;
     margin-top: -10px;
 }
-.Ulisten-list-rigth{
+
+.Ulisten-list-rigth {
     width: 30%;
     float: right;
     margin-top: -10px;
 }
 
-.index-list{
+.index-list {
     width: 100%;
     height: 50%;
     margin-top: -5px;
     margin-bottom: 5px;
 }
-.index-list-left{
+
+.index-list-left {
     width: 80%;
     height: 50%;
     float: left;
 }
-.index-list-rigth{
-    width: 20%;height: 50%;
+
+.index-list-rigth {
+    width: 20%;
+    height: 50%;
     float: right;
     padding-left: 20px;
 }
-.ys-style-two {/*透明渐变水平线*/
-    width:80%;
-    margin:0 auto;
+
+.ys-style-two { /*透明渐变水平线*/
+    width: 80%;
+    margin: 0 auto;
     border: 0;
     height: 1px;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
-.ys-style-one {/*内嵌水平线*/
-    width:80%;
-    margin:10px 20px;
+
+.ys-style-one { /*内嵌水平线*/
+    width: 80%;
+    margin: 10px 20px;
     border: 0;
     height: 0;
     border-top: 1px solid rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
 }
-.music-list{
+
+.music-list {
     width: 100%;
     height: 200px;
     margin-top: -5px;
     margin-bottom: 25px;
 }
-.music-list-left{
+
+.music-list-left {
     width: 50%;
     height: 100%;
     margin-top: auto;
     float: left;
 }
 
-.music-list-rigth{
+.music-list-rigth {
     width: 50%;
     height: 100%;
     margin-top: auto;
     float: right;
 }
-.music-list-left-singer{
+
+.music-list-left-singer {
     width: 30%;
     height: 100%;
     margin-top: auto;
     float: left;
 }
 
-.music-list-rigth-singer{
+.music-list-rigth-singer {
     width: 70%;
     height: 100%;
     margin-top: auto;
     float: right;
 }
-.music-list-lefts{
+
+.music-list-lefts {
     width: 30%;
     height: 120px;
     margin-top: auto;
@@ -140,10 +166,39 @@
     float: left;
 }
 
-.music-list-rigths{
+.music-list-rigths {
     width: 70%;
     height: 120px;
     margin-top: auto;
     padding-left: 300px;
     float: right;
+}
+
+.personalhp {
+    width: 100%;
+    height: 330px;
+    background-color: #fffffe;
+}
+
+.personalhp-title {
+    width: 100%;
+    height: 50px;
+    padding-left: 424px;
+    /*background-color: #2ceec3;*/
+}
+
+.personalhp-left {
+    width: 50%;
+    height: 100%;
+    float: left;
+    padding-left: 120px;
+    /*background-color: #f4cf2f;*/
+}
+
+.personalhp-rigt {
+    width: 50%;
+    height: 100%;
+    float: right;
+    padding-left: 120px;
+    /*background-color: #f431df;*/
 }

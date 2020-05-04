@@ -71,7 +71,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserBean userfindstring(String userphone) {
-        UserBean finduserbystring = userMapper.finduserbystring(userphone);
+        boolean userAdministrator = false;
+        UserBean finduserbystring = userMapper.finduserbystring(userphone,userAdministrator);
         return finduserbystring;
     }
 

@@ -24,8 +24,8 @@ public interface UserMapper {
     public UserBean finduser(UserBean userBean);
 
     //3
-    @Select("select * from user where user_phone=#{userphone}")
-    public UserBean finduserbystring(String userphone);
+    @Select("select * from user where user_phone=#{userphone} and user_Administrator=#{userAdministrator}")
+    public UserBean finduserbystring(String userphone,boolean userAdministrator);
 
     @Select("select * from user where user_Administrator=#{userAdministrator}")
     public ArrayList<UserBean> findAllUser(boolean userAdministrator);

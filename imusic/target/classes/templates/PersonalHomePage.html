@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en" class="app" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="public :: public_head_head"></head>
+<body class="">
+<section class="vbox">
+    <header class="bg-white-only header header-md navbar navbar-fixed-top-xs" style="height: 6.25rem">
+        <div class="navbar-header aside bg-info dk">
+            <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
+                <i class="icon-list"></i>
+            </a>
+            <a th:href="@{/index.html}" id="myvisitprofile">
+                <i class="navbar-brand text-lt">
+
+                    <i class="icon-earphones"></i>
+
+                    <img th:src="@{/asserts/images/logo.png}" alt="." class="hide">
+                    <span class="hidden-nav-xs m-l-sm">Music</span>
+                    <input id="loginuserphone" class="hide"
+                           th:value="${(session.LoginUser ne null) ? session.LoginUser.getUser_phone():''}">
+                </i>
+            </a>
+        </div>
+        <div class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs">
+            <div class="form-group">
+                <div class="input-group">
+             <span class="input-group-btn">
+              <button type="submit" onclick="searchuser()" class="btn btn-sm bg-white btn-icon rounded">
+                  <i class="fa fa-search"></i>
+              </button>
+            </span>
+                    <input id="finduser" type="text" class="form-control input-sm no-border rounded"
+                           placeholder="Search user's phone">
+                </div>
+            </div>
+        </div>
+    </header>
+    <section>
+        <section class="hbox stretch">
+            <section id="content">
+                <section class="vbox">
+                    <section class="scrollable wrapper-lg">
+                        <div class="row">
+                            <div class="col-sm-9">
+                                <div class="blog-post">
+                                    <div class="post-item">
+                                        <div class="caption wrapper-lg">
+                                            <div class="personalhp">
+                                                <h2 class="personalhp-title"> 他分享的音乐 </h2>
+                                                <div class="post-sum">
+                                                    <div th:each="song,num:${session.searchsharemusiclist}"
+                                                         th:class="${num.odd}==true?'personalhp-left':'personalhp-rigt'">
+                                                        <a name="song">[[${song.getMusic_name()}]]</a> ---
+                                                        <i class="fa fa-user icon-muted"></i> by
+                                                        <a name="singer"
+                                                           class="m-r-sm">[[${song.getMusic_singer()}]]</a>
+                                                        <i class="fa fa-clock-o icon-muted"></i>[[${song.getShare_date()}]]
+                                                        <br><br>
+                                                    </div>
+                                                    <br><br>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="personalhp">
+                                                <h2 class="personalhp-title">
+                                                    他喜欢的音乐</h2>
+                                                <div class="post-sum">
+                                                    <div th:each="songs,nums:${session.searchplayMusiconeinformation}"
+                                                         th:class="${nums.odd}==true?'personalhp-left':'personalhp-rigt'">
+                                                        <a name="song">[[${songs.getMusic_name()}]]</a> ---
+                                                        <i class="fa fa-user icon-muted"></i> by
+                                                        <a name="singer"
+                                                           class="m-r-sm">[[${songs.getMusic_singer()}]]</a>
+                                                        <br><br>
+                                                    </div>
+                                                    <br><br>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-3">
+                                <div style="height: 50px">
+                                        <span class="thumb-md avatar" style="margin-left: 130px">
+                                         <img th:src="${(session.searchuser ne null) ? session.searchuser.getUser_avatar() :'asserts/images/a1.png'}"
+                                              alt="...">
+                                    </span>
+                                </div>
+                                <ul class="list-group" style="margin-top: 18px">
+                                    <li class="list-group-item">
+                                        <i class="icon-user pull-right"></i>
+                                        [[${session.searchuser.getUser_name()}]]
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="pull-right icon-call-end"></i>
+                                        [[${session.searchuser.getUser_phone()}]]
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="pull-right icon-envelope"></i>
+                                        [[${session.searchuser.getUser_email()}]]
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class=" icon-calendar pull-right"></i>
+                                        [[${session.searchuser.getUser_birthday()}]]
+                                    </li>
+                                    <li class="list-group-item">
+                                        <i class="icon-puzzle pull-right"></i>
+                                        [[${session.searchuser.getUser_introduced()}]]
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </section>
+            </section>
+        </section>
+    </section>
+</section>
+<footer th:replace="public :: public_footer_footer"></footer>
+<script th:inline="javascript">
+
+    function searchuser() {
+        var username = document.getElementById("finduser").value;
+        $.ajax({
+            url: "user/searchuser",
+            type: "post",
+            dataType: 'json',
+            data: {
+                "userphone": username
+            },
+            success: function (result) {
+                if (result.stat == 1) {
+                    window.location.href = "PersonalHomePage.html";
+                } else if (result.stat == 0) {
+                    alert("没有该用户");
+                }
+            },
+            error: function () {
+                alert("没有该用户");
+            }
+        });
+    }
+</script>
+</body>
+</html>

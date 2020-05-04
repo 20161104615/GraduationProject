@@ -1,7 +1,9 @@
 package imnu.edu.imusic;
 
 import imnu.edu.imusic.bean.MusicBean;
+import imnu.edu.imusic.bean.ShareSongs;
 import imnu.edu.imusic.bean.UserBean;
+import imnu.edu.imusic.mapper.MusicMapper;
 import imnu.edu.imusic.mapper.UserMapper;
 import imnu.edu.imusic.service.MusicService;
 import org.junit.jupiter.api.Test;
@@ -20,6 +22,9 @@ class ImusicApplicationTests {
 
     @Autowired
     UserMapper userMapper;
+
+    @Autowired
+    MusicMapper musicMapper;
 
     @Test
     void contextLoads() {
@@ -43,8 +48,8 @@ class ImusicApplicationTests {
 
     @Test
     void delmusic() {
-       /* File f = new File("D:/JavaProgram/test/test.mp3");  // 路径名*/
-        String filemusicimg = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/img/"+"2002年的第一场雪-刀郎"+".jpg";
+        /* File f = new File("D:/JavaProgram/test/test.mp3");  // 路径名*/
+        String filemusicimg = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/img/" + "2002年的第一场雪-刀郎" + ".jpg";
         File ff = new File(filemusicimg);  // 路径名
 
        /* boolean flag = false;
@@ -61,5 +66,15 @@ class ImusicApplicationTests {
         }
         System.out.println(flags);
     }
+
+    @Test
+    void data() {
+        ArrayList<ShareSongs> arrayList = musicMapper.findShareMusicByDate();
+        for (ShareSongs music : arrayList
+        ) {
+            System.out.println(music);
+        }
+    }
+
 
 }

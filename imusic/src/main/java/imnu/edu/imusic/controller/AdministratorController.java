@@ -165,7 +165,7 @@ public class AdministratorController {
         if (b) {
             File fm = new File(filemusic);
             File fmi = new File(filemusicimg);
-            if (fm.isFile() && fm.exists() && fmi.isFile() && fmi.exists()) {
+            /*if (fm.isFile() && fm.exists() && fmi.isFile() && fmi.exists()) {*/
                 fm.delete();
                 fmi.delete();
                 ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
@@ -173,11 +173,11 @@ public class AdministratorController {
                 map.put("stat", "1");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
-            } else {
+            /*} else {
                 map.put("stat", "2");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
-            }
+            }*/
         } else {
             map.put("stat", "0");
             jsonObject = JSONObject.fromObject(map);
