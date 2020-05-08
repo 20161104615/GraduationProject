@@ -94,22 +94,6 @@
     </option>
   </component>
   <component name="RunManager" selected="Spring Boot.ImusicApplication">
-    <configuration name="ImusicApplicationTests.contextLoads" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="imusic" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="imnu.edu.imusic.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="imnu.edu.imusic" />
-      <option name="MAIN_CLASS_NAME" value="imnu.edu.imusic.ImusicApplicationTests" />
-      <option name="METHOD_NAME" value="contextLoads" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="ImusicApplicationTests.data" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imusic" />
       <extension name="coverage">
@@ -142,6 +126,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ImusicApplicationTests.intergal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imusic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="imnu.edu.imusic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="imnu.edu.imusic" />
+      <option name="MAIN_CLASS_NAME" value="imnu.edu.imusic.ImusicApplicationTests" />
+      <option name="METHOD_NAME" value="intergal" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ImusicApplicationTests.newpwd" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="imusic" />
       <extension name="coverage">
@@ -158,6 +158,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ImusicApplicationTests.vistiors" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="imusic" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="imnu.edu.imusic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="imnu.edu.imusic" />
+      <option name="MAIN_CLASS_NAME" value="imnu.edu.imusic.ImusicApplicationTests" />
+      <option name="METHOD_NAME" value="vistiors" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ImusicApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
       <module name="imusic" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="imnu.edu.imusic.ImusicApplication" />
@@ -169,18 +185,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.ImusicApplicationTests.contextLoads" />
       <item itemvalue="JUnit.ImusicApplicationTests.newpwd" />
       <item itemvalue="JUnit.ImusicApplicationTests.delmusic" />
       <item itemvalue="JUnit.ImusicApplicationTests.data" />
       <item itemvalue="Spring Boot.ImusicApplication" />
+      <item itemvalue="JUnit.ImusicApplicationTests.intergal" />
+      <item itemvalue="JUnit.ImusicApplicationTests.vistiors" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.ImusicApplicationTests.vistiors" />
+        <item itemvalue="JUnit.ImusicApplicationTests.intergal" />
         <item itemvalue="JUnit.ImusicApplicationTests.data" />
         <item itemvalue="JUnit.ImusicApplicationTests.delmusic" />
         <item itemvalue="JUnit.ImusicApplicationTests.newpwd" />
-        <item itemvalue="JUnit.ImusicApplicationTests.contextLoads" />
       </list>
     </recent_temporary>
   </component>
@@ -239,6 +257,9 @@
       <workItem from="1587525806471" duration="5020000" />
       <workItem from="1588571123056" duration="13470000" />
       <workItem from="1588584699277" duration="10000" />
+      <workItem from="1588584817655" duration="109000" />
+      <workItem from="1588736039923" duration="2939000" />
+      <workItem from="1588899185216" duration="10298000" />
     </task>
     <servers />
   </component>
@@ -254,10 +275,10 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="271" y="86" width="1155" height="683" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1584707008928" />
-    <state x="574" y="151" key="#com.intellij.ide.util.MemberChooser" timestamp="1588582760020">
+    <state x="574" y="151" key="#com.intellij.ide.util.MemberChooser" timestamp="1588910716876">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="574" y="151" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1588582760020" />
+    <state x="574" y="151" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1588910716876" />
     <state x="231" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1586182627624">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -270,38 +291,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="597" y="186" key="FileChooserDialogImpl/0.0.1536.864@0.0.1536.864" timestamp="1585394128653" />
-    <state width="1493" height="700" key="GridCell.Tab.0.bottom" timestamp="1588584690207">
+    <state width="1493" height="560" key="GridCell.Tab.0.bottom" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="700" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588584690207" />
-    <state width="1493" height="700" key="GridCell.Tab.0.center" timestamp="1588584690207">
+    <state width="1493" height="560" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="560" key="GridCell.Tab.0.center" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="700" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1588584690207" />
-    <state width="1493" height="700" key="GridCell.Tab.0.left" timestamp="1588584690207">
+    <state width="1493" height="560" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="560" key="GridCell.Tab.0.left" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="700" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1588584690207" />
-    <state width="1493" height="700" key="GridCell.Tab.0.right" timestamp="1588584690207">
+    <state width="1493" height="560" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="560" key="GridCell.Tab.0.right" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="700" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1588584690207" />
-    <state width="1493" height="181" key="GridCell.Tab.1.bottom" timestamp="1588584690176">
+    <state width="1493" height="560" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="357" key="GridCell.Tab.1.bottom" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="181" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588584690176" />
-    <state width="1493" height="181" key="GridCell.Tab.1.center" timestamp="1588584690176">
+    <state width="1493" height="357" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="357" key="GridCell.Tab.1.center" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="181" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1588584690176" />
-    <state width="1493" height="181" key="GridCell.Tab.1.left" timestamp="1588584690176">
+    <state width="1493" height="357" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="357" key="GridCell.Tab.1.left" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="181" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1588584690176" />
-    <state width="1493" height="181" key="GridCell.Tab.1.right" timestamp="1588584690176">
+    <state width="1493" height="357" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
+    <state width="1493" height="357" key="GridCell.Tab.1.right" timestamp="1588911918927">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="181" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1588584690176" />
+    <state width="1493" height="357" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1588911918927" />
     <state x="347" y="86" key="Maven.ArtifactSearchDialog" timestamp="1586178089185">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -326,13 +347,13 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="457" y="64" width="621" height="735" key="find.popup/0.0.1536.864@0.0.1536.864" timestamp="1586668525446" />
-    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1586185163726">
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup" timestamp="1588905944730">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1586185163726" />
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1586498263394">
+    <state x="425" y="197" width="672" height="677" key="run.anything.popup/0.0.1536.864@0.0.1536.864" timestamp="1588905944730" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup" timestamp="1588906175953">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1586498263394" />
+    <state x="431" y="181" width="672" height="678" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1588906175953" />
   </component>
 </project>

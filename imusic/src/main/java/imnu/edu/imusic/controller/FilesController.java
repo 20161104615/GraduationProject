@@ -60,7 +60,8 @@ public class FilesController {
         System.out.println("进入filesupload");
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-        if (newMusicUrl.isEmpty() && newMusicImgUrl.isEmpty()) {
+        UserBean loginUser = (UserBean) request.getSession().getAttribute("LoginUser");
+        if (newMusicUrl.isEmpty() && newMusicImgUrl.isEmpty() && loginUser.getUser_id() != 0) {
             response.sendRedirect("/music/fileupload.html");
         }
         String fileName = "";//文件名称
@@ -106,14 +107,17 @@ public class FilesController {
             }
         }
         boolean checkUpload = musicService.uploadMusic(newMusicName, newMusicSinger);
-        if (checkUpload == true) {
+        boolean b = userService.insertIntegral(loginUser.getUser_phone(), newMusicName, 1);
+        if (checkUpload == true && b == true) {
             System.out.println("上传数据库成功");
+            Integer integrals = userService.findUserIntegral(loginUser.getUser_phone());
             Map<String, ArrayList<MusicBean>> musicByName = musicService.findMusicByName(newMusicName);
             for (Map.Entry<String, ArrayList<MusicBean>> entry : musicByName.entrySet()) {
                 System.out.println("key= " + entry.getKey() + " and value= " + entry.getValue());
                 if (entry.getKey().toString() == "TURE") {
                     //表示取值成功
                     request.getSession().setAttribute("searchResult", entry.getValue().toArray());
+                    request.getSession().setAttribute("userintegral",integrals);
                     response.sendRedirect("/music/list.html");
                 } else {
                     //表示未查询到
@@ -301,7 +305,7 @@ public class FilesController {
         String pathName = "";
         MusicBean musicBean = musicService.FINDMUSICOFID(songid);
         String filePathMusicUrl = "D:/JavaProgram/Apache-tomcat/apache-tomcat-8.5.43/webapps/ROOT/media/";//歌曲存放的路径
-        pathName = filePathMusicUrl + musicBean.getMusic_name()+".m4a";
+        pathName = filePathMusicUrl + musicBean.getMusic_name() + ".m4a";
         String downloadName = UUID.randomUUID().toString().replaceAll("-", "") + musicBean.getMusic_name();
         //FileSystemResource 以文件系统的绝对路径的方式访问静态资源
         FileSystemResource fileSystemResource = new FileSystemResource(pathName);
@@ -358,7 +362,7 @@ public class FilesController {
             }
         }
         boolean checkUpload = userService.uploadUserAvatar(userPhone);
-        if (checkUpload != false){
+        if (checkUpload != false) {
             UserBean loginUser = userService.userFind(userBean);
             request.getSession().setAttribute("LoginUser", loginUser);
         }

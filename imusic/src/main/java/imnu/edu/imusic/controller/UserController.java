@@ -80,6 +80,8 @@ public class UserController {
                         //全部歌曲返回到前端主页面
                         ArrayList<MusicBean> allMusicBean = musicService.findAllMusicBean();
                         request.getSession().setAttribute("MusicList", allMusicBean);
+                        ArrayList<ShareSongs> oneMouthShare = musicService.findOneMouthShare();
+                        request.getSession().setAttribute("oneMouthShare", oneMouthShare);
                         map.put("stat", "1");
                         jsonObject = JSONObject.fromObject(map);
                         response.getWriter().print(jsonObject);
@@ -281,6 +283,8 @@ public class UserController {
             if (b) {
                 ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(loginUser.getUser_phone());
                 request.getSession().setAttribute("sharemusiclist", arrayList);
+                ArrayList<ShareSongs> oneMouthShare = musicService.findOneMouthShare();
+                request.getSession().setAttribute("oneMouthShare", oneMouthShare);
                 map.put("stat", "2");
                 jsonObject = JSONObject.fromObject(map);
                 response.getWriter().print(jsonObject);
@@ -300,14 +304,15 @@ public class UserController {
      * @return void
      **/
     @PostMapping(value = "/searchuser")
-    public void searchUser(@RequestParam("userphone") String userphone,
+    public void searchUser(@RequestParam("userphone") String userphone,//要访问用户
                            Map<String, Object> map,
                            HttpServletRequest request,
                            HttpServletResponse response) throws IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
         JSONObject jsonObject;
-        if ("".equals(userphone)) {
+        UserBean user = (UserBean) request.getSession().getAttribute("LoginUser");//当前登录用户
+        if ("".equals(userphone) && user.getUser_id() == 0) {
             map.put("stat", "0");
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
@@ -317,6 +322,7 @@ public class UserController {
                 userBean = userService.userfindstring(userphone);
                 ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(userphone);
                 ArrayList<MusicBean> userFavoriteSong = musicService.findUserFavoriteSong(userphone);
+                userService.insertVisitors(user.getUser_phone(), userphone);
                 UserBean bean = new UserBean(userBean.getUser_name(), userBean.getUser_phone(), userBean.getUser_birthday()
                         , userBean.getUser_email(), userBean.getUser_introduced(), userBean.getUser_avatar());
                 request.getSession().setAttribute("searchuser", bean);

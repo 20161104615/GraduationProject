@@ -3,6 +3,7 @@ package imnu.edu.imusic.controller;
 
 import imnu.edu.imusic.bean.*;
 import imnu.edu.imusic.service.MusicService;
+import imnu.edu.imusic.service.UserService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import org.json.JSONException;
@@ -38,6 +39,9 @@ public class MusicController {
 
     @Autowired
     private MusicService musicService;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping(value = "/showmusic")
     public void findALlMusic(HttpServletRequest request) {
@@ -150,6 +154,10 @@ public class MusicController {
             jsonObject = JSONObject.fromObject(map);
             response.getWriter().print(jsonObject);
         } else {
+            Integer integrals = userService.findUserIntegral(userphone);
+            request.getSession().setAttribute("userintegral",integrals);
+            Integer userVisitors = userService.findUserVisitors(userphone);
+            request.getSession().setAttribute("uservisitors",userVisitors);
             ArrayList<ShareSongs> arrayList = musicService.SHARE_SONGS_ARRAY_LIST(userphone);
             request.getSession().setAttribute("sharemusiclist", arrayList);
             ArrayList<MusicBean> musicOfPlayListinformation = musicService.findMusicOfPlayListinformation(userphone);

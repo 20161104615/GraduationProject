@@ -40,6 +40,8 @@ public class LoginController {
         request.getSession().removeAttribute("searchResultSingerInfor");
         request.getSession().removeAttribute("searchsharemusiclist");
         request.getSession().removeAttribute("searchplayMusiconeinformation");
+        request.getSession().removeAttribute("userintegral");
+        request.getSession().removeAttribute("uservisitors");
         return "index";
     }
 }

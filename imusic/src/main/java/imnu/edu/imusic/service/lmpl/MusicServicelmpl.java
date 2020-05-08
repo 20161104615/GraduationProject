@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,7 @@ public class MusicServicelmpl implements MusicService {
     @Override
     public ArrayList<ShareSongs> findOneMouthShare() {
         ArrayList<ShareSongs> shareMusicByDate = musicMapper.findShareMusicByDate();
+        Collections.reverse(shareMusicByDate);
         return shareMusicByDate;
     }
 

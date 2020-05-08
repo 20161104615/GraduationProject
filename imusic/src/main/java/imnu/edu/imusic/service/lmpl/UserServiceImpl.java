@@ -72,7 +72,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserBean userfindstring(String userphone) {
         boolean userAdministrator = false;
-        UserBean finduserbystring = userMapper.finduserbystring(userphone,userAdministrator);
+        UserBean finduserbystring = userMapper.finduserbystring(userphone, userAdministrator);
         return finduserbystring;
     }
 
@@ -184,4 +184,33 @@ public class UserServiceImpl implements UserService {
             return false;
         }
     }
+
+    @Override
+    public boolean insertIntegral(String userphone, String musicname, Integer userintegral) {
+        int b = userMapper.insertUserIntegral(userphone, musicname, userintegral);
+        if (b != 0) {
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
+    public Integer findUserIntegral(String userphone) {
+        return userMapper.finduserintegral(userphone);
+    }
+
+    @Override
+    public boolean insertVisitors(String userphone, String visitors) {
+        int b = userMapper.insertUserVistors(userphone, visitors);
+        if (b != 0) {
+            return true;
+        } else
+            return false;
+    }
+
+    @Override
+    public Integer findUserVisitors(String userphone) {
+        return userMapper.finduservisitors(userphone);
+    }
+
 }

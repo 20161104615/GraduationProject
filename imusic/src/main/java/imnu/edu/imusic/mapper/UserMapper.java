@@ -41,6 +41,12 @@ public interface UserMapper {
     @Select("SELECT * FROM user WHERE (user_phone = #{user_phone} OR user_email = #{user_email}) AND user_Administrator = #{user_Administrator}")
     public ArrayList<UserBean> FINDUSER2(UserBean userBean);
 
+    @Select("SELECT SUM(user_integral) FROM integral WHERE user_phone = #{user_phone}")
+    public Integer finduserintegral(String user_phone);
+
+    @Select("SELECT COUNT(*) FROM visitors WHERE visitors=#{user_phone}")
+    public Integer finduservisitors(String user_phone);
+
     /**
      * 增加用户信息
      *      1、用户注册
@@ -54,6 +60,15 @@ public interface UserMapper {
             "VALUES" +
             "(#{user_name},#{user_phone},#{user_email},#{user_pwd},#{user_Administrator})")
     public int INSERTUSER(UserBean userBean);
+
+    @Insert("INSERT INTO integral (user_phone,music_name,user_integral)" +
+            "VALUES (#{user_phone},#{music_name},#{user_integral})" +
+            "ON DUPLICATE KEY UPDATE user_integral=#{user_integral}")
+    public int insertUserIntegral(String user_phone,String music_name,Integer user_integral);
+
+    @Insert("INSERT INTO visitors(user_phone,visitors)" +
+            "VALUES (#{user_phone},#{visitors})")
+    public int insertUserVistors(String user_phone,String visitors);
 
     /**
      * 修改用户信息

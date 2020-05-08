@@ -6,6 +6,7 @@ import imnu.edu.imusic.bean.UserBean;
 import imnu.edu.imusic.mapper.MusicMapper;
 import imnu.edu.imusic.mapper.UserMapper;
 import imnu.edu.imusic.service.MusicService;
+import org.apache.ibatis.annotations.Insert;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +14,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import java.io.*;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 @SpringBootTest
 class ImusicApplicationTests {
@@ -70,10 +72,33 @@ class ImusicApplicationTests {
     @Test
     void data() {
         ArrayList<ShareSongs> arrayList = musicMapper.findShareMusicByDate();
+        System.out.println("正序输出");
         for (ShareSongs music : arrayList
         ) {
             System.out.println(music);
         }
+        System.out.println("逆序输出");
+        Collections.reverse(arrayList);
+        for (ShareSongs song:arrayList
+             ) {
+            System.out.println(song);
+        }
+    }
+
+    @Test
+    void intergal(){
+        int userIntegral = userMapper.insertUserIntegral("1234", "李白", 6);
+        System.out.println(userIntegral);
+        Integer integer = userMapper.finduserintegral("1234");
+        System.out.println(integer);
+    }
+
+    @Test
+    void vistiors(){
+        int i = userMapper.insertUserVistors("1234", "12345");
+        System.out.println(i);
+        Integer sss = userMapper.finduservisitors("1234");
+        System.out.println("访问人数："+sss);
     }
 
 

@@ -49,6 +49,9 @@
                                        data-classInput="form-control inline v-middle input-s">
                             </div>
                         </div>
+                        <div style="width: 300px;margin-left: 550px">
+                            <marquee behavior="alernate" direction="left" scrollamount="7">上传歌曲可获得积分，增加人气值~~</marquee>
+                        </div>
                         <input id="newmusicsubmit" type="submit" class="btn btn-default btn-lg"
                                style="width: 400px;margin-left: 500px;margin-top: 30px" th:value="${'上传'}">
                     </form>
@@ -72,7 +75,7 @@
             } else if ($("#newMusicSinger").val() === '') {
                 alert("请填入歌手名");
                 return false;
-            }else if ($("#newMusicUrl").val() === '') {
+            } else if ($("#newMusicUrl").val() === '') {
                 alert("请选择歌曲文件");
                 return false;
             } else if ($("#newMusicImgUrl").val() === '') {

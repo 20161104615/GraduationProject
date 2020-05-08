@@ -9,14 +9,14 @@
                 <i class="icon-list"></i>
             </a>
             <a th:href="@{/index.html}" id="myvisitprofile">
-            <i class="navbar-brand text-lt">
+                <i class="navbar-brand text-lt">
 
-                <i class="icon-earphones"></i>
+                    <i class="icon-earphones"></i>
 
                     <img th:src="@{/asserts/images/logo.png}" alt="." class="hide">
-                <span class="hidden-nav-xs m-l-sm">Music</span>
+                    <span class="hidden-nav-xs m-l-sm">Music</span>
 
-            </i>
+                </i>
             </a>
         </div>
         <div class="navbar-form navbar-left input-s-lg m-t m-l-n-xs hidden-xs">
@@ -128,23 +128,18 @@
                                                 </small>
                                             </div>
                                         </div>
-                                        <!-- <div class="panel wrapper">
-                                             <div class="row text-center">
-                                                 <div class="col-xs-6">
-                                                     <a href="#">
-                                                         <span class="m-b-xs h4 block">245</span>
-                                                         <small class="text-muted">Followers</small>
-                                                     </a>
-                                                 </div>
-                                                 <div class="col-xs-6">
-                                                     <a href="#">
-                                                         <span class="m-b-xs h4 block">55</span>
-                                                         <small class="text-muted">Following</small>
-                                                     </a>
-                                                 </div>
-                                             </div>
-                                         </div>
-                                         -->
+                                        <div class="panel wrapper">
+                                            <div class="row text-center">
+                                                <div class="col-xs-6">
+                                                    <span class="m-b-xs h4 block">[[${session.userintegral}? ${session.userintegral}:0]]</span>
+                                                    <small class="text-muted">积分</small>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <span class="m-b-xs h4 block">[[${session.uservisitors}? ${session.uservisitors}*10+(${session.userintegral}? ${session.userintegral}:0):0+(${session.userintegral}? ${session.userintegral}:0)]]</span>
+                                                    <small class="text-muted">人气值</small>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="btn-group btn-group-justified m-b">
                                             <a th:href="@{fileupload.html}" class="btn btn-success btn-rounded">
                                                 上传音乐

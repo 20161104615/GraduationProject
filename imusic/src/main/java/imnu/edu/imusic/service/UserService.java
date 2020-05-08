@@ -20,4 +20,8 @@ public interface UserService {
     public boolean uploadUserAvatar(String userphone);
     public void getCode(String useremail) throws MessagingException;
     public boolean Resetpassword(String useremail,String code,String newuserpwd);
+    public boolean insertIntegral(String userphone,String musicname,Integer userintegral);
+    public Integer findUserIntegral(String userphone);
+    public boolean insertVisitors(String userphone,String visitors);
+    public Integer findUserVisitors(String userphone);
 }
